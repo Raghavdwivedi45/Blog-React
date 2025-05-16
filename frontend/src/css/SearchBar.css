@@ -4,34 +4,60 @@
     flex: 1;
 }
 
-input {
+#search-input {
     width: 75%;
     height: 2.5rem;
     padding: 0 1rem;
     outline: 0.5px solid rgba(192, 190, 185, 0.8);
     border: none;
     border-radius: 10px;
-    font-family: "Roboto", sans-serif;  
+    font-family: "Roboto", sans-serif;
     color: #f5f5f5;
     background-color: transparent;
     font-size: large;
     font-weight: 400;
 }
 
-input:focus {
-    outline: 0.3px solid #e5c59e; /* soft gold */
+#search-input:focus {
+    outline: 0.3px solid #e5c59e;
 }
 
-label {
+#search-label {
     margin-left: 0.5rem;
     padding: 0.5rem;
     border-radius: 10px;
-    background: rgba(79, 79, 226, 0.5);
     backdrop-filter: blur(15px);
-    font-weight: 550;
+    font-weight: 600;
     color: rgb(221, 190, 133);
+    user-select: none;
+    cursor: pointer;
+    background: linear-gradient(45deg, #d42626, #eb1b1b);
+    position: relative;
+    overflow: hidden; /* clip ripple */
 }
 
-.label:hover {
+#search-label:active {
+    border: 0.5px solid white;
+}
 
-} 
+.ripple {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ripple.animate {
+    animation: rippleEffect 0.6s ease-out forwards;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: translate(-50%, -50%) scale(5);
+        opacity: 0;
+    }
+}

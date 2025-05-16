@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.user-sign-login-box {
+  margin: 1rem auto;
+  background: rgb(63, 10, 10);
+  border: 2px solid rgb(245, 35, 35);
+  padding: 40px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  transition: box-shadow 0.3s ease;
+}
+
+.user-sign-login-box h2 {
+  color: white;
+  margin-bottom: 30px;
+}
+
+.user-sign-input-box {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.user-sign-input-box input {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 2px solid rgb(245, 35, 35);
+  border-radius: 5px;
+  color: white;
+  outline: none;
+  font-size: 16px;
+  transition: box-shadow 0.3s ease;
+}
+
+.user-sign-input-box label {
+  position: absolute;
+  top: -18px;
+  left: 10px;
+  color: white;
+  background: rgb(73, 7, 7);
+  padding: 0 5px;
+  font-size: 14px;
+}
+
+.user-sign-options {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.user-sign-options a {
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: all 0.1s linear;
+}
+
+.user-sign-options a:hover {
+  opacity: 1;
+}
+
+.user-sign-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: rgb(245, 35, 35);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+
+.user-sign-register-link {
+  margin-top: 20px;
+  color: white;
+  font-size: 14px;
+}
+
+.user-sign-register-link a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.1s ease;
+  opacity: 0.6;
+}
+
+.user-sign-register-link a:hover {
+  opacity: 1;
+}
+
+.user-sign-login-box:hover {
+    box-shadow: 0 0 10px rgb(209, 15, 15);
+}
+
+.user-sign-login-box:hover .user-sign-btn  {
+    box-shadow: 0 0 10px rgb(209, 15, 15);
+}
+
+.user-sign-login-box:hover .user-sign-input-box input  {
+    box-shadow: 0 0 10px rgb(209, 15, 15);
+}

@@ -20,9 +20,9 @@ app.use(cors({
 }))
 
 
+app.use("/api/auth", authRoutes);
 app.use("/api/majors", majorRoutes);
 app.use("/api/minors", minorRoutes);
-app.use("/api/auth", authRoutes);
 
 app.get("/", homePage);
 

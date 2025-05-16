@@ -10,7 +10,9 @@ function App() {
   return (
     <div className='body'>
       <Navbar/>
+      <main>
       {currentPg=="signup" && <SignupPage/>}
+      </main>
       <Footer/>
     </div>
   )
