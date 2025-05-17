@@ -1,17 +1,22 @@
 import "../css/Login.css"
-import { signupStore } from "../store/signupStore"
+import { selectPageStore } from "../store/selectPageStore.js"
 
 const UserSignup = () => {
-  const {changePage} = signupStore();
+  const {page, changePage} = selectPageStore();
   return (
     <section className="user-sign-login-box">
-      <h2>Login</h2>
+      {page=="login" ? <h2>Login</h2> : <h2>Signup</h2>}
       
       <form>
         
         <div className="user-sign-input-box">
           <input type="text" required />
-          <label>Username</label>
+          <label>Name</label>
+        </div>
+
+        <div className="user-sign-input-box">
+          <input type="email" required />
+          <label>Email</label>
         </div>
 
         <div className="user-sign-input-box">
@@ -19,15 +24,26 @@ const UserSignup = () => {
           <label>Password</label>
         </div>
 
+        {page=="author" && <div className="user-sign-input-box">
+          <input type="date" />
+          <label>Date of Birth</label>
+        </div>}
+
         <div className="user-sign-options">
-          <a href="#">Forgot Password?</a>
+          <span href="#">Forgot Password?</span>
         </div>
 
-        <button type="submit" className="user-sign-btn">Login</button>
+        <button type="submit" className="user-sign-btn">{page=="login" ? "Login" : "Signup"}</button>
 
-        <p className="user-sign-register-link">
-          Don’t have an account? <a href="/" onClick={() => changePage("choose")}>Register</a>
-        </p>
+        {page=="login" ? 
+          <p className="user-sign-register-link">
+            Don’t have an account? <span href="/" onClick={() => changePage("choose")}>Register</span>
+          </p> 
+          :
+          <p className="user-sign-register-link">
+            Already a user ? <span onClick={() => changePage("login")}> Login</span> 
+          </p>
+        }
       
       </form>
 
@@ -36,3 +52,14 @@ const UserSignup = () => {
 }
 
 export default UserSignup
+
+
+
+        // <div className="user-sign-input-box">
+        //   <label>Image
+        //     <input type="file" 
+        //     accept="image/*" 
+        //     className="hidden" 
+        //     />
+        //   </label>
+        // </div>

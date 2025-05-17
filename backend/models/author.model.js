@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import ImageSchema from "./image.model.js";
 
 const authorSchema = new mongoose.Schema({
-    username: {
+    name: {
         type: String,
         required: true
     },
@@ -28,10 +28,12 @@ const authorSchema = new mongoose.Schema({
     majorLikes: [{
         type: mongoose.ObjectId,
         ref: "majors",
+        default: []
     }],
     minorLikes: [{
         type: mongoose.ObjectId,
         ref: "minors",
+        default: []
     }]
 }, 
 { timestamps: true }

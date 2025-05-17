@@ -1,18 +1,20 @@
-import { useState } from "react";
 import "../css/TypeSignup.css";
-import { signupStore } from "../store/signupStore";
+import { selectPageStore } from "../store/selectPageStore.js";
 
 const TypeOfUser = () => {
     
-  const { changePage } = signupStore();
+  const { changePage } = selectPageStore();
 
   return (
     <section className="sign-choose">
-        <h1 className="sign-choose-head">Sign in as</h1>
+        <h1 className="sign-choose-head">Signup as</h1>
 
         <div className="sign-btns">
           <button className="sign-btn" onClick={() => changePage("user")}>User</button>
           <button className="sign-btn" onClick={() => changePage("author")}>Author</button>
+          <p className="sign-already-user">Already a user ? 
+            <span onClick={() => changePage("login")}> Login</span> 
+          </p>
         </div>
     </section>
   )

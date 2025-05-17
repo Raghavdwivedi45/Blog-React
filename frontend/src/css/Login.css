@@ -4,7 +4,7 @@
   margin: 1rem auto;
   background: rgb(63, 10, 10);
   border: 2px solid rgb(245, 35, 35);
-  padding: 40px;
+  padding: 15px 60px 15px 40px;
   border-radius: 10px;
   width: 320px;
   text-align: center;
@@ -49,7 +49,7 @@
   margin-bottom: 20px;
 }
 
-.user-sign-options a {
+.user-sign-options span {
   color: white;
   font-size: 14px;
   text-decoration: none;
@@ -57,8 +57,9 @@
   transition: all 0.1s linear;
 }
 
-.user-sign-options a:hover {
+.user-sign-options span:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 .user-sign-btn {
@@ -80,15 +81,21 @@
   font-size: 14px;
 }
 
-.user-sign-register-link a {
+.user-sign-register-link span {
   color: white;
   text-decoration: none;
   transition: all 0.1s ease;
   opacity: 0.6;
 }
 
-.user-sign-register-link a:hover {
+.user-sign-register-link span:hover {
   opacity: 1;
+  cursor: pointer;
+}
+
+::-webkit-calendar-picker-indicator {
+  background-color: rgba(211, 12, 12, 0.5);
+  border-radius: 4px;
 }
 
 .user-sign-login-box:hover {

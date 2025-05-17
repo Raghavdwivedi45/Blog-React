@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import ImageSchema from "./image.model.js";
 
 const readerSchema = new mongoose.Schema({
-    username: {
+    name: {
         type: String,
         required: true
     },

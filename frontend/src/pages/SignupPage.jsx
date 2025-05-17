@@ -1,16 +1,14 @@
 import { useState } from "react"
 import "../css/SignupPage.css"
 import TypeOfUser from "../components/TypeOfUser.jsx";
-import { signupStore } from "../store/signupStore.js";
+import { selectPageStore } from "../store/selectPageStore.js";
 import Login from "../components/Login.jsx";
 
 const SignupPage = () => {
-  const {page} = signupStore();
+  const {page} = selectPageStore();
+  if(!page) return <></>;
   if(page=="choose") return <TypeOfUser />;
-  if(page=="login") return <Login/>
-  // if(page=="author")
-  // if(page=="user")
-  return <div>To Be Continued...</div>;
+  return <Login/>
 
 }
 

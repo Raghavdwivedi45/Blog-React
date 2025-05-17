@@ -1,12 +1,12 @@
 import "../css/Navbar.css";
 import SearchBar from "./SearchBar";
 import { useRef } from "react";
-import {signupStore}  from "../store/signupStore.js";
+import {selectPageStore}  from "../store/selectPageStore.js";
 
 const NavBar = () => {
   const underlineRef = useRef(null);
   const containerRef = useRef(null);
-  const {changePage} = signupStore();
+  const {changePage} = selectPageStore();
 
   const handleMouseEnter = (e, wd=75, extra=0) => {
     const itemRect = e.target.getBoundingClientRect();
