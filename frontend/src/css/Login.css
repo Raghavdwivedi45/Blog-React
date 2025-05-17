@@ -4,12 +4,13 @@
   margin: 1rem auto;
   background: rgb(63, 10, 10);
   border: 2px solid rgb(245, 35, 35);
-  padding: 15px 60px 15px 40px;
+  padding: 15px 60px 25px 40px;
   border-radius: 10px;
   width: 320px;
   text-align: center;
   font-family: 'Poppins', sans-serif;
   transition: box-shadow 0.3s ease;
+  height: fit-content;
 }
 
 .user-sign-login-box h2 {
@@ -22,7 +23,7 @@
   margin-bottom: 25px;
 }
 
-.user-sign-input-box input {
+.user-sign-input-box input, .user-sign-input-box textarea {
   width: 100%;
   padding: 10px;
   background: transparent;
@@ -32,6 +33,10 @@
   outline: none;
   font-size: 16px;
   transition: box-shadow 0.3s ease;
+}
+
+.user-sign-input-box textarea {
+  resize: none;
 }
 
 .user-sign-input-box label {
@@ -63,7 +68,7 @@
 }
 
 .user-sign-btn {
-  width: 100%;
+  width: 107%;
   padding: 10px;
   border: none;
   background: rgb(245, 35, 35);
@@ -73,6 +78,16 @@
   cursor: pointer;
   transition: box-shadow 0.3s ease;
 }
+
+.user-signup-form-error {
+  padding: 5px;
+  border-radius: 5px;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 .user-sign-register-link {
@@ -107,5 +122,9 @@
 }
 
 .user-sign-login-box:hover .user-sign-input-box input  {
+    box-shadow: 0 0 10px rgb(209, 15, 15);
+}
+
+.user-sign-login-box:hover .user-sign-input-box textarea  {
     box-shadow: 0 0 10px rgb(209, 15, 15);
 }

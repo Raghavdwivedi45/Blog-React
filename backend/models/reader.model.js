@@ -7,8 +7,8 @@ const readerSchema = new mongoose.Schema({
         required: true
     },
     img: {
-        type: ImageSchema,
-        _id : false
+        type: String,
+        default: "../assets/avatar.jpg"
     },
     email: {
         type: String,

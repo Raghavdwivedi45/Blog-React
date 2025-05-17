@@ -10,7 +10,7 @@ const TypeOfUser = () => {
         <h1 className="sign-choose-head">Signup as</h1>
 
         <div className="sign-btns">
-          <button className="sign-btn" onClick={() => changePage("user")}>User</button>
+          <button className="sign-btn" onClick={() => changePage("user")}>Reader</button>
           <button className="sign-btn" onClick={() => changePage("author")}>Author</button>
           <p className="sign-already-user">Already a user ? 
             <span onClick={() => changePage("login")}> Login</span> 
