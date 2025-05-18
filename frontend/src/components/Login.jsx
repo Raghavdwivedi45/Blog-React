@@ -1,32 +1,44 @@
 import "../css/Login.css"
-import { selectPageStore } from "../store/selectPageStore.js"
-import { handleSignupLoginFormSubmit } from "../lib/helper.js";
+import { selectPageStore } from "../store/selectSignupType.js"
+import { navigateStore } from "../store/navigateStore.js"
+import { handleSignupLoginFormSubmit, validateFormData } from "../lib/helper.js";
 import { useActionState, useState, useEffect } from "react";
 
 const UserSignup = () => {
+
   const handleFormSubmit = async (previousData, formData) => {
-    console.log("Hello from handleFormSubmit")
-    const res =  handleSignupLoginFormSubmit(page, formData);
-    setIsVisible(true);
-    return res;
+    let myData = {
+      name: formData.get("name"),
+      password: formData.get("password"),
+      email : signupType!=="login" ? formData.get("email") : null,
+      dob: signupType=="author" ? formData.get("dob") : null,
+      description: signupType=="author" ? formData.get("description") : null,
+    }
+    let err = validateFormData(myData, signupType);
+    if(err.error)  { 
+      setFormError(err.error); 
+      setTimeout(() => {setFormError(null)}, 3000);
+      return; 
+    } 
+    
+    const res =  await handleSignupLoginFormSubmit(signupType, myData);
+    err = res.error?.response?.data?.error;
+    if(err) setFormError(err);
+console.log(user)
+    setUser(res._id);
+console.log(user)
+
+    setTimeout(() => {setFormError(null)}, 3000);
   }
 
-  const {page, changePage} = selectPageStore();
+  const {signupType, changeSignupType} = selectPageStore();
+  const {user, setUser} = navigateStore();
   const [data, action, pending] = useActionState(handleFormSubmit, undefined);
-  const [isVisible, setIsVisible] = useState(null)
-
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, 3000);
-
-    return () => clearTimeout(timer); // Cleanup the timer if the component unmounts
-  }, [isVisible]);
-
+  const [formError, setFormError] = useState(null);
+console.log(user)
   return (
     <section className="user-sign-login-box">
-      {page=="login" ? <h2>Login</h2> : <h2>Signup</h2>}
+      {signupType=="login" ? <h2>Login</h2> : <h2>Signup</h2>}
       
       <form action={action}>
         
@@ -36,7 +48,7 @@ const UserSignup = () => {
         </div>
 
         {
-        page!="login" && <div className="user-sign-input-box">
+        signupType!="login" && <div className="user-sign-input-box">
           <input type="email" name="email"  />
           <label>Email</label>
         </div>
@@ -47,18 +59,19 @@ const UserSignup = () => {
           <label>Password</label>
         </div>
 
-        {page=="author" && <div className="user-sign-input-box">
+        {signupType=="author" && 
+        <div className="user-sign-input-box">
           <input type="date" name="dob"  />
           <label>Date of Birth</label>
         </div>}
 
-        {page=="author" && <div className="user-sign-input-box">
+        {signupType=="author" && <div className="user-sign-input-box">
           <textarea name="description" placeholder="Describe yourself in 100-150 words" rows={12}  />
           <label>Description</label>
         </div>}
 
         {
-        page=="login" && <div className="user-sign-options">
+        signupType=="login" && <div className="user-sign-options">
           <span>Forgot Password?</span>
         </div>
         }
@@ -67,31 +80,33 @@ const UserSignup = () => {
         className="user-sign-btn" 
         disabled={pending}
         >
-        {page=="login" ? "Login" : "Signup"}
+        {signupType=="login" ? "Login" : "Signup"}
         </button>
 
+        {signupType=="login" && 
+        <div className="login-type">
+          <input type="radio" name="type"  />
+          <label>Login as author</label>
+        </div>
+        }
 
-        {page=="login" ? 
+        {signupType=="login" ? 
           <p className="user-sign-register-link">
-            Don’t have an account? <span onClick={() => changePage("choose")}>Register</span>
+            Don’t have an account? <span onClick={() => changeSignupType("choose")}>Register</span>
           </p> 
           :
           <p className="user-sign-register-link">
-            Already a user ? <span onClick={() => changePage("login")}>Login</span> 
+            Already a user ? <span onClick={() => changeSignupType("login")}>Login</span> 
           </p>
         }
       
       </form>
 
         {
-          data?.error && 
-          isVisible && 
+          formError && 
           <div className="user-signup-form-error">
-            <img height={20} width={20} src="../../public/assets/cross.png" alt="" />&nbsp; {data.error}
+            <img height={20} width={20} src="../../assets/cross.png" alt="" />&nbsp; {formError}
           </div>
-        }
-        {
-          data?.message && isVisible && <div className="user-signup-form-error">{data.message}</div>
         }
     </section>
   )

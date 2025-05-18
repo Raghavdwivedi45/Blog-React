@@ -13,7 +13,8 @@ dotenv.config();
 const app = express();
 
 app.use(express.json({ limit: '32kb' }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET)); // Required for `signed: true`
+
 app.use(cors({
     origin: process.env.CORS,
     credentials: true

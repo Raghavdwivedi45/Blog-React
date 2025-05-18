@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 
 export const selectPageStore = create((set) => ({
-    page: null,
-    changePage: (val) => set({ page: val }),
+    signupType: "choose",
+    changeSignupType: (val) => set({ signupType: val }),
 }))
 
 
