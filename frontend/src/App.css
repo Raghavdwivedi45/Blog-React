@@ -2,15 +2,19 @@
   margin: 0;
   height: 100vh;
   max-width: 100vw;
-  background: radial-gradient(circle at center, #940101 0%, #7b0000 10%, #000000 100%);
+  background: radial-gradient(circle at center, #7f0000 0%, #000000 80%);
   background-size: cover;
   background-repeat: no-repeat;
   overflow-x: hidden;
   color: white; /* optional: makes text pop against dark background */
   display: flex;
   flex-direction: column;
+  z-index: 0;
 }
 
 main {
   flex: 1; /* This will take the remaining height */
+  z-index: 1;
+  width: 90%;
+  margin: 0 auto;
 }

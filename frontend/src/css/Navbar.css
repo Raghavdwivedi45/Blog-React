@@ -18,6 +18,7 @@ nav {
     align-items: center;
     font-family: "Roboto", sans-serif;   
     margin: 0.5rem 0;
+    z-index: 100;
 }
 
 .left-content, .right-content {

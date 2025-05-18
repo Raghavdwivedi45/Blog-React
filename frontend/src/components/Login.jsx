@@ -24,18 +24,16 @@ const UserSignup = () => {
     const res =  await handleSignupLoginFormSubmit(signupType, myData);
     err = res.error?.response?.data?.error;
     if(err) setFormError(err);
-console.log(user)
-    setUser(res._id);
-console.log(user)
-
+    setUser(res._id); changePage("home")
+    
     setTimeout(() => {setFormError(null)}, 3000);
   }
 
   const {signupType, changeSignupType} = selectPageStore();
-  const {user, setUser} = navigateStore();
+  const {user, setUser, changePage } = navigateStore();
   const [data, action, pending] = useActionState(handleFormSubmit, undefined);
   const [formError, setFormError] = useState(null);
-console.log(user)
+
   return (
     <section className="user-sign-login-box">
       {signupType=="login" ? <h2>Login</h2> : <h2>Signup</h2>}
