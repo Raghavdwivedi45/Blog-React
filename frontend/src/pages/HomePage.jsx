@@ -1,4 +1,6 @@
 import '../css/HomePage.css';
+import LogoCarousel from '../components/LogoCarousel.jsx';
+import HomeCards from '../components/HomeCards.jsx';
 
 const HomePage = () => {
   return (
@@ -31,6 +33,9 @@ const HomePage = () => {
           <div className="hero-grid-2-2"></div>
         </div>
 
+        <div className="carousel">
+          <LogoCarousel/>
+        </div>
       </section>
 
 
@@ -38,13 +43,14 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title">Featured Majors</h2>
         <div className="cards-container">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+          {/* {[1, 2, 3, 4, 5, 6].map((item) => (
             <div key={item} className="card">
               <h3>Sample Title {item}</h3>
               <p>This is a short description of the featured article {item}.</p>
               <a href="#" className="read-more">Read More →</a>
             </div>
-          ))}
+          ))} */}
+          <HomeCards/>
         </div>
       </section>
 

@@ -109,12 +109,13 @@
 
 
 .hero-grid {
-  width: 50vw;
-  height: 75vh;
+  width: 60vw;
+  height: 80vh;
   margin: 1rem auto;
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
+  position: relative;
 }
 
 .hero-grid-1, .hero-grid-2{
@@ -132,7 +133,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 0 10px 8px rgba(175, 59, 59, 0.7), 0 0 5px 5px rgba(175, 17, 17, 0.3);
+  box-shadow: 0 0 10px 8px rgba(221, 59, 59, 0.7), 0 0 5px 5px rgba(175, 17, 17, 0.3);
   border-radius: 5px;
 }
 
@@ -143,13 +144,12 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 0 10px 8px rgba(20, 11, 11, 0.7), 0 0 5px 5px rgba(172, 128, 128, 0.5);
+  box-shadow: 0 0 10px 12px rgba(20, 11, 11, 0.5), 0 0 5px 8px rgba(223, 183, 183, 0.7);
   border-radius: 5px;
 }
 
 .hero-grid-1-2-1, .hero-grid-1-2-2 {
   height: 48%;
-  background-color: rebeccapurple;
   border-radius: 5px;
 }
 
@@ -162,18 +162,25 @@
 
 .hero-grid-2-1, .hero-grid-2-2 {
   width: 49%;
-  background-color: rebeccapurple;
   border-radius: 5px;
 }
 
 .hero-grid-2-1 {
   background-image: url("/assets/hero1.png");
   background-size: cover;
-  box-shadow: 0 0 5px 5px rgba(110, 10, 10, 0.7), 0 0 5px 5px rgba(218, 66, 66, 0.3);
+  box-shadow: 0 0 5px 10px rgba(110, 10, 10, 0.4), 0 0 5px 8px rgba(238, 40, 40, 0.5);
 }
 
 .hero-grid-2-2 {
   background-image: url("/assets/hero2.png");
   background-size: cover;
-  box-shadow: 0 0 5px 5px rgba(111, 98, 136, 0.3), 0 0 5px 5px rgba(25, 8, 126, 0.3);
+  box-shadow: 0 0 5px 10px rgba(111, 98, 136, 0.3), 0 0 5px 8px rgba(37, 11, 184, 0.5);
+}
+
+.carousel {
+  position: absolute;
+  transform: translate(-18rem, 6rem);
+  z-index: -1;
+  background: rgba(138, 14, 14, 0.1);
+  
 }
