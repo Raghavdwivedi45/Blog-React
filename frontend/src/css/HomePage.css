@@ -111,7 +111,7 @@
 .hero-grid {
   width: 60vw;
   height: 80vh;
-  margin: 1rem auto;
+  margin: 1rem auto 8rem;
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
