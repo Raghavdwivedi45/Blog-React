@@ -15,22 +15,31 @@ const HomeCards = () => {
                   <div className="card-up-icon">
                      <img src="/assets/dblUpArrow.svg" alt="" />
                   </div>
-
-                  <h2 class="card__title">Awesome Card 01</h2>
                   
-                  <p class="card__description">
-                     Gradient card, with bright edges 
-                     that gives it a cool look.
-                  </p>
+                  <div className="card-text">
+                     <h2 class="card__title">Awesome Card 01 </h2>
+                     
+                     <p class="card__description">
+                        Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look.
+                     </p>
 
-                  <span class="card__button">
-                     Continue learning
-                  </span>
+                     <div class="card__button">
+                        Continue learning
+                     </div>
+                  </div>
                
                </div>
             </article>
-   
-            <article class="card__article card__orange">
+
+            <article class="card__article">
 
                <div className="card-img">
                 <img src="/assets/hero2.png" alt="" />
@@ -41,22 +50,27 @@ const HomeCards = () => {
                   <div className="card-up-icon">
                      <img src="/assets/dblUpArrow.svg" alt="" />
                   </div>
-
-                  <h2 class="card__title">Awesome Card 01</h2>
                   
-                  <p class="card__description">
-                     Gradient card, with bright edges 
-                     that gives it a cool look.
-                  </p>
+                  <div className="card-text">
+                     <h2 class="card__title">Awesome Card 01</h2>
+                     
+                     <p class="card__description">
+                        Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look.
+                     </p>
 
-                  <span class="card__button">
-                     Continue learning
-                  </span>
+                     <div class="card__button">
+                        Continue learning
+                     </div>
+                  </div>
                
                </div>
             </article>
-   
-            <article class="card__article card__green">
+
+            <article class="card__article">
 
                <div className="card-img">
                 <img src="/assets/hero3.png" alt="" />
@@ -67,21 +81,26 @@ const HomeCards = () => {
                   <div className="card-up-icon">
                      <img src="/assets/dblUpArrow.svg" alt="" />
                   </div>
-
-                  <h2 class="card__title">Awesome Card 01</h2>
                   
-                  <p class="card__description">
-                     Gradient card, with bright edges 
-                     that gives it a cool look.
-                  </p>
+                  <div className="card-text">
+                     <h2 class="card__title">Awesome Card 01 </h2>
+                     
+                     <p class="card__description">
+                        Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look. Gradient card, with bright edges 
+                        that gives it a cool look.
+                     </p>
 
-                  <span class="card__button">
-                     Continue learning
-                  </span>
+                     <div class="card__button">
+                        Continue learning
+                     </div>
+                  </div>
                
                </div>
-
             </article>
+   
          </div>
   )
 }

@@ -35,7 +35,6 @@
   justify-items: center;
   color: var(--white-color);
   text-align: center;
-  padding: 0 1rem 2rem 0;
   border-radius: 1.25rem;
   height: 25rem;
   overflow: hidden;
@@ -50,19 +49,25 @@
   z-index: 3;
   position: absolute;
   height: 18rem;
-  background: linear-gradient(60deg, rgb(197, 181, 181) 0%, #1e0369 100%);
-  color: black;
+  background: linear-gradient(60deg, rgb(187, 65, 17) 0%, hwb(27 2% 37%) , #a18507 100%);
+  color: rgb(0, 0, 0);
   align-content: end;
   padding: 1rem;
-  bottom: -11rem;
+  bottom: -13rem;
   transition: 0.3s bottom linear;
   overflow: hidden;
 }
 
 
 .card__data:hover .card-up-icon {
-  transform: translateY(-8rem);
+  bottom: 8rem;
 }
+
+.card__data:hover .card-text {
+  bottom: 4rem;
+  height: 17rem;
+}
+
 
 .card__article:hover .card__data {
   bottom: 0;
@@ -70,7 +75,7 @@
 
 .card-img {
   width: 100%;
-  height: 20rem;
+  height: 22rem;
   z-index: 3;
   border-top-left-radius: 1.25rem;
   border-top-right-radius: 1.25rem;
@@ -80,14 +85,22 @@
   height: 100%;
   width: 100%;
 }
+
 .card__title {
-  font-size: var(--h2-font-size);
+  font-size: 1.3rem;
   margin-bottom: 0.25rem;
   font-weight: 600;
+  text-align: center;
 }
+
 .card__description {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  height: 55%;
+  overflow: hidden;
+  text-align: justify;
+  word-spacing: 3px;
 }
+
 .card__button {
   display: inline-block;
   background-color: var(--white-color);
@@ -95,6 +108,7 @@
   border-radius: 0.5rem;
   color: var(--black-color);
   font-weight: 500;
+  width: 50%;
 }
 
 .card-up-icon {
@@ -102,10 +116,17 @@
   width: 3rem;
   height: 3rem;
   color: wheat;
-  /* background-color: wheat;
-  border-radius: 50%; */
   z-index: 5;
-  transition: 0.2s transform linear;
+  position: relative;
+  bottom: -30px;
+  transition: 0.3s all linear;
+}
+
+.card-text {
+  position: relative;
+  bottom: -4rem;
+  transition: 0.2s all linear;
+  margin-top: 1rem;
 }
 
 .card-up-icon img {

@@ -1,6 +1,7 @@
 import './App.css'
 import HomePage from "./pages/HomePage.jsx"
-import SignupPage from './pages/SignupPage'
+import SignupPage from './pages/SignupPage.jsx'
+import MajorMinorPage from './pages/MajorMinorPage.jsx'
 import Navbar from './components/NavBar.jsx'
 import Footer from './components/Footer.jsx'
 import { navigateStore } from "./store/navigateStore.js";
@@ -15,6 +16,7 @@ function App() {
       <main>
       {page=="signup" && <SignupPage/>}
       {page=="home" && <HomePage/>}
+      {(page=="majors" || page=="minors") && <MajorMinorPage/>}
       </main>
       <Footer/>
     </div>

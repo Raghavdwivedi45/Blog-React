@@ -19,7 +19,7 @@ const NavBar = () => {
 
   const handleMouseLeave = () => {
     underlineRef.current.style.transform = "scale(0)";
-  };
+  };  
 
   return (
     <header>

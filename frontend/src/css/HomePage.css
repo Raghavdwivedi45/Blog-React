@@ -1,7 +1,6 @@
 .homepage {
   color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* background-color: #ff6666; */
 }
 
 /* Hero Section */
@@ -133,7 +132,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 0 10px 8px rgba(221, 59, 59, 0.7), 0 0 5px 5px rgba(175, 17, 17, 0.3);
+  box-shadow: 0 0 10px 8px rgb(136, 68, 13), 0 0 5px 5px rgb(185, 113, 4);
   border-radius: 5px;
 }
 
@@ -168,7 +167,7 @@
 .hero-grid-2-1 {
   background-image: url("/assets/hero1.png");
   background-size: cover;
-  box-shadow: 0 0 5px 10px rgba(110, 10, 10, 0.4), 0 0 5px 8px rgba(238, 40, 40, 0.5);
+  box-shadow: 0 0 5px 10px rgba(192, 235, 4, 0.2), 0 0 5px 8px rgba(8, 65, 3, 0.5);
 }
 
 .hero-grid-2-2 {
