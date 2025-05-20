@@ -1,0 +1,57 @@
+.author-pg-cards {
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    height: fit-content;
+    width: 28rem;
+    padding: 0 3rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+.author-arrow-left {
+    position: absolute;
+    height: 5rem;
+    width: 5rem;
+    left: 0rem;
+    top: 45%;
+    transform: rotate(-90deg);
+    z-index: 3;
+} 
+
+.author-arrow-right {
+    position: absolute;
+    height: 5rem;
+    width: 5rem;
+    left: 29rem;
+    top: 45%;
+    transform: rotate(90deg);
+    z-index: 3;
+} 
+/* 
+.author-pg-left,
+.author-pg-right {
+  position: absolute;
+  top: 0;
+  width: 28rem;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+
+.author-pg-left {
+  left: -3rem;
+  background: rgb(71, 9, 9);
+  filter: blur(50px);
+}
+
+
+.author-pg-right {
+  left: 65rem;
+  background: linear-gradient(to left, rgba(255, 0, 0, 0.25), transparent);
+  filter: blur(2rem);
+} */

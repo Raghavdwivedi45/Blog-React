@@ -16,5 +16,5 @@ main {
   flex: 1; /* This will take the remaining height */
   z-index: 1;
   width: 90%;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
