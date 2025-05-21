@@ -22,8 +22,9 @@ const UserSignup = () => {
     } 
     
     const res =  await handleSignupLoginFormSubmit(signupType, myData);
+    console.log(res)
     err = res.error?.response?.data?.error;
-    if(err) setFormError(err);
+    if(err) { setFormError(err); return; } 
     setUser(res._id); changePage("home")
     
     setTimeout(() => {setFormError(null)}, 3000);

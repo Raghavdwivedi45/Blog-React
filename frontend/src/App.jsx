@@ -6,6 +6,7 @@ import Navbar from './components/NavBar.jsx'
 import Footer from './components/Footer.jsx'
 import { navigateStore } from "./store/navigateStore.js";
 import AuthorPage from './pages/AuthorPage.jsx'
+import ContactPage from './pages/ContactPage.jsx'
 
 
 function App() {  
@@ -19,6 +20,7 @@ function App() {
       {page=="home" && <HomePage/>}
       {(page=="majors" || page=="minors") && <MajorMinorPage/>}
       {page=="authors" && <AuthorPage/>}
+      {page=="contact" && <ContactPage/>}
       </main>
       <Footer/>
     </div>

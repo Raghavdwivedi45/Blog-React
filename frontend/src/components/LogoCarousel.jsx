@@ -3,8 +3,8 @@ import "../css/LogoCarousel.css"
 const LogoCarousel = () => {
   return (
     <>
-     <div class="logos">
-      <div class="logos-slide">
+     <div className="logos">
+      <div className="logos-slide">
         <img src="/assets/logos/3m.svg" />
         <img src="/assets/logos/barstool-store.svg" />
         <img src="/assets/logos/budweiser.svg" />
@@ -15,7 +15,7 @@ const LogoCarousel = () => {
         <img src="/assets/logos/mrbeast.svg" />
       </div>
 
-      <div class="logos-slide">
+      <div className="logos-slide">
         <img src="/assets/logos/3m.svg" />
         <img src="/assets/logos/barstool-store.svg" />
         <img src="/assets/logos/budweiser.svg" />
@@ -27,8 +27,8 @@ const LogoCarousel = () => {
       </div>
     </div>
 
-      <div class="logos">
-      <div class="logos-slide-2">
+      <div className="logos">
+      <div className="logos-slide-2">
         <img src="/assets/logos/barstool-store.svg" />
         <img src="/assets/logos/3m.svg" />
         <img src="/assets/logos/buzzfeed.svg" />
@@ -39,7 +39,7 @@ const LogoCarousel = () => {
         <img src="/assets/logos/mrbeast.svg" />
       </div>
 
-      <div class="logos-slide-2">
+      <div className="logos-slide-2">
         <img src="/assets/logos/barstool-store.svg" />
         <img src="/assets/logos/3m.svg" />
         <img src="/assets/logos/buzzfeed.svg" />

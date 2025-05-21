@@ -22,18 +22,19 @@
 } 
 
 .author-arrow-right {
+  margin-left: 0.5rem;
     width: 5rem; 
     height: 31rem;
 } 
 
 .author-arrow-left img {
-  width: 100%;
+  width: 5rem;
   margin: 13rem 0;
   transform: rotate(-90deg);
 }
 
 .author-arrow-right img {
-  width: 100%;
+  width: 5rem;
   margin: 13rem 0;
   transform: rotate(90deg);
 }

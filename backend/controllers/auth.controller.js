@@ -38,8 +38,13 @@ export const handleSignup = async (req, res) => {
         const result = tokenJWT({ userId: newUser._id });
         if (result.error) return res.status(500).json({ error: "Token generation failed" });
 
+        res.cookie("jwt", result, {
+            expires: new Date(Date.now() + 30000),
+            httpOnly: true,
+        })
+
         return res.status(201).json({ 
-            _id: user._id,
+            _id: newUser._id,
             success: "Successfully registered the user"
         });
     } catch (error) {
