@@ -39,8 +39,10 @@ export const handleSignup = async (req, res) => {
         if (result.error) return res.status(500).json({ error: "Token generation failed" });
 
         res.cookie("jwt", result, {
-            expires: new Date(Date.now() + 30000),
+            expires: new Date(Date.now() + 1*24*60*60*1000),
             httpOnly: true,
+            // sameSite: 'None', //uncomment at time of production
+            // secure: true,
         })
 
         return res.status(201).json({ 
@@ -65,7 +67,14 @@ export const handleLogin = async (req, res) => {
         if(!isPassCorrect) return res.status(400).json({ error: "Invalid credentials" });
 
         const result = tokenJWT({userId: user._id});
-        if(result.error) res.status(401).json({error: "Error in JWT"})
+        if(result.error) res.status(401).json({error: "Error in JWT"});
+
+        res.cookie("jwt", result, {
+            expires: new Date(Date.now() + 1*24*60*60*1000), // 1 day
+            httpOnly: true,
+            // sameSite: 'None', //uncomment at time of production
+            // secure: true,
+        })
 
         res.status(200).json({ 
             _id: user._id,

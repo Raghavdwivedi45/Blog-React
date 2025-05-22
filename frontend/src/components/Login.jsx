@@ -15,6 +15,7 @@ const UserSignup = () => {
       description: signupType=="author" ? formData.get("description") : null,
     }
     let err = validateFormData(myData, signupType);
+    console.log(err);
     if(err.error)  { 
       setFormError(err.error); 
       setTimeout(() => {setFormError(null)}, 3000);
@@ -22,12 +23,15 @@ const UserSignup = () => {
     } 
     
     const res =  await handleSignupLoginFormSubmit(signupType, myData);
-    console.log(res)
     err = res.error?.response?.data?.error;
-    if(err) { setFormError(err); return; } 
-    setUser(res._id); changePage("home")
+    if(err) { 
+      setFormError(err); 
+      setTimeout(() => {setFormError(null)}, 3000); 
+      return; 
+    } 
     
-    setTimeout(() => {setFormError(null)}, 3000);
+    console.log(res);
+    setUser(res._id); changePage("home")
   }
 
   const {signupType, changeSignupType} = selectPageStore();
