@@ -1,0 +1,47 @@
+.major-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.major-buy-premium {
+    width: 20%;
+    padding: 0.2rem;
+    position: sticky;
+    top: 10rem;
+    height: fit-content;
+
+}
+
+.major-content {
+    width: 60%;
+    padding: 1rem 2rem;
+    overflow: hidden;
+}
+
+.major-content-title {
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 650;
+    background: linear-gradient(180deg, rgb(245, 239, 239), rgb(238, 50, 50));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.major-content-description {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    font-weight: 400;
+    overflow: hidden;
+    color: rgb(224, 194, 182);
+}
+
+.major-author {
+    width: 20%;
+    position: sticky;
+    top: 10rem;
+    height: fit-content;
+}
+

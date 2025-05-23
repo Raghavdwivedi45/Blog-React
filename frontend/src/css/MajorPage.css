@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-.major-minor-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.major-cards {
     margin: 0.5rem auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

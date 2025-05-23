@@ -3,12 +3,15 @@ import SearchBar from "./SearchBar";
 import { useRef } from "react";
 import {selectPageStore}  from "../store/selectSignupType.js";
 import { navigateStore } from "../store/navigateStore.js";
+import { majorStore } from "../store/majorStore";
+
 
 const NavBar = () => {
   const underlineRef = useRef(null);
   const containerRef = useRef(null);
   const { changePage } = navigateStore();
   const { changeSignupType } = selectPageStore();
+  const { setMajorInfo } = majorStore();
 
   const handleMouseEnter = (e, wd=75, extra=0) => {
     const itemRect = e.target.getBoundingClientRect();
@@ -39,7 +42,7 @@ const NavBar = () => {
           <span 
           className="left-content" 
           onMouseEnter={(e)=>handleMouseEnter(e)}
-          onClick={() => changePage("majors")}
+          onClick={() => { changePage("majors"); setMajorInfo(null); }}
           >
           Majors
           </span>
@@ -55,7 +58,7 @@ const NavBar = () => {
           <span 
           className="left-content" 
           onMouseEnter={handleMouseEnter}
-          onClick={() => changePage("authors")}
+          onClick={() => { changePage("authors"); }}
           >
           Authors
           </span>

@@ -1,0 +1,39 @@
+.premium-card {
+  background: linear-gradient(to bottom, #4b0000, #000000);
+  color: white;
+  padding: 24px 12px;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+  text-align: center;
+  max-width: 300px;
+  margin: 20px auto;
+}
+
+.premium-title {
+  font-size: 1.5rem;
+  color: #ff4d4d;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.premium-description {
+  font-size: 0.95rem;
+  color: #dddddd;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.premium-button {
+  background-color: #ff1a1a;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.premium-button:hover {
+  background-color: #e60000;
+}

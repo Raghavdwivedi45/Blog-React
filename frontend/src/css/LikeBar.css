@@ -1,0 +1,29 @@
+.like-bar-container {
+    padding: 0.1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    height: fit-content;
+    margin-top: 2rem;
+    padding: 0 0.5rem;
+    color: black;
+}
+
+.like-bar-container-l, .like-bar-container-r  {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 0.1rem;
+    user-select: none;
+}
+
+.like-bar-container-l img, .like-bar-container-r img {
+    height: 1.7rem;
+    margin: 0.2rem;
+}

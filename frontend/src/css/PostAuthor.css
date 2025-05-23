@@ -1,0 +1,55 @@
+.post-auth-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-auth-appearance {
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
+}
+
+.post-auth-appearance-img {
+    height: 3rem;
+    width: 8rem;
+    border-radius: 20px;
+}
+
+.post-auth-2 {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    color: beige;
+    /* background-color: #9c1515; */
+}
+
+.post-auth-image img {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 5px;
+}
+
+.post-auth-name {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-evenly;
+}
+
+.post-auth-name div{
+    text-align: center;
+    width: 100%;
+}
+
+.post-auth-name button{
+    padding: 0.3rem 0.5rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.1rem;
+    margin-top: 0.3rem;
+}

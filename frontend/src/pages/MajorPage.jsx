@@ -4,12 +4,12 @@ import { majorStore } from "../store/majorStore";
 import Major from "../components/Major";
 
 const MajorPage = () => {
-  const { majorId } = majorStore();
-  if(majorId!=null) return <Major majorId={majorId} />;
+  const { majorInfo } = majorStore();
+
+  if(majorInfo!=null) return <Major majorInfo={majorInfo} />;
   
   return (
-    <div className="major-minor-cards">
-        <HomeCards/>
+    <div className="major-cards">
         <HomeCards/>
     </div>
   )
