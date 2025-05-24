@@ -1,6 +1,5 @@
 import "../css/Major.css";
 import BuyPremium from "./BuyPremium";
-import LikeBar from "./LikeBar";
 import PostAuthor from "./PostAuthor";
 import PostFilter from "./postFilter";
 
@@ -17,7 +16,6 @@ const Major = ({ majorInfo }) => {
         <div className="major-content-description">{majorInfo.description}</div>
 
         <PostFilter tags={majorInfo.tags}/>
-        <LikeBar likeCnt={majorInfo.likes}/>
       </div>
       
       <div className="major-author">

@@ -11,8 +11,8 @@
 }
 
 .post-auth-appearance-img {
-    height: 3rem;
-    width: 8rem;
+    height: 2rem;
+    width: 5rem;
     border-radius: 20px;
 }
 
@@ -23,7 +23,6 @@
     justify-content: space-between;
     align-items: center;
     color: beige;
-    /* background-color: #9c1515; */
 }
 
 .post-auth-image img {
@@ -33,7 +32,7 @@
 }
 
 .post-auth-name {
-    margin-left: 0.5rem;
+    margin-left: 2rem;
     font-size: 1.2rem;
     display: flex;
     flex-wrap: wrap;
@@ -46,10 +45,34 @@
     width: 100%;
 }
 
-.post-auth-name button{
+.post-auth-follow-btn{
     padding: 0.3rem 0.5rem;
     border-radius: 10px;
     border: none;
     font-size: 1.1rem;
     margin-top: 0.3rem;
+    overflow: hidden;
+    position: relative;
 }
+
+.post-auth-ripple {
+    height: 2rem;
+    width: 2rem;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    transform: scale(0);
+    border-radius: 50%;
+}
+
+.rippled {
+    animation: ripple 0.3s linear;
+}
+
+  @keyframes ripple {
+      to {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }

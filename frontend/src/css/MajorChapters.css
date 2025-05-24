@@ -1,0 +1,36 @@
+.major-chap-container {
+    width: 100%;
+    height: fit-content;
+}
+
+.major-chap-info {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.major-chap-info-img {
+    width: 20%;
+    height: 18rem;
+}
+
+.major-chap-info-img img {
+    height: 100%;
+    width: 100%;
+}
+
+.major-chap-info-desc {
+    padding: 0 1rem;
+    width: 80%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+
+.major-chap-info-desc h1, .major-chap-info-desc h2 {
+    margin-bottom: 0.5rem;
+}
+
+.major-chap-info-description {
+    height: 6.9rem;
+    overflow: hidden;
+}

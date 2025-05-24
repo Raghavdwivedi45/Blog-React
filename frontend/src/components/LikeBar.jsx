@@ -19,7 +19,7 @@ const LikeBar = ({likeCnt}) => {
         
         <div className="like-bar-container-l" ref={like} onClick={() => handleLikes()}>
             <img src="../assets/like.png" alt="" />
-            <div>{totalLikes}</div>     
+            <div>&nbsp;{totalLikes}</div>     
         </div>
 
         <div className="like-bar-container-r">

@@ -1,9 +1,11 @@
 import "../css/HomeCards.css"
 import { majorStore } from "../store/majorStore";
+import { navigateStore } from "../store/navigateStore.js";
 
 const HomeCards = () => {
 
    const { setMajorInfo } = majorStore();
+   const { changePage } = navigateStore();
 
    const info = [
       {
@@ -26,7 +28,18 @@ const HomeCards = () => {
          type: "",
          tags: ["technology", "technology", "technology", "technology"],
          likes: 0,
-         submajors: []
+         submajors: [
+            {
+               title: "Awesome Card 01",
+               description: "technology technology technology technology"
+
+            },
+            {
+               title: "Awesome Card 01",
+               description: "technology technology technology technology"
+
+            },
+         ]
       },
 
       {
@@ -49,7 +62,18 @@ const HomeCards = () => {
          type: "",
          tags: ["technology", "technology", "technology", "technology"],
          likes: 0,
-         submajors: []
+         submajors: [
+            {
+               title: "Awesome Card 01",
+               description: "technology technology technology technology"
+
+            },
+            {
+               title: "Awesome Card 01",
+               description: "technology technology technology technology"
+
+            },
+         ]
       },
       
       {
@@ -72,7 +96,18 @@ const HomeCards = () => {
          type: "",
          tags: ["technology", "technology", "technology", "technology"],
          likes: 0,
-         submajors: []
+         submajors: [
+            {
+               title: "Awesome Card 01",
+               description: "technology technology technology technology"
+
+            },
+            {
+               title: "Awesome Card 01",
+               description: "technology technology technology technology"
+
+            },
+         ]
       }
    ];
 
@@ -101,7 +136,7 @@ const HomeCards = () => {
                                  {post.description}
                               </div>
 
-                              <div className="card__button" onClick={() => setMajorInfo(post)}>
+                              <div className="card__button" onClick={() => {changePage("majors"); setMajorInfo(post)}}>
                                  Continue learning
                               </div>
                            </div>
