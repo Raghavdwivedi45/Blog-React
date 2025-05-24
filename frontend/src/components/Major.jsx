@@ -1,9 +1,11 @@
 import "../css/Major.css";
+import { majorStore } from "../store/majorStore";
 import BuyPremium from "./BuyPremium";
 import PostAuthor from "./PostAuthor";
 import PostFilter from "./postFilter";
 
-const Major = ({ majorInfo }) => {
+const Major = () => {
+  const { majorInfo, submajorIdx } = majorStore();
   return (
     <div className="major-container">
       <div className="major-buy-premium">
@@ -11,9 +13,9 @@ const Major = ({ majorInfo }) => {
       </div>
       
       <div className="major-content">
-        <div className="major-content-title">{majorInfo.title}</div>
+        <div className="major-content-title">{majorInfo.submajors[submajorIdx].title}</div>
 
-        <div className="major-content-description">{majorInfo.description}</div>
+        <div className="major-content-description">{majorInfo.submajors[submajorIdx].description}</div>
 
         <PostFilter tags={majorInfo.tags}/>
       </div>

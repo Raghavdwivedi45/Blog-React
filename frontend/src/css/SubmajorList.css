@@ -1,0 +1,11 @@
+.each-submajor {
+    margin: 0.5rem 0;
+    padding: 0.2rem 0.4rem;
+    font-size: 1.2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: 0.2s background-color ease;
+}
+
+.each-submajor:hover {
+    background-color: rgba(97, 95, 95, 0.5);
+}

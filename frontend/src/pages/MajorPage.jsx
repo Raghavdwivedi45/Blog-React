@@ -5,10 +5,11 @@ import Major from "../components/Major";
 import MajorChapters from "../components/MajorChapters";
 
 const MajorPage = () => {
-  const { majorInfo } = majorStore();
+  const { majorInfo, submajorIdx } = majorStore();
 
+  if(submajorIdx!=null) return <Major />;
   if(majorInfo!=null) return <MajorChapters major={majorInfo}/>
-  // return <Major majorInfo={majorInfo} />;
+
   return (
     <div className="major-cards">
         <HomeCards/>

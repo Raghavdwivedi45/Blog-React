@@ -27,10 +27,16 @@
 
 
 .major-chap-info-desc h1, .major-chap-info-desc h2 {
+    margin-top: 0;
     margin-bottom: 0.5rem;
 }
 
 .major-chap-info-description {
     height: 6.9rem;
     overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.major-chap-chapters {
+    margin-top: 3rem;
 }

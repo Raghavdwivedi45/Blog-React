@@ -3,7 +3,7 @@ import LikeBar from "./LikeBar";
 import SubmajorList from "./SubmajorList";
 
 const MajorChapters = ({ major }) => {
-  console.log(major)
+
   return (
     <div className="major-chap-container">
       
