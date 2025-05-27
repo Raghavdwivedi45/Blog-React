@@ -1,11 +1,11 @@
 import "../css/Major.css";
-import { majorStore } from "../store/majorStore";
-import BuyPremium from "./BuyPremium";
-import PostAuthor from "./PostAuthor";
-import PostFilter from "./postFilter";
+import { majorStore } from "../store/majorStore.js";
+import BuyPremium from "./BuyPremium.jsx";
+import PostAuthor from "./PostAuthor.jsx";
+import PostFilter from "./postFilter.jsx";
 
 const Major = () => {
-  const { majorInfo, submajorIdx } = majorStore();
+  const { majorInfo, submajorIdx, setSubmajorIdx } = majorStore();
   return (
     <div className="major-container">
       <div className="major-buy-premium">
@@ -13,6 +13,7 @@ const Major = () => {
       </div>
       
       <div className="major-content">
+        <div className="major-content-go-back" onClick={() => setSubmajorIdx(null) }><img src="../assets/back-arrow.png" alt="" /></div>
         <div className="major-content-title">{majorInfo.submajors[submajorIdx].title}</div>
 
         <div className="major-content-description">{majorInfo.submajors[submajorIdx].description}</div>

@@ -1,15 +1,18 @@
 import "../css/AuthorCard.css";
+import { authorStore } from "../store/authorStore";
 
-const AuthorCard = () => {
+const AuthorCard = ({info}) => {
+
+    const { setAuthorInfo } = authorStore();
 
     return (
         <div className="author">
             <div className="author-img">
-                <img src="../assets/hero2.png" alt="Image not valid" />
+                <img src={info.img} alt="Image not valid" />
             </div>
 
             <div className="author-bottom">
-                <div className="author-name">Raghav Dwivedi</div>
+                <div className="author-name">{info.name}</div>
 
                 <div className="author-links">
                     <span className="author-link-icon">
@@ -26,7 +29,7 @@ const AuthorCard = () => {
                     </span>
                 </div>
 
-                <div><button className="author-btn">Know More</button></div>
+                <div><button className="author-btn" onClick={() => setAuthorInfo(info) }>Know More</button></div>
             </div>
 
         </div>

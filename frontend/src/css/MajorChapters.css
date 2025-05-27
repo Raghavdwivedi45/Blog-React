@@ -40,3 +40,17 @@
 .major-chap-chapters {
     margin-top: 3rem;
 }
+
+.major-chap-go-back {
+    margin: 1.5rem 0 0;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgb(80, 2, 2);
+    padding: 0.1rem;
+    border-radius: 50%;
+}
+
+.major-chap-go-back img {
+    width: 2rem;
+    transform: rotate(180deg);
+}

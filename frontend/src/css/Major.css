@@ -45,3 +45,16 @@
     height: fit-content;
 }
 
+.major-content-go-back {
+    margin-bottom: 1rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgb(80, 2, 2);
+    padding: 0.1rem;
+    border-radius: 50%;
+}
+
+.major-content-go-back img {
+    width: 2rem;
+    transform: rotate(180deg);
+}

@@ -1,9 +1,10 @@
 .each-submajor {
     margin: 0.5rem 0;
-    padding: 0.2rem 0.4rem;
+    padding: 0.4rem 0.8rem;
     font-size: 1.2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: 0.2s background-color ease;
+    background-color: rgba(85, 85, 83, 0.1);
 }
 
 .each-submajor:hover {
