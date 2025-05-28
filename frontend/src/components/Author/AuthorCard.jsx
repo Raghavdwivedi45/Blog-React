@@ -1,5 +1,5 @@
-import "../css/AuthorCard.css";
-import { authorStore } from "../store/authorStore";
+import "../../css/AuthorCard.css";
+import { authorStore } from "../../store/authorStore";
 
 const AuthorCard = ({info}) => {
 

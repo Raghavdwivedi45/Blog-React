@@ -1,0 +1,35 @@
+.post {
+    margin: 1rem;
+}
+
+.post-info {
+    display: flex;
+}
+
+.post-info-img {
+    display: flex;
+    padding: 0.25rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-info-img img {
+    height: 12rem;
+    width: 7.75rem;
+    margin: 0;
+    padding: 0;
+}
+
+.post-info-info {
+    overflow: hidden;
+    height: 12rem;
+    padding: 0.5rem;
+    flex: 1;
+    background-color: blueviolet;
+}
+
+.post-btns {
+    height: 2rem;
+    background-color: rgb(37, 31, 31);
+    padding: 0.5rem;
+}

@@ -1,0 +1,14 @@
+.author-info-container {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.author-info-content {
+    width: 65%;
+}
+
+.author-info-info {
+    width: 35%;
+    background-color: blue;
+}

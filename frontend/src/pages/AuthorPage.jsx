@@ -1,5 +1,5 @@
-import Author from '../components/Author';
-import AuthorCard from '../components/AuthorCard';
+import Author from '../components/Author/Author.jsx';
+import AuthorCard from '../components/Author/AuthorCard.jsx';
 import "../css/AuthorPage.css";
 import { authorStore } from '../store/authorStore';
 
