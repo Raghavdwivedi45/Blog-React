@@ -1,9 +1,21 @@
 .post {
     margin: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 0.5rem;
+    transition: 200ms all ease-in-out;
+}
+
+.post:hover {
+    transform: scale(1.02);
 }
 
 .post-info {
     display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .post-info-img {
@@ -16,8 +28,7 @@
 .post-info-img img {
     height: 12rem;
     width: 7.75rem;
-    margin: 0;
-    padding: 0;
+    border-radius: 5px;
 }
 
 .post-info-info {
@@ -25,11 +36,47 @@
     height: 12rem;
     padding: 0.5rem;
     flex: 1;
-    background-color: blueviolet;
+}
+
+.post-info-title {
+    margin: 0.25rem;
+    height: 2rem;
+    overflow: hidden;
+}
+
+.post-info-description {
+    height: 9.5rem;
+    width: 95%;
+    overflow: hidden;
 }
 
 .post-btns {
     height: 2rem;
-    background-color: rgb(37, 31, 31);
-    padding: 0.5rem;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.post-btns button {
+    background: linear-gradient(135deg, #c2182f, #912512);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
