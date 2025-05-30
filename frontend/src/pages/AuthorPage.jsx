@@ -26,17 +26,24 @@ const AuthorPage = () => {
       _id : "1",
       name:"Raghav Dwivedi",
       img:"../assets/hero1.png",
-      // description:"",
-      // email:"",
-      // dateOfBirth:"",
-      // majorLikes:"",
-      // minorLikes:""
+      description:"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum ",
+      email:"",
+      dateOfBirth:"",
+      majorLikes:"",
+      minorLikes:""
     },
     {
       _id : "2",
       name:"Lee Foo",
       img:"../assets/hero2.png",
-      // description:"",
+      description:`Lorem ipsum Lorem ipsum Lorem 
+      ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem 
+      
+      ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem 
+      ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem 
+      
+      ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum `,
+
       // email:"",
       // dateOfBirth:"",
       // majorLikes:"",
@@ -46,7 +53,8 @@ const AuthorPage = () => {
       _id : "3",
       name:"Lee Fee",
       img:"../assets/hero3.png",
-      // description:"",
+      description:"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum ",
+
       // email:"",
       // dateOfBirth:"",
       // majorLikes:"",

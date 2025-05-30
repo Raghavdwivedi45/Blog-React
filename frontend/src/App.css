@@ -18,3 +18,21 @@ main {
   width: 90%;
   margin: 2rem auto;
 }
+
+::-webkit-scrollbar {
+  width: 6px;        
+  height: 6px;       
+}
+
+
+
+::-webkit-scrollbar-track {
+  background: transparent;  
+  border: none;             
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c00;  
+  border-radius: 2px;      
+  border: none;             
+}

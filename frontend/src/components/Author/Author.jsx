@@ -1,10 +1,9 @@
 import "../../css/Author.css";
-import { authorStore } from "../../store/authorStore"
 import AuthorContent from "./AuthorContent";
+import AuthorInfo from "./AboutAuthor";
 
 const Author = () => {
 
-  const {authorInfo} = authorStore();
   return (
     <div className="author-info-container">
       
@@ -13,7 +12,7 @@ const Author = () => {
       </div>
       
       <div className="author-info-info">
-
+        <AuthorInfo/>
       </div>
     
     </div>
