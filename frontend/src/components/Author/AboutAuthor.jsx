@@ -4,7 +4,6 @@ import { authorStore } from "../../store/authorStore";
 const AuthorInfo = () => {
 
   const {authorInfo} = authorStore();
-  console.log(authorInfo)
   
   return (
     <div className="about-author">

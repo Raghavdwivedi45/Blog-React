@@ -1,6 +1,10 @@
-.author-info-container {
+.author-info-container-actual {
     width: 95%;
     margin: 0 auto;
+}
+
+.author-info-container {
+    width: 100%;
     display: flex;
 }
 
@@ -11,4 +15,23 @@
 .author-info-info {
     width: 35%;
     padding: 1rem;
+}
+
+
+.author-content-go-back {
+    width: 2rem;
+    height: 2rem;
+    background-color: rgb(80, 2, 2);
+    padding: 0.1rem;
+    border-radius: 50%;
+    transition: 100ms transform linear;
+}
+
+.author-content-go-back:hover {
+    transform: scale(1.1);
+}
+
+.author-content-go-back img {
+    width: 2rem;
+    transform: rotate(180deg);
 }

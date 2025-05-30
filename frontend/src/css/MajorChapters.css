@@ -48,6 +48,11 @@
     background-color: rgb(80, 2, 2);
     padding: 0.1rem;
     border-radius: 50%;
+    transition: 100ms transform linear;
+}
+
+.major-chap-go-back:hover {
+    transform: scale(1.1);
 }
 
 .major-chap-go-back img {
