@@ -26,3 +26,9 @@ export const tokenJWT = (userId) => {
         return { error };
     }
 }
+
+
+export const isLoggedIn = (req, res, next) => {
+    if(req.cookies["jwt"]) return next();
+    else res.json({error : "You must be logged in before this action"})
+}

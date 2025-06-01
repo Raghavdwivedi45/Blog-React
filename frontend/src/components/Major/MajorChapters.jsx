@@ -1,7 +1,7 @@
-import "../css/MajorChapters.css";
-import LikeBar from "./LikeBar";
-import SubmajorList from "./SubmajorList";
-import { majorStore } from "../store/majorStore";
+import "../../css/Major/MajorChapters.css";
+import LikeBar from "./LikeBar.jsx";
+import SubmajorList from "./SubmajorList.jsx";
+import { majorStore } from "../../store/majorStore";
 
 const MajorChapters = () => {
 

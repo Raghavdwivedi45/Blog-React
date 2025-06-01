@@ -35,3 +35,18 @@
     width: 2rem;
     transform: rotate(180deg);
 }
+
+.author-info-cont-create-btns {
+    margin: 1rem 0;
+}
+
+.author-info-cont-create-btns button {
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    margin-right: 1.5rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: wheat;
+    font-size: 1.1rem;
+    border: 1px solid rgb(253, 66, 66);
+}

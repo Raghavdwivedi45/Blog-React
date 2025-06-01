@@ -1,109 +1,26 @@
+import { useState } from "react";
 import "../../css/author/AuthorContent.css";
+import { getAllPosts } from "../../lib/author/authorHelp";
 
-const AuthorContent = () => {
+const AuthorContent = ({id}) => {
 
-    const info = [
-      {
-         _id: "123",
-         title : "Awesome Card 01 Awesome Card 01 Awesome Card 01",
-         author: "Jane Smith",
-         description: `Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool lookGradient card, with bright edges 
-                        `,
-         img: "/assets/hero1.png",
-         type: "",
-         tags: ["technology", "technology", "technology", "technology"],
-         likes: 0,
-         submajors: [
-            {
-               title: "Awesome Card 01",
-               description: "technology technology technology technology"
+   const getPosts = async () => {
+      const result = await getAllPosts(id);
+   }
+   getPosts();
 
-            },
-            {
-               title: "Awesome Card 01",
-               description: "technology technology technology technology"
+   const [posts, setPosts] = useState([]);
 
-            },
-         ]
-      },
+   const deletePost = (idx) => {
+      const id = posts[idx]._id;
+      setPosts((posts) => posts.filter(obj => obj._id !== id));
+   }
 
-      {
-         _id: "789",
-         title : "Awesome Card 01",
-         author: "Jane Smith",
-         description: `Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool lookGradient card, with bright edges 
-                        `,
-         img: "/assets/hero1.png",
-         type: "",
-         tags: ["technology", "technology", "technology", "technology"],
-         likes: 0,
-         submajors: [
-            {
-               title: "Awesome Card 01",
-               description: "technology technology technology technology"
-
-            },
-            {
-               title: "Awesome Card 01",
-               description: "technology technology technology technology"
-
-            },
-         ]
-      },
-      
-      {
-         _id: "456",
-         title : "Awesome Card 01",
-         author: "Jane Smith",
-         description: `Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool look. Gradient card, with bright edges 
-                        that gives it a cool lookGradient card, with bright edges 
-                        `,
-         img: "/assets/hero1.png",
-         type: "",
-         tags: ["technology", "technology", "technology", "technology"],
-         likes: 0,
-         submajors: [
-            {
-               title: "Awesome Card 01",
-               description: "technology technology technology technology"
-
-            },
-            {
-               title: "Awesome Card 01",
-               description: "technology technology technology technology"
-
-            },
-         ]
-      }
-   ];
     
   return (
     <div className="auth-cont-container">
         {
-            info.map((post, idx) => {
+            posts.map((post, idx) => {
                 return (
                     <div className="post">
                         <div className="post-info">
@@ -118,7 +35,7 @@ const AuthorContent = () => {
 
                         <div className="post-btns">
                            <button className="btn1">Add New Topic</button>
-                           <button className="btn2">Delete</button>
+                           <button className="btn2" onClick={() => deletePost(idx)}>Delete {idx}</button>
                         </div>
                     </div>
                 )

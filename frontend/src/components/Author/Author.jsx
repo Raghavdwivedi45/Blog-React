@@ -1,11 +1,17 @@
-import "../../css/Author.css";
-import AuthorContent from "./AuthorContent";
+import "../../css/author/Author.css";
+import AuthorContent from "./AuthorContent.jsx";
 import AuthorInfo from "./AboutAuthor";
 import { authorStore } from "../../store/authorStore";
+import { navigateStore } from "../../store/navigateStore";
 
 const Author = () => {
 
-  const {setAuthorInfo} = authorStore();
+
+  const {authorInfo, setAuthorInfo} = authorStore();
+  const {changePage, user} = navigateStore();
+
+  // console.log("user", user);
+  // console.log("author", authorInfo);
 
   return (
 
@@ -13,8 +19,13 @@ const Author = () => {
       
       <div className="author-content-go-back" onClick={() => setAuthorInfo(null) }><img src="../assets/back-arrow.png" alt="" /></div>
       
+      {(user && user==authorInfo._id) && <div className="author-info-cont-create-btns">
+          <button onClick={() => changePage("create-major")}>New Major</button>
+          <button onClick={() => changePage("create-minor")}>New Minor</button>
+      </div>}
+
       <div className="author-info-container">
-        <div className="author-info-content"><AuthorContent /></div>
+        <div className="author-info-content"><AuthorContent id={authorInfo._id} /></div>
         <div className="author-info-info"><AuthorInfo /></div>
       </div>
 

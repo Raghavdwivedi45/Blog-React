@@ -30,3 +30,14 @@ export const validateFormData = (formData, signupType) => {
 
     return { success: "Successfully validated" };
 }
+
+export const logout = async () => {
+    try{
+        const result = await axios.get(`http://localhost:8080/api/auth/logout`, { withCredentials: true });
+        if(result.data.success) return { success : "Logged Out Successfully" };
+        return { error: "Internal Error" }; 
+    } 
+    catch(err) {
+        return { error : err };
+    }
+}

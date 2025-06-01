@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import Author from '../components/Author/Author.jsx';
 import AuthorCard from '../components/Author/AuthorCard.jsx';
-import "../css/AuthorPage.css";
+import "../css/author/AuthorPage.css";
+import { getAll } from '../lib/author/authorHelp.js';
 import { authorStore } from '../store/authorStore';
 
 
@@ -21,52 +23,17 @@ const AuthorPage = () => {
   //   }
   // };
 
-  const author = [
-    {
-      _id : "1",
-      name:"Raghav Dwivedi",
-      img:"../assets/hero1.png",
-      description:"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum ",
-      email:"",
-      dateOfBirth:"",
-      majorLikes:"",
-      minorLikes:""
-    },
-    {
-      _id : "2",
-      name:"Lee Foo",
-      img:"../assets/hero2.png",
-      description:`Lorem ipsum Lorem ipsum Lorem 
-      ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem 
-      
-      ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem 
-      ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem 
-      
-      ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum `,
 
-      // email:"",
-      // dateOfBirth:"",
-      // majorLikes:"",
-      // minorLikes:""
-    },
-    {
-      _id : "3",
-      name:"Lee Fee",
-      img:"../assets/hero3.png",
-      description:"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum ",
-
-      // email:"",
-      // dateOfBirth:"",
-      // majorLikes:"",
-      // minorLikes:""
-    },
-
-];
-
-
+  const [author, setAuthor] = useState([]);
+  
+  const getAuthors = async () => {
+    const auth = await getAll();
+    if(auth.data?.error) return; 
+    setAuthor(auth.data);
+  }
+  getAuthors();
+  
   if(authorInfo) return <Author/>
-
-
 
   return (
     <div className='author-container'>

@@ -1,5 +1,5 @@
-import "../css/TypeSignup.css";
-import { selectPageStore } from "../store/selectSignupType.js";
+import "../../css/Signup/TypeSignup.css";
+import { selectPageStore } from "../../store/selectSignupType.js";
 
 const TypeOfUser = () => {
     

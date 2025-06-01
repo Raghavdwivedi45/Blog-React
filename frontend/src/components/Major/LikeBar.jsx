@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import "../css/LikeBar.css"
+import "../../css/Major/LikeBar.css"
 
 const LikeBar = ({likeCnt}) => {
 

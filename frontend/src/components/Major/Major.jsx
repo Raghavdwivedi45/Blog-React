@@ -1,5 +1,5 @@
-import "../css/Major.css";
-import { majorStore } from "../store/majorStore.js";
+import "../../css/Major/Major.css";
+import { majorStore } from "../../store/majorStore.js";
 import BuyPremium from "./BuyPremium.jsx";
 import PostAuthor from "./PostAuthor.jsx";
 import PostFilter from "./postFilter.jsx";

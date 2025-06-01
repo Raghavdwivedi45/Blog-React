@@ -1,4 +1,4 @@
-import "../css/BuyPremium.css";
+import "../../css/Major/BuyPremium.css";
 
 const BuyPremium = () => {
   return (

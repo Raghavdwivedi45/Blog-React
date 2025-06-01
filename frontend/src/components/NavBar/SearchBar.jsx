@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import "../css/SearchBar.css";
+import "../../css/NavBar/SearchBar.css";
 
 const SearchBar = () => {
   return (

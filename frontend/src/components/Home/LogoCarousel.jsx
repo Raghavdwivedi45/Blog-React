@@ -1,4 +1,4 @@
-import "../css/LogoCarousel.css"
+import "../../css/Home/LogoCarousel.css"
 
 const LogoCarousel = () => {
   return (

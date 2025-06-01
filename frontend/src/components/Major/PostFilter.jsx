@@ -1,4 +1,4 @@
-import "../css/PostFilter.css";
+import "../../css/Major/PostFilter.css";
 
 const PostFilter = ({tags}) => {
   return (

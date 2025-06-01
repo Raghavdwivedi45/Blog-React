@@ -1,6 +1,6 @@
-import '../css/HomePage.css';
-import LogoCarousel from '../components/LogoCarousel.jsx';
-import HomeCards from '../components/HomeCards.jsx';
+import '../css/Home/HomePage.css';
+import LogoCarousel from '../components/Home/LogoCarousel.jsx';
+import HomeCards from '../components/Home/HomeCards.jsx';
 
 
 const HomePage = () => {
@@ -43,7 +43,7 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title">Featured Majors</h2>
         <div className="cards-container">
-          <HomeCards/>
+          <HomeCards info={[]}/>
         </div>
       </section>
 
@@ -51,7 +51,7 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title">Featured Minors</h2>
         <div className="cards-container">
-          <HomeCards/>
+          <HomeCards info={[]}/>
         </div>
       </section>
 

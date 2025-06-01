@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import ImageSchema from "./image.model";
+import ImageSchema from "./image.model.js";
 const {Schema} = mongoose;
 
 

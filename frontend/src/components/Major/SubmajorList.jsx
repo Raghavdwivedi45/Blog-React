@@ -1,5 +1,5 @@
-import "../css/SubmajorList.css";
-import { majorStore } from "../store/majorStore";
+import "../../css/Major/SubmajorList.css";
+import { majorStore } from "../../store/majorStore";
 
 const SubmajorList = ({fullList}) => {
 

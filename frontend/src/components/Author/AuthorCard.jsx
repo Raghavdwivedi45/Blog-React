@@ -1,4 +1,4 @@
-import "../../css/AuthorCard.css";
+import "../../css/author/AuthorCard.css";
 import { authorStore } from "../../store/authorStore";
 
 const AuthorCard = ({info}) => {

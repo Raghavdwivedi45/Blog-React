@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import "../css/PostAuthor.css";
+import "../../css/Major/PostAuthor.css";
 
 const PostAuthor = ({aut}) => {
   const ripple = useRef();

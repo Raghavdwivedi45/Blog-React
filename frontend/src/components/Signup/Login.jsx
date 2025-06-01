@@ -1,7 +1,7 @@
-import "../css/Login.css"
-import { selectPageStore } from "../store/selectSignupType.js"
-import { navigateStore } from "../store/navigateStore.js"
-import { handleSignupLoginFormSubmit, validateFormData } from "../lib/helper.js";
+import "../../css/Signup/Login.css";
+import { selectPageStore } from "../../store/selectSignupType.js"
+import { navigateStore } from "../../store/navigateStore.js"
+import { handleSignupLoginFormSubmit, validateFormData } from "../../lib/helper.js";
 import { useActionState, useState, useEffect } from "react";
 
 const UserSignup = () => {
@@ -13,9 +13,10 @@ const UserSignup = () => {
       email : signupType!=="login" ? formData.get("email") : null,
       dob: signupType=="author" ? formData.get("dob") : null,
       description: signupType=="author" ? formData.get("description") : null,
+      img : "../../assets/demoAuthor.jpg",
+      type: formData.get("type")
     }
     let err = validateFormData(myData, signupType);
-    console.log(err);
     if(err.error)  { 
       setFormError(err.error); 
       setTimeout(() => {setFormError(null)}, 3000);
@@ -30,8 +31,7 @@ const UserSignup = () => {
       return; 
     } 
     
-    console.log(res);
-    setUser(res._id); changePage("home")
+    setUser(res._id); changePage("home");
   }
 
   const {signupType, changeSignupType} = selectPageStore();

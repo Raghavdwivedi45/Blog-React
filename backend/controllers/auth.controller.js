@@ -2,6 +2,7 @@ import { tokenJWT, validateFormData } from "../utils/helper.js";
 import bcrypt from "bcryptjs";
 import Author from "../models/author.model.js";
 import Reader from "../models/reader.model.js";
+import Post from "../models/post.model.js";
 
 export const handleSignup = async (req, res) => {
     const formData = req.body;
@@ -27,6 +28,7 @@ export const handleSignup = async (req, res) => {
             name: formData.name,
             email: formData.email,
             password: hashedPassword,
+            img: formData.img
         });
 
         if (signupType === "author") {
@@ -81,7 +83,31 @@ export const handleLogin = async (req, res) => {
             success : "Logged in successfully" 
         });
     } catch(err) {
-        console.log("Error in login controller ", err.message);
         res.status(500).json({ error: err.message });
     }
+}
+
+
+export const handleLogout = (req, res) => {
+    try{
+        res.cookie("jwt", "", {
+            maxAge: 0
+        })
+        res.status(200).json({ success: "Logged out successfully" });
+    } catch(err) {
+        res.status(500).json({ error: "Internal server error." });
+    }
+}
+
+export const getAllAuthors = async (req, res) => {
+    const authors = await Author.find({});
+    if(!authors) res.status(200).json({error : "Internal Error in finding authors"});
+    res.status(200).json(authors);
+}
+
+export const getAllPosts = async (req, res) => {
+    const { id } = req.params;
+    const posts = await Post.find({ author : id });
+    if(!posts) res.status(200).json({error : "Internal Error in finding posts"});
+    res.status(200).json(posts);
 }
