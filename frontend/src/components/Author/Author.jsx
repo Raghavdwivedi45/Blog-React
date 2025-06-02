@@ -20,8 +20,8 @@ const Author = () => {
       <div className="author-content-go-back" onClick={() => setAuthorInfo(null) }><img src="../assets/back-arrow.png" alt="" /></div>
       
       {(user && user==authorInfo._id) && <div className="author-info-cont-create-btns">
-          <button onClick={() => changePage("create-major")}>New Major</button>
-          <button onClick={() => changePage("create-minor")}>New Minor</button>
+          <button onClick={() => changePage("create-majors")}>New Major</button>
+          <button onClick={() => changePage("create-minors")}>New Minor</button>
       </div>}
 
       <div className="author-info-container">

@@ -28,10 +28,7 @@ function App() {
 
   fetchData();
 
-  // Optionally, return a clean-up function if needed
-  return () => {
-    // Clean-up code here (like aborting a fetch, unsubscribing, etc.)
-  };
+  return () => {};
   }, [])
 
   return (
@@ -43,7 +40,7 @@ function App() {
       {page=="majors" && <MajorPage/>}
       {page=="authors" && <AuthorPage/>}
       {page=="contact" && <ContactPage/>}
-      {(page=="create-major" || page=="create-minor") && <NewPost/>}
+      {(page=="create-majors" || page=="create-minors") && <NewPost/>}
       </main>
       <Footer/>
     </div>

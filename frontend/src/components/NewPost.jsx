@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../css/NewPost/NewPost.css'; 
 import { navigateStore } from '../store/navigateStore';
+import { createNewPost } from '../lib/helper';
 
 const NewPost = () => {
   const [formData, setFormData] = useState({
@@ -10,18 +11,39 @@ const NewPost = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: name === 'img' ? files[0] : value,
+      [name]: value
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    console.log(file)
+    if (!file || file.size>2097152) return;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+      const base64Image = reader.result;
+    setFormData({
+      ...formData,
+      "img": base64Image
+    });
+  };
+};
+
+  const {user, changePage, page} = navigateStore();
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if(!user) return;
+    const result = await createNewPost({...formData, author: user}, page);
+    if(result.error) return;
+    changePage("authors");
   };
 
-  const {changePage} = navigateStore();
 
   return (
     <div className="new-post-pg-container">
@@ -51,7 +73,7 @@ const NewPost = () => {
             id="img"
             name="img"
             accept="image/*"
-            onChange={handleChange}
+            onChange={handleImageUpload}
             required
           />
          {formData.img ? <span>Selected &#9745;</span> : <span>No File Chosen</span>}

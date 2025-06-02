@@ -2,7 +2,7 @@ import "../../css/Signup/Login.css";
 import { selectPageStore } from "../../store/selectSignupType.js"
 import { navigateStore } from "../../store/navigateStore.js"
 import { handleSignupLoginFormSubmit, validateFormData } from "../../lib/helper.js";
-import { useActionState, useState, useEffect } from "react";
+import { useActionState, useState } from "react";
 
 const UserSignup = () => {
 

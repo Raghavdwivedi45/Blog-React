@@ -28,10 +28,16 @@ export const tokenJWT = (userId) => {
 }
 
 
-export const isLoggedIn = (req, res, next) => {
+export const isLoggedIn = (req, res) => {
     const {token} = req.cookies["jwt"];
     if(!token) return res.status(501).json({error : "You must be logged in before this action"})
     
     const decoded = jwt.verify(token, process.env.JWT_KEY);
     res.status(201).json(decoded);
 }
+
+export const validateDesc = ({description}) => {
+    const wordCount = description.trim().split(/\s+/).length;
+    if(wordCount>250) return {error: "Description should be smaller than 250 words"};
+    return {success: "Validated Successfully"}
+} 

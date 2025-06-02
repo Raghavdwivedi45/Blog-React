@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import ImageSchema from "./image.model.js";
 const {Schema} = mongoose;
 
 
@@ -16,11 +15,9 @@ const postSchema = new Schema({
     description: {
         type: String,
         required: true,
-        minlength: 200, // Minimum length of 200 characters
-        maxlength: 250 // Maximum length of 250 characters 
     },
     img: {
-        type: ImageSchema,
+        type: String,
         _id : false,
         required: true
     },

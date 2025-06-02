@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Author from '../components/Author/Author.jsx';
 import AuthorCard from '../components/Author/AuthorCard.jsx';
 import "../css/author/AuthorPage.css";
@@ -26,12 +26,17 @@ const AuthorPage = () => {
 
   const [author, setAuthor] = useState([]);
   
-  const getAuthors = async () => {
-    const auth = await getAll();
-    if(auth.data?.error) return; 
-    setAuthor(auth.data);
-  }
-  getAuthors();
+  
+    useEffect(() => {
+      const getAuthors = async () => {
+        const auth = await getAll();
+        if(auth.data?.error) return; 
+        setAuthor(auth.data);
+      }
+      getAuthors();
+      return () => {};
+    }, [])
+
   
   if(authorInfo) return <Author/>
 

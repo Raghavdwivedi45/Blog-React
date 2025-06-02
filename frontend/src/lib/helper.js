@@ -45,9 +45,20 @@ export const logout = async () => {
 export const checkLogin = async () => {
     try{
         const result = await axios.get(`http://localhost:8080/api/auth/isLoggedIn`, { withCredentials: true });
+        if(result.data.error) return { error: "Internal Error" }; 
         return result;
-        // if(result.data.success) return { success : "Logged Out Successfully" };
-        // return { error: "Internal Error" }; 
+    } 
+    catch(err) {
+        return { error : err };
+    }
+}
+
+export const createNewPost = async (postObj, page) => {
+    try{
+        const type = page.substring(7);
+        const result = await axios.post(`http://localhost:8080/api/${type}`, postObj, {  withCredentials: true });
+        if(result.data.error) return { error: "Internal Error" }; 
+        return result;
     } 
     catch(err) {
         return { error : err };
