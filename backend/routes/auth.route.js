@@ -9,6 +9,9 @@ router.post("/author/signup", handleSignup);
 
 router.post("/reader/login", handleLogin);
 router.post("/author/login", handleLogin);
+
+router.get("/isLoggedIn", isLoggedIn);
+
 router.get("/logout", handleLogout);
 
 router.get("/authors", getAllAuthors);
