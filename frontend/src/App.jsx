@@ -22,25 +22,23 @@ function App() {
       const res = await checkLogin();
       if (!res.error) setUser(res.data.userId);
     } catch (err) {
-      console.log(err);
     }
   };
-
   fetchData();
-
   return () => {};
   }, [])
+
 
   return (
     <div className='body'>
       <Navbar/>
       <main>
-      {page=="home" && <HomePage/>}
-      {page=="signup" && <SignupPage/>}
-      {page=="majors" && <MajorPage/>}
-      {page=="authors" && <AuthorPage/>}
-      {page=="contact" && <ContactPage/>}
-      {(page=="create-majors" || page=="create-minors") && <NewPost/>}
+      {page.at(-1)=="home" && <HomePage/>}
+      {page.at(-1)=="signup" && <SignupPage/>}
+      {page.at(-1)=="majors" && <MajorPage/>}
+      {page.at(-1)=="authors" && <AuthorPage/>}
+      {page.at(-1)=="contact" && <ContactPage/>}
+      {(page.at(-1)=="create-majors" || page.at(-1)=="create-minors") && <NewPost/>}
       </main>
       <Footer/>
     </div>

@@ -107,7 +107,7 @@ export const getAllAuthors = async (req, res) => {
 
 export const getAllPosts = async (req, res) => {
     const { id } = req.params;
-    const posts = await Post.find({ author : id });
+    const posts = await Post.find({ author : id }).populate({ path: "author", select: "name"});
     if(!posts) res.status(200).json({error : "Internal Error in finding posts"});
     res.status(200).json(posts);
 }

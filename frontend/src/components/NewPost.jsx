@@ -20,7 +20,6 @@ const NewPost = () => {
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-    console.log(file)
     if (!file || file.size>2097152) return;
 
     const reader = new FileReader();
@@ -34,12 +33,13 @@ const NewPost = () => {
   };
 };
 
-  const {user, changePage, page} = navigateStore();
+  const {user, changePage, page, popPage} = navigateStore();
   
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(!user) return;
-    const result = await createNewPost({...formData, author: user}, page);
+    if(page.at(-1)!=="create-majors" && page.at(-1)!=="create-minors") return ;
+    const result = await createNewPost({...formData, author: user}, page.at(-1));
     if(result.error) return;
     changePage("authors");
   };
@@ -47,7 +47,7 @@ const NewPost = () => {
 
   return (
     <div className="new-post-pg-container">
-      <div className="author-content-go-back" onClick={() => changePage("authors") }><img src="../assets/back-arrow.png" alt="" /></div>
+      <div className="author-content-go-back" onClick={popPage}><img src="../assets/back-arrow.png" alt="" /></div>
 
 
       <div className="new-post-container">

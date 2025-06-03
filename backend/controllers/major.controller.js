@@ -2,9 +2,10 @@ import Post from "../models/post.model.js";
 import Author from "../models/author.model.js";
 import cloudinary from "../utils/cloudinary.js";
 import { validateDesc } from "../utils/helper.js";
+import mongoose from "mongoose";
 
 export const getAllMajors = async (req, res) => {
-    const majors = await Post.find({ type : "Major" });
+    const majors = await Post.find({ type : "Major" }).populate({ path: 'author', select: 'name' });
     if(!majors) res.status(400).json({error : "Internal Error in finding majors"});
     res.status(200).json(majors);
 }
@@ -34,6 +35,22 @@ export const createNewMajor = async (req, res) => {
         return res.status(201).json({ success : "Created New Listing" });
     }
     catch(err) {
-        res.status(401).json({error : err});
+        res.status(401).json({error : err.message || "Server Error in Major"});
+    }
+}
+
+
+
+export const deleteMajor = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "Invalid ID format." });
+
+        const data = await Post.findByIdAndDelete(id);
+        if (!data) return res.status(404).json({ error: "Post not found." });
+
+        return res.status(200).json({ success: "Successfully deleted the Post." });
+    } catch (err) {
+        return res.status(500).json({ error: err.message || "Server Error" });
     }
 }

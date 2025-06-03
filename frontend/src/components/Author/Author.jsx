@@ -10,9 +10,6 @@ const Author = () => {
   const {authorInfo, setAuthorInfo} = authorStore();
   const {changePage, user} = navigateStore();
 
-  // console.log("user", user);
-  // console.log("author", authorInfo);
-
   return (
 
     <div className="author-info-container-actual">
