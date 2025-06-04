@@ -10,6 +10,7 @@ import ContactPage from './pages/ContactPage.jsx'
 import NewPost from './components/NewPost.jsx'
 import { checkLogin } from './lib/helper.js'
 import { useEffect } from 'react'
+import NewSubmajor from './components/NewSubmajor.jsx'
 
 
 function App() {  
@@ -33,12 +34,13 @@ function App() {
     <div className='body'>
       <Navbar/>
       <main>
-      {page.at(-1)=="home" && <HomePage/>}
-      {page.at(-1)=="signup" && <SignupPage/>}
-      {page.at(-1)=="majors" && <MajorPage/>}
-      {page.at(-1)=="authors" && <AuthorPage/>}
-      {page.at(-1)=="contact" && <ContactPage/>}
-      {(page.at(-1)=="create-majors" || page.at(-1)=="create-minors") && <NewPost/>}
+      {page.at(-1)==="home" && <HomePage/>}
+      {page.at(-1)==="signup" && <SignupPage/>}
+      {page.at(-1)==="majors" && <MajorPage/>}
+      {page.at(-1)==="authors" && <AuthorPage/>}
+      {page.at(-1)==="contact" && <ContactPage/>}
+      {(page.at(-1)==="create-majors" || page.at(-1)==="create-minors") && <NewPost/>}
+      {(page.at(-1).startsWith("submajors")) && <NewSubmajor/>}
       </main>
       <Footer/>
     </div>

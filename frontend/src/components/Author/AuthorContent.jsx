@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../css/author/AuthorContent.css";
-import { getAllPosts, deletePost } from "../../lib/author/authorHelp";
+import { getAllPosts, deletePost, addSubmajor } from "../../lib/author/authorHelp";
 import { majorStore } from "../../store/majorStore";
 import { navigateStore } from "../../store/navigateStore";
 
@@ -25,6 +25,15 @@ const AuthorContent = ({ id }) => {
         setPosts((posts) => posts.splice(idx, 1));
     }
 
+
+    const handleAddSubmajor = async (idx) => {
+        const id = posts[idx]._id;
+        if(!id) return;
+        const add = await addSubmajor(id);
+        // if(del.error) return;
+        // setPosts((posts) => posts.splice(idx, 1));
+    }
+
     const {setMajorInfo} = majorStore();
     const {changePage} = navigateStore();
 
@@ -45,7 +54,7 @@ const AuthorContent = ({ id }) => {
                             </div>
 
                             <div className="post-btns">
-                                <button className="btn1">Add New Topic</button>
+                                <button className="btn1" onClick={() => changePage(`submajors-${post._id}`)}>Add New Topic</button>
                                 <button className="btn2" onClick={() => handleDeletePost(idx)}>Delete</button>
                             </div>
                         </div>

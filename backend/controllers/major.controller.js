@@ -25,7 +25,7 @@ export const createNewMajor = async (req, res) => {
         const major = new Post({
             title, 
             author, 
-            description: description.substring(0, 1000),
+            description: description.substring(0, 1200),
             img : uploadResponse.secure_url,
             type : "Major",
             submajor : []

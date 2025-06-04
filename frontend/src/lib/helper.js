@@ -64,3 +64,15 @@ export const createNewPost = async (postObj, page) => {
         return { error : err };
     }
 }
+
+// export const addNewSubmajor = async (postObj, page) => {
+//     try{
+//         const type = page.substring(7);
+//         const result = await axios.post(`http://localhost:8080/api/${type}`, postObj, {  withCredentials: true });
+//         if(result.data.error) return { error: "Internal Error" }; 
+//         return result;
+//     } 
+//     catch(err) {
+//         return { error : err };
+//     }
+// }
