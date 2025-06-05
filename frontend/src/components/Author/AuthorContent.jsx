@@ -54,7 +54,7 @@ const AuthorContent = ({ id }) => {
                             </div>
 
                             <div className="post-btns">
-                                <button className="btn1" onClick={() => changePage(`submajors-${post._id}`)}>Add New Topic</button>
+                                <button className="btn1" onClick={() => { setMajorInfo(post); changePage(`submajors-${post._id}`); }}>Add New Topic</button>
                                 <button className="btn2" onClick={() => handleDeletePost(idx)}>Delete</button>
                             </div>
                         </div>

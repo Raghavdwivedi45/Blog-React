@@ -37,8 +37,16 @@ const postSchema = new Schema({
     },
     submajor: [ // update submajor only if type = major
         {
-            title: String,
-            description: String // if type = major, then there can be multiple els in this submajor array
+            title: {
+                type : String,
+                required : true
+            },
+            secIds: [String],
+            description: [{
+                type : String,
+                required : true
+            }] 
+            // if type = major, then there can be multiple els in this submajor array
             //  but if type = minor, there will be only 1 el in the subarray which is the minor content
         }
     ]

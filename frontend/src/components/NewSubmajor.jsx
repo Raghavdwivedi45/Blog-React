@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../css/NewPost/NewSubmajor.css';
 import { navigateStore } from '../store/navigateStore';
-import { createNewPost } from '../lib/helper';
 import FormTop from './EditSubmajorComp/FormTop';
 import DescriptionOptions from './EditSubmajorComp/DescriptionOptions';
+import { postSubmajor } from '../lib/major/helpMajor';
+import { majorStore } from '../store/majorStore';
 
 const NewSubmajor = () => {
     const [formData, setFormData] = useState({
-        idx: null,
+        idx: 0,
         title: '',
         description: '',
     });
@@ -20,38 +21,52 @@ const NewSubmajor = () => {
         });
     };
 
-    const addTag = (str, para="") => {
+    const addTag = (str) => {
         setFormData((formData) => ({
             ...formData,
-            "description": formData.description + str
+            "description": formData.description + " " + str
         }));
     };
 
-    const { user, changePage, page, popPage } = navigateStore();
+    const { user, popPage } = navigateStore();
     const [submajorParts, setSubmajorParts] = useState([]);
-
+    const {majorInfo, setMajorInfo} = majorStore();
+    const [sectionIds, setSectionIds] = useState([]);
+    const descShow = useRef();
+    
+    
+    
     const addNewSection = () => {
-        const nameOfSec = prompt("Name the Section");
-        const newSec = React.createElement("section", { key: Date.now(), id: nameOfSec, dangerouslySetInnerHTML: { __html: formData.description }});
-        setSubmajorParts((prev) => ([...prev, newSec]))
-        setFormData((formData) => ({
-            ...formData,
-            "description": ""
-        }));
+        if(formData.description?.length===0) return;
+        setSubmajorParts((prev) => ([...prev, formData.description]))
+        setFormData((formData) => ({...formData, "description": ""}));
     }
 
+    useEffect(() => {
+        let str = ""
+        for(const s of submajorParts) str += s;
+        descShow.current.innerHTML = str;
+    }, [submajorParts])
+
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setFormData({
-            idx: 0,
-            title: '',
-            description: '',
-        })
-        // if(!user) return;
-        // if(!page.at(-1).startsWith("submajors")) return;
-        // const result = await createNewPost({...formData, author: user}, page.at(-1));
-        // if(result.error) return;
-        // changePage("authors");
+
+        if(formData.title.length===0 || formData.description.length===0 || !user ) return;
+        const subObj = {
+            idx: formData.idx,
+            title: formData.title,
+            description: formData.description,
+            secIds : sectionIds
+        }
+        console.log(majorInfo);
+        console.log("obj=", subObj);
+        // const res = await postSubmajor(majorInfo, subObj);
+        // console.log(res);
+        setMajorInfo(null);
+        // popPage();
+        // setFormData({ idx: 0, title: '', description: ''})
+        
     };
 
 
@@ -59,41 +74,27 @@ const NewSubmajor = () => {
         <div className="submajor-pg-container">
             <div className="author-content-go-back" onClick={popPage}><img src="../assets/back-arrow.png" alt="" /></div>
 
-
             <div className="submajor-container">
-                
                 <h2 className="submajor-form-title">Create New Post</h2>
                 
                 <form onSubmit={handleSubmit} className="submajor-form">
                     <FormTop formInfo={formData} handler={handleChange}/>
 
-                    <DescriptionOptions addEmphasis={addTag}/>
-
+                    <DescriptionOptions addEmphasis={addTag} setIds={setSectionIds} />
 
                     <div className="submajor-form-group">
                         <label htmlFor="description">Description</label>
-                        <textarea
-                            id="description" name="description"
-                            value={formData.description} onChange={handleChange}
-                            required rows="6" 
-                        ></textarea>
+                        <textarea id="description" name="description" rows="6" value={formData.description} onChange={handleChange}></textarea>
                     </div>
 
-                    <button type="button" 
-                    className="submajor-submit-btn"
-                    onClick={addNewSection}
-                    >
-                    Add Section
-                    </button>
-
+                    <button type="button" className="submajor-submit-btn" onClick={addNewSection}>Add Section</button>
                     <button type="submit" className="submajor-submit-btn">Publish Post</button>
                 </form>
             </div>
             
-            <div className="submajor-container">
-                {
-                submajorParts
-                }
+            <div className="submajor-container" ref={descShow}>
+                <h2 className='submajor-container-preview'>Preview</h2>
+                { submajorParts }
             </div>
         </div>
 

@@ -16,14 +16,3 @@ export const deletePost = async (id, type) => {
     if(err) return {error: err};
     return result.data;
 }
-
-export const addSubmajor = async (id) => {
-    try{
-        const result = await axios.post(`http://localhost:8080/api/majors/sub/${id}`, { withCredentials: true });
-        const err = result.response?.data?.error;
-        if(err) return {error: err};
-        return result.data;
-    } catch(err) {
-        return {error: err};
-    }
-}

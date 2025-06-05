@@ -30,6 +30,7 @@ const AuthorPage = () => {
     useEffect(() => {
       const getAuthors = async () => {
         const auth = await getAll();
+        console.log(auth)
         if(auth.data?.error) return; 
         setAuthor(auth.data);
       }

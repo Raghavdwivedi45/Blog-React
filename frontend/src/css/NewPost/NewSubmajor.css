@@ -94,12 +94,18 @@
 
 .submajor-container section {
   margin-top: 2rem;
+  line-height: 1.2rem;
 }
 
 .submajor-container img {
   display: block;
-  margin: 0 35%;
+  margin: 1rem 35%;
   height: 9rem;
   width: 16rem;
   border: 1px solid black;
+}
+
+.submajor-container-preview {
+  text-align: center;
+  font-size: 1.5rem;
 }

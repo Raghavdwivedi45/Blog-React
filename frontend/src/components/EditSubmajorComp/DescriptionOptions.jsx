@@ -1,17 +1,11 @@
+import { useState } from "react";
 import "../../css/DescriptionOptions.css";
 
-const DescriptionOptions = ({addEmphasis}) => {
+const DescriptionOptions = ({addEmphasis, setIds}) => {
 
-  // const addSection = () => {
-  //   func((sub) => [
-  //     ...sub,
-  //     React.createElement(tag, { key: Date.now(), ...props }, " ")
-  //   ]);
-  //   const toBeAdded = `<section key=${arr.length}> </section>`
-  // }
+  const [idx, setIdx] = useState(0);
 
-
-  const addMedia = (tag, src) => {
+  const addMedia = (tag) => {
     if(tag==="img") {
       const sorc = prompt("Enter image URL")
       if(sorc===null) return;
@@ -24,21 +18,33 @@ const DescriptionOptions = ({addEmphasis}) => {
     }
   };
 
+  const addHead = (val) => {
+    const txt = prompt("Enter heading here for preparing better index")
+    if(txt===null) return;
+    
+    if(val===1) addEmphasis(`<h1 id="${idx}">${txt}</h1>`)
+    else if(val===2) addEmphasis(`<h2 id="${idx}">${txt}</h2>`)
+    else if(val===3) addEmphasis(`<h3 id="${idx}">${txt}</h3>`)
+  
+    setIds(prev => [...prev, txt])
+    setIdx(id => id+1)
+  }
+
   return (
     <div className="desc-opt-container">
         
-        <button type="button" onClick={() => addEmphasis("<strong></strong>")}>Bold</button>
-        <button type="button" onClick={() => addEmphasis("<em></<em>")}>Italics</button>
+        <button type="button" onClick={() => addHead(1)}>Heading1</button>
+        <button type="button" onClick={() => addHead(2)}>Heading2</button>
+        <button type="button" onClick={() => addHead(3)}>Heading3</button>
 
-        <button type="button" onClick={() => addEmphasis("<h1></<h1>")}>Heading1</button>
-        <button type="button" onClick={() => addEmphasis("<h2></<h2>")}>Heading2</button>
-        <button type="button" onClick={() => addEmphasis("<h3></<h3>")}>Heading3</button>
+        <button type="button" onClick={() => addEmphasis("<strong></strong>")}>Bold</button>
+        <button type="button" onClick={() => addEmphasis("<em></em>")}>Italics</button>
         
         <button type="button" onClick={() => addEmphasis('<strong class="undrlnd"></strong>')}>
           Underline
         </button>
         
-        <button type="button" onClick={() => addEmphasis('<mark class="hltd"></<mark>')}>
+        <button type="button" onClick={() => addEmphasis('<mark class="hltd"></mark>')}>
           Highlight
         </button>
         

@@ -45,11 +45,12 @@ export const logout = async () => {
 export const checkLogin = async () => {
     try{
         const result = await axios.get(`http://localhost:8080/api/auth/isLoggedIn`, { withCredentials: true });
+        console.log(result)
         if(result.data.error) return { error: "Internal Error" }; 
         return result;
     } 
     catch(err) {
-        return { error : err };
+        console.log(err.response.data.error)
     }
 }
 
