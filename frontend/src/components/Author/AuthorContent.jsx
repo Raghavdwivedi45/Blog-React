@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../css/author/AuthorContent.css";
-import { getAllPosts, deletePost, addSubmajor } from "../../lib/author/authorHelp";
+import { getAllPosts, deletePost } from "../../lib/author/authorHelp";
 import { majorStore } from "../../store/majorStore";
 import { navigateStore } from "../../store/navigateStore";
 
@@ -29,7 +29,7 @@ const AuthorContent = ({ id }) => {
     const handleAddSubmajor = async (idx) => {
         const id = posts[idx]._id;
         if(!id) return;
-        const add = await addSubmajor(id);
+        // const add = await addSubmajor(id);
         // if(del.error) return;
         // setPosts((posts) => posts.splice(idx, 1));
     }

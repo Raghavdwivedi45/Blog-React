@@ -43,27 +43,24 @@ const NewSubmajor = () => {
     }
 
     useEffect(() => {
-        let str = ""
-        for(const s of submajorParts) str += s;
-        descShow.current.innerHTML = str;
+        descShow.current.innerHTML = submajorParts;
     }, [submajorParts])
 
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if(formData.title.length===0 || formData.description.length===0 || !user ) return;
+        if(formData.title.length===0 || submajorParts.length===0 || !user ) return;
         const subObj = {
             idx: formData.idx,
             title: formData.title,
-            description: formData.description,
+            description: submajorParts,
             secIds : sectionIds
         }
-        console.log(majorInfo);
-        console.log("obj=", subObj);
-        // const res = await postSubmajor(majorInfo, subObj);
-        // console.log(res);
-        setMajorInfo(null);
+
+        const res = await postSubmajor(majorInfo._id, subObj);
+        if(res.error) console.log("Error", res.error);
+        else console.log(res);
+        // setMajorInfo(null);
         // popPage();
         // setFormData({ idx: 0, title: '', description: ''})
         

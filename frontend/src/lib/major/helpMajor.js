@@ -8,11 +8,10 @@ export const getAllMajors = async () => {
 
 export const postSubmajor = async (id, submajor) => {
     try{
-        const result = await axios.post(`http://localhost:8080/api/majors/submajor/${id}`, { withCredentials: true });
-        const err = result.response?.data?.error;
-        if(err) return {error: err};
+        const result = await axios.post(`http://localhost:8080/api/majors/submajor/${id}`, submajor, { withCredentials: true });
+        console.log(result + "Boomaaa");
         return result.data;
     } catch(err) {
-        return {error: err};
+        return {error: err.response.data.error};
     }
 }
