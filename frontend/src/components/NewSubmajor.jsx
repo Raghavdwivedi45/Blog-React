@@ -29,7 +29,7 @@ const NewSubmajor = () => {
     };
 
     const { user, popPage } = navigateStore();
-    const [submajorParts, setSubmajorParts] = useState([]);
+    const [submajorParts, setSubmajorParts] = useState([""]);
     const {majorInfo, setMajorInfo} = majorStore();
     const [sectionIds, setSectionIds] = useState([]);
     const descShow = useRef();
@@ -38,12 +38,13 @@ const NewSubmajor = () => {
     
     const addNewSection = () => {
         if(formData.description?.length===0) return;
-        setSubmajorParts((prev) => ([...prev, formData.description]))
+        setSubmajorParts((prev) => ([...prev, formData.description.trim()]))
         setFormData((formData) => ({...formData, "description": ""}));
     }
 
     useEffect(() => {
-        descShow.current.innerHTML = submajorParts;
+        const curr = descShow.current.innerHTML || "";
+        descShow.current.innerHTML = curr + submajorParts.at(-1);
     }, [submajorParts])
 
     
@@ -60,9 +61,8 @@ const NewSubmajor = () => {
         const res = await postSubmajor(majorInfo._id, subObj);
         if(res.error) console.log("Error", res.error);
         else console.log(res);
-        // setMajorInfo(null);
-        // popPage();
-        // setFormData({ idx: 0, title: '', description: ''})
+        setMajorInfo(null); popPage();
+        setFormData({ idx: 0, title: '', description: ''})
         
     };
 
@@ -89,9 +89,8 @@ const NewSubmajor = () => {
                 </form>
             </div>
             
-            <div className="submajor-container" ref={descShow}>
+            <div className="submajor-container my-sub-cont-desc" ref={descShow}>
                 <h2 className='submajor-container-preview'>Preview</h2>
-                { submajorParts }
             </div>
         </div>
 
