@@ -3,6 +3,7 @@ import "../../css/author/AuthorContent.css";
 import { getAllPosts, deletePost } from "../../lib/author/authorHelp";
 import { majorStore } from "../../store/majorStore";
 import { navigateStore } from "../../store/navigateStore";
+import { authorStore } from "../../store/authorStore";
 
 const AuthorContent = ({ id }) => {
     
@@ -25,17 +26,9 @@ const AuthorContent = ({ id }) => {
         setPosts((posts) => posts.splice(idx, 1));
     }
 
-
-    const handleAddSubmajor = async (idx) => {
-        const id = posts[idx]._id;
-        if(!id) return;
-        // const add = await addSubmajor(id);
-        // if(del.error) return;
-        // setPosts((posts) => posts.splice(idx, 1));
-    }
-
     const {setMajorInfo} = majorStore();
-    const {changePage} = navigateStore();
+    const {changePage, user} = navigateStore();
+    const {authorInfo} = authorStore();
 
     return (
         <div className="auth-cont-container">
@@ -53,10 +46,10 @@ const AuthorContent = ({ id }) => {
                                 </div>
                             </div>
 
-                            <div className="post-btns">
+                            {(user && user==authorInfo._id) && <div className="post-btns">
                                 <button className="btn1" onClick={() => { setMajorInfo(post); changePage(`submajors-${post._id}`); }}>Add New Topic</button>
                                 <button className="btn2" onClick={() => handleDeletePost(idx)}>Delete</button>
-                            </div>
+                            </div>}
                         </div>
                     )
                 })

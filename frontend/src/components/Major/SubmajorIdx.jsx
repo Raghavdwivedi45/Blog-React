@@ -1,7 +1,6 @@
 import "../../css/Major/SubmajorIdx.css";
 
 const SubmajorIdx = ({idxArr}) => {
-console.log(idxArr)
 
   return (
     <div className="idx-container">

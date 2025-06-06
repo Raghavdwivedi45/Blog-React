@@ -17,7 +17,6 @@
 .major-content {
     width: 60%;
     padding: 1rem 2rem;
-    overflow: hidden;
 }
 
 .major-content-title {
@@ -40,9 +39,21 @@
     white-space: pre-line;
 }
 
+.major-content-description h1 {
+    line-height: 2rem
+}
+
+.major-content-description h2 {
+    line-height: 2rem
+}
+
+.major-content-description h3 {
+    line-height: 2rem
+}
+
 .major-content-description img {
     display: block;
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 
 .major-author {
@@ -69,4 +80,14 @@
 .major-content-go-back img {
     width: 2rem;
     transform: rotate(180deg);
+}
+
+.major-content-description-navigate-arrows {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#next-arrow {
+    transform: rotate(180deg); 
 }
