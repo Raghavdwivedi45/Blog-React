@@ -1,12 +1,11 @@
 .tag-container {
-    margin-top: 3rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-wrap: nowrap;
-    padding: 0;
 }
 
 .tag {
-    margin: 0.5rem;
+    margin-right: 0.5rem;
     padding: 0.7rem 0.5rem;
     border-radius: 30px;
     background-color: rgba(124, 67, 67, 0.5);

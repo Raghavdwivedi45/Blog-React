@@ -1,9 +1,24 @@
 import '../css/Home/HomePage.css';
 import LogoCarousel from '../components/Home/LogoCarousel.jsx';
 import HomeCards from '../components/Home/HomeCards.jsx';
+import { useEffect, useState } from 'react';
+import { getAllMajors } from '../lib/major/helpMajor.js';
 
 
 const HomePage = () => {
+    const [majors, setMajors] = useState([]);
+  
+    useEffect(() => {
+      const getMajors = async () => {
+        const result = await getAllMajors();
+        if (result.data?.error) return;
+        setMajors(result.data.slice(0, Math.min(2, result.data.length)));
+      }
+      getMajors();
+      return () => { };
+    }, [])
+
+
   return (
     <div className="homepage">
       
@@ -22,10 +37,7 @@ const HomePage = () => {
         
         <div className="hero-grid-1">
           <div className="hero-grid-1-1"></div>
-          <div className="hero-grid-1-2">
-            {/* <div className="hero-grid-1-2-1"></div>
-            <div className="hero-grid-1-2-2"></div> */}
-          </div>
+          <div className="hero-grid-1-2"></div>
         </div>
         
         <div className="hero-grid-2">
@@ -43,7 +55,7 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title">Featured Majors</h2>
         <div className="cards-container">
-          <HomeCards info={[]}/>
+          <HomeCards info={majors}/>
         </div>
       </section>
 
@@ -51,7 +63,7 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title">Featured Minors</h2>
         <div className="cards-container">
-          <HomeCards info={[]}/>
+          <HomeCards info={majors}/>
         </div>
       </section>
 

@@ -37,7 +37,7 @@ const NewSubmajor = () => {
     
     
     const addNewSection = () => {
-        if(formData.description?.length===0) return;
+        if(formData.description?.length===0) {return;}
         setSubmajorParts((prev) => ([...prev, formData.description.trim()]))
         setFormData((formData) => ({...formData, "description": ""}));
     }

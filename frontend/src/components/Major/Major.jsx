@@ -31,13 +31,12 @@ const Major = () => {
 
         <div className="major-content-description" ref={desc}></div>
 
-        <PostFilter tags={majorInfo.tags}/>
-
         <div className="major-content-description-navigate-arrows">
           <div className="major-content-go-back" onClick={() => handleSubIdx(-1)}><img src="../assets/back-arrow.png" alt="" /></div>
           <div className="major-content-go-back" onClick={() => handleSubIdx(+1)} id="next-arrow"><img src="../assets/back-arrow.png" alt="" /></div>
         </div>
 
+        <PostFilter tags={majorInfo.tags}/>
       </div>
       
       <div className="major-author">

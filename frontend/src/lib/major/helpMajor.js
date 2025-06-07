@@ -15,3 +15,13 @@ export const postSubmajor = async (id, submajor) => {
         return {error: err.response.data.error};
     }
 }
+
+export const likeInc = async (id) => {
+    try{
+        const result = await axios.post(`http://localhost:8080/api/majors/likes/${id}`, { withCredentials: true });
+        console.log(result + "Boomaaa");
+        return result.data;
+    } catch(err) {
+        return {error: err.response.data.error};
+    }
+}

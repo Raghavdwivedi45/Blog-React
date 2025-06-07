@@ -1,28 +1,52 @@
 import { useRef, useState } from "react"
 import "../../css/Major/LikeBar.css"
+import { likeInc } from "../../lib/major/helpMajor";
+import { majorStore } from "../../store/majorStore";
+import { navigateStore } from "../../store/navigateStore";
 
 const LikeBar = ({likeCnt}) => {
 
   const like = useRef();
   const [totalLikes, setTotalLikes] = useState(likeCnt);
+  const [clickedLike, setClickedLike] = useState(false);
+  const [clickedComment, setClickedComment] = useState(false);
+  // const {majorInfo} = majorStore();
+  const {user} = navigateStore();
 
-  const handleLikes = () => {
-      const curr = like.current.style.backgroundColor;
-      like.current.style.backgroundColor= curr ? "" : "rgb(51, 150, 207)";
-      // increase total likes in the frontend
-      if(!curr) setTotalLikes((totalLikes) => totalLikes+1)
-      else setTotalLikes((totalLikes) => totalLikes-1)
+  const handleLikes = async () => {
+    if(!user) {
+      setClickedComment(false)
+      setClickedLike(true);
+      setTimeout(() => setClickedLike(false), 3000); 
+      return;
+    }
+    const curr = like.current.style.backgroundColor;
+    like.current.style.backgroundColor= curr ? "" : "rgb(51, 150, 207)";
+
+    if(!curr) setTotalLikes((totalLikes) => totalLikes+1);
+    else setTotalLikes((totalLikes) => totalLikes-1);
+
+    // const likes = await likeInc(majorInfo._id)
+  }
+
+  const handleComment = async () => {
+    if(!user) {
+      setClickedLike(false)
+      setClickedComment(true);
+      setTimeout(() => setClickedComment(false), 3000); 
+      return;
+    }
   }
 
   return (
     <div className="like-bar-container">
         
-        <div className="like-bar-container-l" ref={like} onClick={() => handleLikes()}>
+        <div className={clickedLike ? "like-bar-container-l show-msg" : "like-bar-container-l"} ref={like} onClick={() => handleLikes()}>
             <img src="../assets/like.png" alt="" />
             <div>&nbsp;{totalLikes}</div>     
         </div>
 
-        <div className="like-bar-container-r">
+        <div className={clickedComment ? "like-bar-container-r show-msg" : "like-bar-container-r"} onClick={handleComment}>
             <img src="../assets/comment.png" alt="" />
         </div>
         

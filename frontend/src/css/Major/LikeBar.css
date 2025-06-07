@@ -22,9 +22,30 @@
     padding: 0.1rem 0.3rem;
     user-select: none;
     margin-right: 1rem;
+    position: relative;
 }
 
 .like-bar-container-l img, .like-bar-container-r img {
     height: 1.7rem;
     margin: 0.2rem;
+}
+
+.show-msg::after {
+  content: "You must login for this action!";
+  position: absolute;
+  left: 0%;
+  top: -100%;
+  background: #b3251b;
+  color: #d4edda;
+  border: 1px solid rgba(195, 230, 203, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  90% { opacity: 0.5; }
+  100% { opacity: 0; }
 }
