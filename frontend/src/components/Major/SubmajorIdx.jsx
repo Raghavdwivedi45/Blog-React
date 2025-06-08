@@ -7,7 +7,7 @@ const SubmajorIdx = ({idxArr}) => {
         <h2 className="idx-cont-head">Index</h2>
         <ol>
             {
-                idxArr.map((eachIdx, i) => <li><a href={"#" + i}>{eachIdx}</a></li>)
+                idxArr.map((eachIdx, i) => <li key={i}><a href={"#" + i}>{eachIdx}</a></li>)
             }
         </ol>
     </div>

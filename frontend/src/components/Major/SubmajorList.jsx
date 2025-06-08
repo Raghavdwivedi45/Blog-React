@@ -11,7 +11,7 @@ const SubmajorList = ({fullList}) => {
             fullList.map((submajor, idx) => {
                 return (
                     <div 
-                    className="each-submajor" 
+                    className="each-submajor" key={idx}
                     onClick={() => { setSubmajorIdx(idx) }}
                     >Chapter {idx+1} : {submajor.title}
                     </div>

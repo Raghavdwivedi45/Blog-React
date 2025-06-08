@@ -1,5 +1,5 @@
 import express from "express";
-import { createNewMajor, getAllMajors, deleteMajor, addSubmajor } from "../controllers/major.controller.js";
+import { createNewMajor, getAllMajors, deleteMajor, addSubmajor, like } from "../controllers/major.controller.js";
 import { isLoggedIn } from "../middlewares/middleware.js";
 
 const router = express.Router();
@@ -11,6 +11,8 @@ router.post("/", isLoggedIn, createNewMajor)
 router.delete("/:id", isLoggedIn, deleteMajor)
 
 router.post("/submajor/:id", isLoggedIn, addSubmajor)
+
+router.patch("/likes/:id", isLoggedIn, like)
 
 export default router;
 

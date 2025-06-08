@@ -9,17 +9,16 @@ export const getAllMajors = async () => {
 export const postSubmajor = async (id, submajor) => {
     try{
         const result = await axios.post(`http://localhost:8080/api/majors/submajor/${id}`, submajor, { withCredentials: true });
-        console.log(result + "Boomaaa");
         return result.data;
     } catch(err) {
         return {error: err.response.data.error};
     }
 }
 
-export const likeInc = async (id) => {
+export const likeInc = async (id, val) => {
     try{
-        const result = await axios.post(`http://localhost:8080/api/majors/likes/${id}`, { withCredentials: true });
-        console.log(result + "Boomaaa");
+        const result = await axios.patch(`http://localhost:8080/api/majors/likes/${id}`, {value:val}, { withCredentials: true });
+        console.log("Booma", result)
         return result.data;
     } catch(err) {
         return {error: err.response.data.error};

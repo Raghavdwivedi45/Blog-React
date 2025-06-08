@@ -10,7 +10,7 @@ const LikeBar = ({likeCnt}) => {
   const [totalLikes, setTotalLikes] = useState(likeCnt);
   const [clickedLike, setClickedLike] = useState(false);
   const [clickedComment, setClickedComment] = useState(false);
-  // const {majorInfo} = majorStore();
+  const {majorInfo} = majorStore();
   const {user} = navigateStore();
 
   const handleLikes = async () => {
@@ -22,11 +22,19 @@ const LikeBar = ({likeCnt}) => {
     }
     const curr = like.current.style.backgroundColor;
     like.current.style.backgroundColor= curr ? "" : "rgb(51, 150, 207)";
+    let likes = null;
 
-    if(!curr) setTotalLikes((totalLikes) => totalLikes+1);
-    else setTotalLikes((totalLikes) => totalLikes-1);
+    if(!curr) {
+      setTotalLikes((totalLikes) => totalLikes+1);
+      like.current.style.pointerEvents = 'none';
+      likes = await likeInc(majorInfo._id, 1)
+    }
+    else {
+      setTotalLikes((totalLikes) => totalLikes-1);
+      likes = await likeInc(majorInfo._id, -1)
+    }
 
-    // const likes = await likeInc(majorInfo._id)
+    console.log(likes);
   }
 
   const handleComment = async () => {

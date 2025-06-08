@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import ImageSchema from "./image.model.js";
 
 const authorSchema = new mongoose.Schema({
     name: {
