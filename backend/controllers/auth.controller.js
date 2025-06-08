@@ -37,7 +37,7 @@ export const handleSignup = async (req, res) => {
         }
 
         await newUser.save();
-        const result = tokenJWT({ userId: newUser._id });
+        const result = tokenJWT({ userId: newUser._id, type: signupType });
         if (result.error) return res.status(500).json({ error: "Token generation failed" });
 
         res.cookie("jwt", result, {
@@ -68,9 +68,10 @@ export const handleLogin = async (req, res) => {
         const isPassCorrect = await bcrypt.compare(password, user.password);
         if(!isPassCorrect) return res.status(400).json({ error: "Invalid credentials" });
 
-        const result = tokenJWT({userId: user._id});
+        const types = req.body.type ? "author" : "reader";
+        const result = tokenJWT({userId: user._id, type: types});
         if(result.error) res.status(401).json({error: "Error in JWT"});
-
+        
         res.cookie("jwt", result, {
             expires: new Date(Date.now() + 1*24*60*60*1000), // 1 day
             httpOnly: true,
@@ -111,3 +112,4 @@ export const getAllPosts = async (req, res) => {
     if(!posts) res.status(200).json({error : "Internal Error in finding posts"});
     res.status(200).json(posts);
 }
+

@@ -1,4 +1,5 @@
 import Post from "../models/post.model.js";
+import Reader from "../models/reader.model.js";
 import Author from "../models/author.model.js";
 import cloudinary from "../utils/cloudinary.js";
 import { validateDesc } from "../utils/helper.js";
@@ -87,12 +88,24 @@ export const like = async (req, res) => {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "Unauthorised for the action." });
 
-        const data = await Post.findByIdAndUpdate(id, 
-                    {$inc: { likes: req.body.value }}, 
-                    {new: true,  runValidators: true}) // run schema validators
+        const data = await Post.findByIdAndUpdate(id,
+            { $inc: { likes: req.body.value } },
+            { new: true, runValidators: true }) // run schema validators
 
         if (!data) return res.status(404).json({ error: "Post not found." });
 
+        const model = req.user.type === "author" ? Author : Reader;
+        const auth = await model.findById(req.user.userId);
+        if (!auth) return res.status(404).json({ error: "User not found." });
+
+
+        if (!auth.likes.some(item => item.toString() === id)) {
+            auth.likes.push(mongoose.Types.ObjectId.createFromHexString(id));
+        } else {
+            auth.likes = auth.likes.filter(item => item.toString() !== id);
+        }
+
+        await auth.save();
         return res.status(200).json({ success: "Successfully liked." });
     } catch (err) {
         console.log(err);

@@ -14,9 +14,9 @@ export const validateFormData = (formData, signupType) => {
 }
 
 
-export const tokenJWT = (userId) => {
+export const tokenJWT = (user) => {
     try {
-        const token = jwt.sign(userId, 
+        const token = jwt.sign(user, 
                       process.env.JWT_KEY, 
                       { expiresIn: '1d' } // expires in 1 day
         );  
@@ -28,7 +28,7 @@ export const tokenJWT = (userId) => {
 }
 
 
-export const isLoggedIn = (req, res) => {
+export const isLoggedIn1 = (req, res) => {
     if(!req.cookies["jwt"]) return res.status(501).json({error : "You must be logged in before this action"})
     const {token} = req.cookies["jwt"];
     

@@ -17,7 +17,12 @@ const readerSchema = new mongoose.Schema({
     password : {
         type: String,
         required: true
-    }
+    },
+    likes: [{
+        type: mongoose.ObjectId,
+        ref: "Post",
+        default: []
+    }]
 }, 
 { timestamps: true }
 );

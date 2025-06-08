@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const authorSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     img: {
         type: String,
@@ -24,14 +25,9 @@ const authorSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    majorLikes: [{
+    likes: [{
         type: mongoose.ObjectId,
-        ref: "majors",
-        default: []
-    }],
-    minorLikes: [{
-        type: mongoose.ObjectId,
-        ref: "minors",
+        ref: "Post",
         default: []
     }]
 }, 

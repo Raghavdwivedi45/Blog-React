@@ -15,8 +15,7 @@ const LikeBar = ({likeCnt}) => {
 
   const handleLikes = async () => {
     if(!user) {
-      setClickedComment(false)
-      setClickedLike(true);
+      setClickedComment(false); setClickedLike(true);
       setTimeout(() => setClickedLike(false), 3000); 
       return;
     }
@@ -31,10 +30,11 @@ const LikeBar = ({likeCnt}) => {
     }
     else {
       setTotalLikes((totalLikes) => totalLikes-1);
-      likes = await likeInc(majorInfo._id, -1)
+      likes = await likeInc(majorInfo._id, -1);
     }
 
-    console.log(likes);
+    if(result.error) console.log(result.error);
+
   }
 
   const handleComment = async () => {

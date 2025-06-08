@@ -16,3 +16,4 @@ export const deletePost = async (id, type) => {
     if(err) return {error: err};
     return result.data;
 }
+

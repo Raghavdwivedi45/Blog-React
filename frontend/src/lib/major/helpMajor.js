@@ -18,7 +18,6 @@ export const postSubmajor = async (id, submajor) => {
 export const likeInc = async (id, val) => {
     try{
         const result = await axios.patch(`http://localhost:8080/api/majors/likes/${id}`, {value:val}, { withCredentials: true });
-        console.log("Booma", result)
         return result.data;
     } catch(err) {
         return {error: err.response.data.error};

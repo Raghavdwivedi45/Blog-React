@@ -13,6 +13,7 @@ const PostAuthor = ({aut}) => {
     name : "Jane Doe",
     img: "../assets/hero1.png"
   }
+  
   return (
     <div className="post-auth-container" >
       
