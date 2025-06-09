@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import ImageSchema from "./image.model.js";
 
 const readerSchema = new mongoose.Schema({
     name: {
@@ -21,6 +20,11 @@ const readerSchema = new mongoose.Schema({
     likes: [{
         type: mongoose.ObjectId,
         ref: "Post",
+        default: []
+    }],
+    comments: [{
+        type: mongoose.ObjectId,
+        ref: "Comment",
         default: []
     }]
 }, 

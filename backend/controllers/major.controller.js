@@ -1,6 +1,7 @@
 import Post from "../models/post.model.js";
 import Reader from "../models/reader.model.js";
 import Author from "../models/author.model.js";
+import Comment from "../models/comment.model.js";
 import cloudinary from "../utils/cloudinary.js";
 import { validateDesc } from "../utils/helper.js";
 import mongoose from "mongoose";
@@ -39,8 +40,6 @@ export const createNewMajor = async (req, res) => {
         res.status(401).json({ error: err.message || "Server Error in Major" });
     }
 }
-
-
 
 export const deleteMajor = async (req, res) => {
     try {
@@ -82,7 +81,6 @@ export const addSubmajor = async (req, res) => {
     }
 }
 
-
 export const like = async (req, res) => {
     try {
         const { id } = req.params;
@@ -108,7 +106,38 @@ export const like = async (req, res) => {
         await auth.save();
         return res.status(200).json({ success: "Successfully liked." });
     } catch (err) {
-        console.log(err);
+        return res.status(500).json({ error: err.message || "Server Error" });
+    }
+}
+
+export const postComment = async (req, res) => {
+    try {
+        const { id} = req.params; //majorId
+        const { msg } = req.body;
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "Unauthorised for the action." });
+        if(!msg || msg.length==0) return res.status(400).json({ error: "Invalid comment." });
+
+        const data = await Post.findById(id);
+        if (!data) return res.status(404).json({ error: "Post not found." });
+
+        const model = req.user.type === "author" ? Author : Reader;
+        const auth = await model.findById(req.user.userId);
+        if (!auth) return res.status(404).json({ error: "User not found." });
+
+        auth.comments.push(mongoose.Types.ObjectId.createFromHexString(id));
+
+        const myComment = new Comment({
+            writer : req.user.userId,
+            writerType : model == Author ? "Author" : "Reader",
+            body : msg,
+            parentId : mongoose.Types.ObjectId.createFromHexString(id)
+        })
+
+        await auth.save();
+        await myComment.save();
+
+        return res.status(200).json({ success: "Comment saved.." });
+    } catch (err) {
         return res.status(500).json({ error: err.message || "Server Error" });
     }
 }

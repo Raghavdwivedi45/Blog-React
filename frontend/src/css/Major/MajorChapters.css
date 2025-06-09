@@ -59,3 +59,13 @@
     width: 2rem;
     transform: rotate(180deg);
 }
+
+.comment-section-container {
+    margin: 8rem auto 0;
+    width: 85vw;
+}
+
+.comment-post-container {
+    margin: 3rem auto 0;
+    width: 85vw;
+}

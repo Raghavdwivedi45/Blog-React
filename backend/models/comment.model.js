@@ -5,18 +5,17 @@ const CommentSchema = new Schema({
     writer : {
         type: Schema.Types.ObjectId,
         refPath: "writerType",
+        required: true
     },
     writerType: {
         type: String,
         required: true,
-        enum: ['authors', 'readers'], // Restrict to only these models
+        enum: ['Author', 'Reader'], // Restrict to only these models
     },
-
     body: {
         type: String,
         required: true
     },
-
     parentId : {
         type: Schema.Types.ObjectId,
         refPath: "posts",
@@ -25,4 +24,6 @@ const CommentSchema = new Schema({
 }, { timestamps: true }
 );
 
-export default CommentSchema;
+const Comment = mongoose.model("Comment", CommentSchema);
+
+export default Comment;

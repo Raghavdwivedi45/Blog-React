@@ -3,22 +3,14 @@
 
 :root {
   /*Color mode HSL(hue, saturation, lightness)*/
-  --white-color: #fff;
-  --black-color: hsl(357, 81%, 35%);
-  --body-color: hsl(355, 100%, 21%);
-  --container-color: hsl(210, 24%, 8%);
   --body-font: "Poppins", sans-serif;
-  --h2-font-size: 1.25rem;
-  --normal-font-size: .938rem;
-}
-@media screen and (min-width: 1024px) {
-  :root {
-    --h2-font-size: 1.5rem;
-    --normal-font-size: 1rem;
-  }
 }
 
-.card__container{
+@media screen and (min-width: 1024px) {
+
+}
+
+.card__container {
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 2rem;
@@ -35,13 +27,14 @@
   --hue-2: 238;
   position: relative;
   justify-items: center;
-  color: var(--white-color);
+  color: white;
   text-align: center;
   border-radius: 1.25rem;
-  height: 25rem;
+  height: 24rem;
   overflow: hidden;
   transition: 0.2s box-shadow ease-in;
-  width: 20rem;
+  background: linear-gradient(60deg, rgb(187, 65, 17) 0%, hwb(27 2% 37%), #a18507 100%);
+  width: 22rem;
 }
 
 .card__article:hover {
@@ -52,21 +45,28 @@
   z-index: 3;
   position: absolute;
   height: 18rem;
-  background: linear-gradient(60deg, rgb(187, 65, 17) 0%, hwb(27 2% 37%) , #a18507 100%);
+  background: linear-gradient(60deg, rgb(187, 65, 17) 0%, hwb(27 2% 37%), #a18507 100%);
   color: rgb(0, 0, 0);
   align-content: end;
   padding: 1rem;
   bottom: -13rem;
   transition: 0.3s bottom linear;
   overflow: hidden;
+
+  color: #212121;
+  width: 320px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(to bottom, #ffe082, #ffb300);
+  font-family: 'Poppins', sans-serif;
 }
 
 
-.card__data:hover .card-up-icon {
+.card__article:hover .card-up-icon {
   bottom: 8rem;
 }
 
-.card__data:hover .card-text {
+.card__article:hover .card-text {
   bottom: 4rem;
   height: 17rem;
 }
@@ -90,8 +90,8 @@
 }
 
 .card__title {
+  margin: 0 0 0.5rem;
   font-size: 1.3rem;
-  margin-bottom: 0.25rem;
   font-weight: 600;
   text-align: center;
 }
@@ -100,20 +100,27 @@
   margin-bottom: 1rem;
   height: 55%;
   overflow: hidden;
+  font-size: 0.95rem;
+  line-height: 1.6;
   text-align: justify;
-  word-spacing: 3px;
 }
 
 .card__button {
-  display: inline-block;
-  background-color: var(--white-color);
-  padding: 1rem 1.5rem;
-  border-radius: 0.5rem;
-  color: var(--black-color);
-  font-weight: 500;
-  width: 50%;
-  margin-top: 1.5rem;
+  display: block;
+  padding: 0.8rem;
+  background-color: #fff;
+  color: #d32f2f;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 2.5rem auto 0;
+}
+
+.card__button:hover {
+  background-color: #d32f2f;
+  color: white;
 }
 
 .card-up-icon {
@@ -152,6 +159,7 @@
     grid-template-columns: 328px;
   }
 }
+
 @media screen and (min-width: 768px) {
   .card__container {
     grid-template-columns: repeat(2, 328px);
@@ -163,6 +171,7 @@
   .card__container {
     grid-template-columns: repeat(3, 345px);
   }
+
   .card__article {
     padding: 0 0 3.5rem;
   }

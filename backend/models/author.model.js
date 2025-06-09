@@ -29,6 +29,11 @@ const authorSchema = new mongoose.Schema({
         type: mongoose.ObjectId,
         ref: "Post",
         default: []
+    }],
+    comments: [{
+        type: mongoose.ObjectId,
+        ref: "Comment",
+        default: []
     }]
 }, 
 { timestamps: true }

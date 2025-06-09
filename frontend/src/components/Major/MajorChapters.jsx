@@ -3,6 +3,8 @@ import LikeBar from "./LikeBar.jsx";
 import SubmajorList from "./SubmajorList.jsx";
 import { majorStore } from "../../store/majorStore";
 import { navigateStore } from "../../store/navigateStore.js";
+import Comment from "../Comments/Comment.jsx";
+import PostedComments from "../Comments/PostedComments.jsx";
 
 const MajorChapters = () => {
 
@@ -31,6 +33,14 @@ const MajorChapters = () => {
       
       <div className="major-chap-chapters">
         <SubmajorList fullList={majorInfo.submajor}/>
+      </div>
+
+      <div class="comment-section-container">
+        <Comment mjrId={majorInfo._id}/>
+      </div>
+
+      <div class="comment-post-container">
+        <PostedComments/>
       </div>
     
     </div>

@@ -23,3 +23,12 @@ export const likeInc = async (id, val) => {
         return {error: err.response.data.error};
     }
 }
+
+export const postComment = async (id, msg) => {
+    try{
+        const result = await axios.patch(`http://localhost:8080/api/majors/comments/${id}`, {msg}, { withCredentials: true });
+        return result.data;
+    } catch(err) {
+        return err.response.data;
+    }
+}
