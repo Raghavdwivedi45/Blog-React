@@ -13,7 +13,6 @@ const UserSignup = () => {
       email : signupType!=="login" ? formData.get("email") : null,
       dob: signupType=="author" ? formData.get("dob") : null,
       description: signupType=="author" ? formData.get("description") : null,
-      img : "../../assets/demoAuthor.jpg",
       type: formData.get("type")
     }
     let err = validateFormData(myData, signupType);
@@ -30,12 +29,11 @@ const UserSignup = () => {
       setTimeout(() => {setFormError(null)}, 3000); 
       return; 
     } 
-    
-    setUser(res._id); changePage("home");
+    setUser(res._id); setLikes(res.likes); changePage("home");
   }
 
   const {signupType, changeSignupType} = selectPageStore();
-  const {user, setUser, changePage } = navigateStore();
+  const {user, setUser, setLikes, changePage } = navigateStore();
   const [data, action, pending] = useActionState(handleFormSubmit, undefined);
   const [formError, setFormError] = useState(null);
 

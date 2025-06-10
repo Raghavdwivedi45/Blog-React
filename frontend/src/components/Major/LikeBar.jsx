@@ -4,17 +4,16 @@ import { likeInc } from "../../lib/major/helpMajor";
 import { majorStore } from "../../store/majorStore";
 import { navigateStore } from "../../store/navigateStore";
 
-const LikeBar = ({likeCnt}) => {
+const LikeBar = ({likeCnt, users}) => {
 
   const like = useRef();
   const [totalLikes, setTotalLikes] = useState(likeCnt);
   const [clickedLike, setClickedLike] = useState(false);
   const [clickedComment, setClickedComment] = useState(false);
   const {majorInfo} = majorStore();
-  const {user} = navigateStore();
 
   const handleLikes = async () => {
-    if(!user) {
+    if(!users) {
       setClickedComment(false); setClickedLike(true);
       setTimeout(() => setClickedLike(false), 3000); 
       return;
@@ -38,7 +37,7 @@ const LikeBar = ({likeCnt}) => {
   }
 
   const handleComment = async () => {
-    if(!user) {
+    if(!users) {
       setClickedLike(false)
       setClickedComment(true);
       setTimeout(() => setClickedComment(false), 3000); 

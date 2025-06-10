@@ -2,10 +2,9 @@ import axios from 'axios';
 
 export const handleSignupLoginFormSubmit = async (signupType, formData) => {
     try{
-        let endpoint = signupType=="login" ? "login" : signupType=="user" ? "/reader/signup" : "/author/signup";
-        if(endpoint=="login") endpoint = formData.type ? "/author/login" : "/reader/login";
+        let endpoint = signupType=="login" ? "login" : "signup";
 
-        const result = await axios.post(`http://localhost:8080/api/auth${endpoint}`, 
+        const result = await axios.post(`http://localhost:8080/api/auth/${endpoint}`, 
             formData, 
             { withCredentials: true }
         );

@@ -7,7 +7,8 @@ const readerSchema = new mongoose.Schema({
     },
     img: {
         type: String,
-        default: "../assets/avatar.jpg"
+        default: "../../assets/demoAuthor.jpg",
+
     },
     email: {
         type: String,
@@ -22,11 +23,6 @@ const readerSchema = new mongoose.Schema({
         ref: "Post",
         default: []
     }],
-    comments: [{
-        type: mongoose.ObjectId,
-        ref: "Comment",
-        default: []
-    }]
 }, 
 { timestamps: true }
 );

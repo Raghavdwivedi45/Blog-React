@@ -9,5 +9,7 @@ export const navigateStore = create((set) => ({
     page: state.page.slice(0, -1)  // remove last element
     })),
     user: null,
-    setUser: (id) => set({ user: id })
+    setUser: (id) => set({ user: id }),
+    likes: null,
+    setLikes: (arr) => set({ likes: arr }),
 }))

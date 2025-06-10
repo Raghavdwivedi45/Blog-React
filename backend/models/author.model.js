@@ -8,7 +8,7 @@ const authorSchema = new mongoose.Schema({
     },
     img: {
         type: String,
-        default: "../assets/avatar.jpg"
+        default: "../../assets/demoAuthor.jpg"
     },
     description: {
         type: String,
@@ -28,11 +28,6 @@ const authorSchema = new mongoose.Schema({
     likes: [{
         type: mongoose.ObjectId,
         ref: "Post",
-        default: []
-    }],
-    comments: [{
-        type: mongoose.ObjectId,
-        ref: "Comment",
         default: []
     }]
 }, 

@@ -1,15 +1,11 @@
 import express from "express";
 import { handleSignup, handleLogin, handleLogout, getAllAuthors, getAllPosts, } from "../controllers/auth.controller.js";
 import { isLoggedIn1 } from "../utils/helper.js";
-import { isLoggedIn } from "../middlewares/middleware.js";
 
 const router = express.Router();
 
-router.post("/reader/signup", handleSignup);
-router.post("/author/signup", handleSignup);
-
-router.post("/reader/login", handleLogin);
-router.post("/author/login", handleLogin);
+router.post("/signup", handleSignup);
+router.post("/login", handleLogin);
 
 router.get("/isLoggedIn", isLoggedIn1);
 

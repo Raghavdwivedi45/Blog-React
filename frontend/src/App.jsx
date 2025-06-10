@@ -14,15 +14,19 @@ import NewSubmajor from './components/NewSubmajor.jsx'
 
 
 function App() {  
-  const { page, setUser } = navigateStore();
+  const { page, setUser, setLikes } = navigateStore();
 
 
   useEffect(() => {
   const fetchData = async () => {
     try {
       const res = await checkLogin();
-      if (!res.error) setUser(res.data.userId);
+      if (!res.error) {
+        setUser(res.data.userId);
+        setLikes(res.data.likes)
+      }
     } catch (err) {
+      console.log("App.jsx", err)
     }
   };
   fetchData();

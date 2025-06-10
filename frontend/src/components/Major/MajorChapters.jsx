@@ -5,11 +5,21 @@ import { majorStore } from "../../store/majorStore";
 import { navigateStore } from "../../store/navigateStore.js";
 import Comment from "../Comments/Comment.jsx";
 import PostedComments from "../Comments/PostedComments.jsx";
+import { useEffect } from "react";
+import { isLikedAndCommented } from "../../lib/major/helpMajor.js";
 
 const MajorChapters = () => {
 
   const { majorInfo, setMajorInfo } = majorStore();
-  const {popPage} = navigateStore();
+  const {popPage, user, likes} = navigateStore();
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      const res = isLikedAndCommented(user || "ABCD", majorInfo._id);
+      console.log(likes);
+    }
+    if(user) fetchComments();
+  }, [])
 
   return (
     <div className="major-chap-container">
@@ -24,7 +34,7 @@ const MajorChapters = () => {
           <h1>{majorInfo.title}</h1>
           <h2>{majorInfo.author.name}</h2>
           <div className="major-chap-info-description">{majorInfo.description.substring(0,930)}...</div>
-          <LikeBar likeCnt={majorInfo.likes}/>
+          <LikeBar likeCnt={majorInfo.likes} users={user}/>
         </div>
       
       </div>

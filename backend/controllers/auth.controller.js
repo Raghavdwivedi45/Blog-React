@@ -57,7 +57,6 @@ export const handleSignup = async (req, res) => {
     }
 };
 
-
 export const handleLogin = async (req, res) => {
     const{ name, password } = req.body;
     try {
@@ -67,9 +66,9 @@ export const handleLogin = async (req, res) => {
 
         const isPassCorrect = await bcrypt.compare(password, user.password);
         if(!isPassCorrect) return res.status(400).json({ error: "Invalid credentials" });
-
+        
         const types = req.body.type ? "author" : "reader";
-        const result = tokenJWT({userId: user._id, type: types});
+        const result = tokenJWT({userId: user._id, type: types, likes: user.likes});
         if(result.error) res.status(401).json({error: "Error in JWT"});
         
         res.cookie("jwt", result, {
@@ -81,13 +80,12 @@ export const handleLogin = async (req, res) => {
 
         res.status(200).json({ 
             _id: user._id,
-            success : "Logged in successfully" 
+            likes: user.likes,
         });
     } catch(err) {
         res.status(500).json({ error: err.message });
     }
 }
-
 
 export const handleLogout = (req, res) => {
     try{

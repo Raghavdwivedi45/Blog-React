@@ -32,3 +32,14 @@ export const postComment = async (id, msg) => {
         return err.response.data;
     }
 }
+
+export const isLikedAndCommented = async (userId, majorId) => {
+    try{
+        const result = await axios.get(`http://localhost:8080/api/majors/like/comment/${userId}/${majorId}`, { withCredentials: true });
+        console.log(result)
+        return result.data;
+    } catch(err) {
+        console.log("Boomerr", err)
+        return err.response.data;
+    }
+}
