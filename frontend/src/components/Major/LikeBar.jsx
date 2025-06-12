@@ -9,12 +9,11 @@ const LikeBar = ({likeCnt, users}) => {
   const like = useRef();
   const [totalLikes, setTotalLikes] = useState(likeCnt);
   const [clickedLike, setClickedLike] = useState(false);
-  const [clickedComment, setClickedComment] = useState(false);
   const {majorInfo} = majorStore();
 
   const handleLikes = async () => {
     if(!users) {
-      setClickedComment(false); setClickedLike(true);
+      setClickedLike(true);
       setTimeout(() => setClickedLike(false), 3000); 
       return;
     }
@@ -36,15 +35,6 @@ const LikeBar = ({likeCnt, users}) => {
 
   }
 
-  const handleComment = async () => {
-    if(!users) {
-      setClickedLike(false)
-      setClickedComment(true);
-      setTimeout(() => setClickedComment(false), 3000); 
-      return;
-    }
-  }
-
   return (
     <div className="like-bar-container">
         
@@ -53,9 +43,11 @@ const LikeBar = ({likeCnt, users}) => {
             <div>&nbsp;{totalLikes}</div>     
         </div>
 
-        <div className={clickedComment ? "like-bar-container-r show-msg" : "like-bar-container-r"} onClick={handleComment}>
-            <img src="../assets/comment.png" alt="" />
-        </div>
+        <a href="#comments">
+          <div className="like-bar-container-r">
+              <img src="../assets/comment.png" alt="" />
+          </div>
+        </a>
         
     </div>
   )

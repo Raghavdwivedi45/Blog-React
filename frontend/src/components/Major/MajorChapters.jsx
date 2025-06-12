@@ -12,6 +12,7 @@ const MajorChapters = () => {
 
   const { majorInfo, setMajorInfo } = majorStore();
   const {popPage, user, likes} = navigateStore();
+  
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -45,7 +46,7 @@ const MajorChapters = () => {
         <SubmajorList fullList={majorInfo.submajor}/>
       </div>
 
-      <div class="comment-section-container">
+      <div class="comment-section-container" id="comments">
         <Comment mjrId={majorInfo._id}/>
       </div>
 

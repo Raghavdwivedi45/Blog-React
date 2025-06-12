@@ -3,6 +3,7 @@
     height: fit-content;
 }
 
+
 .major-chap-info {
     display: flex;
     flex-wrap: nowrap;
@@ -68,4 +69,8 @@
 .comment-post-container {
     margin: 3rem auto 0;
     width: 85vw;
+}
+
+#comments {
+  scroll-margin-top: 200px; /* Push down from top */
 }
