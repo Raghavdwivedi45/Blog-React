@@ -14,7 +14,7 @@ router.post("/submajor/:id", isLoggedIn, addSubmajor)
 
 router.patch("/likes/:id", isLoggedIn, like)
 router.patch("/comments/:id", isLoggedIn, postComment)
-router.get("/like/comment/:userId/:majorId", isLoggedIn, isLikeComment)
+router.get("/comment/:majorId", isLikeComment)
 
 export default router;
 

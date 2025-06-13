@@ -1,15 +1,12 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import "../../css/Major/LikeBar.css"
 import { likeInc } from "../../lib/major/helpMajor";
-import { majorStore } from "../../store/majorStore";
-import { navigateStore } from "../../store/navigateStore";
 
-const LikeBar = ({likeCnt, users}) => {
+const LikeBar = ({likeCnt, users, likeIds, majorId}) => {
 
   const like = useRef();
   const [totalLikes, setTotalLikes] = useState(likeCnt);
   const [clickedLike, setClickedLike] = useState(false);
-  const {majorInfo} = majorStore();
 
   const handleLikes = async () => {
     if(!users) {
@@ -24,16 +21,22 @@ const LikeBar = ({likeCnt, users}) => {
     if(!curr) {
       setTotalLikes((totalLikes) => totalLikes+1);
       like.current.style.pointerEvents = 'none';
-      likes = await likeInc(majorInfo._id, 1)
+      likes = await likeInc(majorId, 1)
     }
     else {
       setTotalLikes((totalLikes) => totalLikes-1);
-      likes = await likeInc(majorInfo._id, -1);
+      likes = await likeInc(majorId, -1);
     }
 
     if(result.error) console.log(result.error);
-
   }
+
+  useEffect(() => {
+    if(likeIds && likeIds.includes(majorId)) {
+      like.current.style.pointerEvents = 'none';
+      like.current.style.backgroundColor= "rgb(51, 150, 207)";
+    }
+  }, [])
 
   return (
     <div className="like-bar-container">

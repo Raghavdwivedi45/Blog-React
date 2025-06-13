@@ -26,6 +26,8 @@
   color: #e6e6e6;
   font-size: 1rem;
   margin: 0 0 6px 0;
+  max-height: 5rem;
+  overflow: scroll;
 }
 
 .comment-post-meta {
@@ -36,4 +38,37 @@
 .all-comments-show {
   max-height: 30rem;
   overflow: scroll;
+  padding: 1rem;
+}
+
+
+.my-post {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #2a2a2a;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(250, 158, 158, 0.5);
+  overflow: hidden;
+}
+
+.my-post-l {
+  flex: 1;
+  padding: 1rem;
+}
+
+.my-post-r {
+  border: none;
+  background-color: rgb(230, 99, 121);
+  cursor: pointer;
+  transition: 200ms all linear;
+  padding: 0rem 1rem;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-post-r:hover {
+  background-color: red;
 }

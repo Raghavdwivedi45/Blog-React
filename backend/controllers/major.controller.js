@@ -144,17 +144,11 @@ export const postComment = async (req, res) => {
 
 export const isLikeComment = async (req, res) => {
     try {
-        const { userId, majorId } = req.params; 
-
-        if (!mongoose.Types.ObjectId.isValid(majorId)) 
-        return res.status(400).json({ error: "Invalid request." });
+        const { majorId } = req.params; 
+        if (!mongoose.Types.ObjectId.isValid(majorId)) return res.status(400).json({ error: "Post not found." });
 
         const allComment = await Comment.find({parentId: majorId}).populate({ path: 'writer', select: 'name' });
-
-        const myComment = allComment.filter((comment) => comment.writer._id==userId)
-        const otherComments = allComment.filter((comment) => comment.writer._id!=userId)
-
-        return res.status(200).json({ myComment, otherComments });
+        return res.status(200).json(allComment);
     } catch (err) {
         return res.status(500).json({ error: err.message || "Server Error" });
     }

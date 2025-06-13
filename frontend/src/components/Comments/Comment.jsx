@@ -15,7 +15,7 @@ const Comment = ({mjrId}) => {
 
     return (
         <>
-            <div class="comment-section">
+            <div className="comment-section">
                 <h3>Leave a Comment</h3>
                 <textarea placeholder="Write your thoughts here..." ref={comment}></textarea>
                 <button onClick={handlePostComment}>Post Comment</button>

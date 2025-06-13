@@ -5,21 +5,27 @@ import { majorStore } from "../../store/majorStore";
 import { navigateStore } from "../../store/navigateStore.js";
 import Comment from "../Comments/Comment.jsx";
 import PostedComments from "../Comments/PostedComments.jsx";
-import { useEffect } from "react";
-import { isLikedAndCommented } from "../../lib/major/helpMajor.js";
+import { useEffect, useState } from "react";
+import { isCommented } from "../../lib/major/helpMajor.js";
 
 const MajorChapters = () => {
 
   const { majorInfo, setMajorInfo } = majorStore();
   const {popPage, user, likes} = navigateStore();
-  
+  const [myComment, setMyComment] = useState([]);
+  const [otherComments, setOtherComments] = useState([]);
+  console.log(likes)
 
   useEffect(() => {
     const fetchComments = async () => {
-      const res = isLikedAndCommented(user || "ABCD", majorInfo._id);
-      console.log(likes);
+      const res = await isCommented(majorInfo._id);
+      const myCommentArr = res.filter((comment) => comment.writer._id == user);
+      const otherCommentArr = res.filter((comment) => comment.writer._id !== user);
+
+      setMyComment([...myCommentArr])
+      setOtherComments([...otherCommentArr])
     }
-    if(user) fetchComments();
+    fetchComments();
   }, [])
 
   return (
@@ -35,7 +41,7 @@ const MajorChapters = () => {
           <h1>{majorInfo.title}</h1>
           <h2>{majorInfo.author.name}</h2>
           <div className="major-chap-info-description">{majorInfo.description.substring(0,930)}...</div>
-          <LikeBar likeCnt={majorInfo.likes} users={user}/>
+          <LikeBar likeIds={likes} likeCnt={majorInfo.likes} users={user} majorId={majorInfo._id}/>
         </div>
       
       </div>
@@ -46,12 +52,14 @@ const MajorChapters = () => {
         <SubmajorList fullList={majorInfo.submajor}/>
       </div>
 
-      <div class="comment-section-container" id="comments">
+      {
+        myComment.length==0 &&
+        <div className="comment-section-container" id="comments">
         <Comment mjrId={majorInfo._id}/>
-      </div>
+      </div>}
 
-      <div class="comment-post-container">
-        <PostedComments/>
+      <div className="comment-post-container">
+        <PostedComments myComment={myComment} otherComments={otherComments}/>
       </div>
     
     </div>

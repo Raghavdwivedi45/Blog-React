@@ -23,7 +23,7 @@ function App() {
       const res = await checkLogin();
       if (!res.error) {
         setUser(res.data.userId);
-        setLikes(res.data.likes)
+        setLikes([...res.data.likes])
       }
     } catch (err) {
       console.log("App.jsx", err)
