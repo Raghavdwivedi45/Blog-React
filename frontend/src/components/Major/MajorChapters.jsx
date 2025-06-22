@@ -14,7 +14,6 @@ const MajorChapters = () => {
   const {popPage, user, likes} = navigateStore();
   const [myComment, setMyComment] = useState([]);
   const [otherComments, setOtherComments] = useState([]);
-  console.log(likes)
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -55,11 +54,12 @@ const MajorChapters = () => {
       {
         myComment.length==0 &&
         <div className="comment-section-container" id="comments">
-        <Comment mjrId={majorInfo._id}/>
-      </div>}
+          <Comment mjrId={majorInfo._id}/>
+        </div>
+      }
 
       <div className="comment-post-container">
-        <PostedComments myComment={myComment} otherComments={otherComments}/>
+        <PostedComments deleteStateMyComment={setMyComment} myComment={myComment} otherComments={otherComments}/>
       </div>
     
     </div>

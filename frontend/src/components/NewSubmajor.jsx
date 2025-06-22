@@ -24,7 +24,7 @@ const NewSubmajor = () => {
     const addTag = (str) => {
         setFormData((formData) => ({
             ...formData,
-            "description": formData.description + " " + str
+            "description": formData.description + str
         }));
     };
 

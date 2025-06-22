@@ -153,3 +153,16 @@ export const isLikeComment = async (req, res) => {
         return res.status(500).json({ error: err.message || "Server Error" });
     }
 }
+
+export const deleteComment = async (req, res) => {
+    try {
+        const { majorId } = req.params; 
+        if (!mongoose.Types.ObjectId.isValid(majorId)) return res.status(400).json({ error: "Comment not found." });
+        await Comment.findByIdAndDelete(majorId);
+        
+        res.status(200).json({ success : "Comment Deleted" }) 
+    }
+    catch (err) {
+        return res.status(500).json({ error: err.message || "Server Error" });
+    }
+}

@@ -1,6 +1,13 @@
+import { useRef } from "react";
 import "../../css/PostedComments.css"
+import { deleteMyComment } from "../../lib/major/helpMajor";
 
-const PostedComments = ({ myComment, otherComments }) => {
+const PostedComments = ({ myComment, otherComments, deleteStateMyComment }) => {
+
+    const deleteComment = async () => {
+        deleteStateMyComment([])
+        await deleteMyComment(myComment[0]._id);
+    }
 
     function formatPrettyDate(dateStr) {
         const date = new Date(dateStr);
@@ -20,24 +27,26 @@ const PostedComments = ({ myComment, otherComments }) => {
                     
                     {
                     myComment.length>0 && 
-                    <div class="my-post">
+                    <div className="my-post">
                         <div className="my-post-l">
-                            <p class="comment-post-text">{myComment[0].body}</p>
-                            <span class="comment-post-meta">Posted by @{myComment[0].writer.name} {myComment[0].writerType === "Author" && <span>★</span>} • {formatPrettyDate(myComment[0].createdAt)}</span>
+                            <p className="comment-post-text">{myComment[0].body}</p>
+                            <span className="comment-post-meta">Posted by @{myComment[0].writer.name} {myComment[0].writerType === "Author" && <span>★</span>} • {formatPrettyDate(myComment[0].createdAt)}</span>
                         </div>
 
-                        <div className="my-post-r">Delete</div>
-                    </div>}
+                        <div className="my-post-r" onClick={deleteComment}>Delete</div>
+                    </div>
+                    }
 
                     {
                         otherComments.map((el, i) => {
                             return (
-                                <div key={i} class="comment-post">
-                                    <p class="comment-post-text">{el.body}</p>
-                                    <span class="comment-post-meta">Posted by @{el.writer.name} {el.writerType === "Author" && <span>★</span>} • {formatPrettyDate(el.createdAt)}</span>
+                                <div key={i} className="comment-post">
+                                    <p className="comment-post-text">{el.body}</p>
+                                    <span className="comment-post-meta">Posted by @{el.writer.name} {el.writerType === "Author" && <span>★</span>} • {formatPrettyDate(el.createdAt)}</span>
                                 </div>
                             )
-                        })}
+                        })
+                    }
                 </div>
 
             </div>
