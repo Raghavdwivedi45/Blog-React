@@ -15,25 +15,25 @@ export const getAllMajors = async (req, res) => {
 export const createNewMajor = async (req, res) => {
     try {
         let { title, author, description, img } = req.body;
+        if (description.length<1000) return res.status(501).json({error : "Description is shorter than 1000 characters"});
+        const postType = req.originalUrl.substring(5)==="minors" ? "Minor" : "Major";
 
         const existsAuthor = Author.findById(author);
         if (!existsAuthor) return res.status(401).send({ error: "No such author exists" });
         if (req.user?.userId !== author) return res.status(401).send({ error: "Only legitimate authors can write" });
 
-        const validate = validateDesc({ description });
-        if (validate.error) return res.status(501).json(validate);
-        const uploadResponse = await cloudinary.uploader.upload(img);
 
-        const major = new Post({
+        const uploadResponse = await cloudinary.uploader.upload(img);
+        const post = new Post({
             title,
             author,
-            description: description.substring(0, 1200),
+            description: description.substring(0, 1300),
             img: uploadResponse.secure_url,
-            type: "Major",
+            type: postType,
             submajor: []
         })
 
-        await major.save();
+        await post.save();
         return res.status(201).json({ success: "Created New Listing" });
     }
     catch (err) {

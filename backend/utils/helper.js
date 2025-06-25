@@ -38,6 +38,6 @@ export const isLoggedIn1 = (req, res) => {
 
 export const validateDesc = ({description}) => {
     const wordCount = description.trim().split(/\s+/).length;
-    if(wordCount>250) return {error: "Description should be smaller than 250 words"};
+    if(wordCount>250 || wordCount<150) return {error: "Description should be between 150 and 250 words"};
     return {success: "Validated Successfully"}
 } 
