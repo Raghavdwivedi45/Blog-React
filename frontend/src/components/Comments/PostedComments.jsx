@@ -20,7 +20,7 @@ const PostedComments = ({ myComment, otherComments, deleteStateMyComment }) => {
 
     return (
         <>
-            <div key={0} class="comments-post-display">
+            <div key={0} className="comments-post-display">
                 <h3>Comments</h3>
                 
                 <div className="all-comments-show">

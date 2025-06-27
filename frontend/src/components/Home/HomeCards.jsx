@@ -1,11 +1,10 @@
+import { Link } from "react-router-dom";
 import "../../css/Home/HomeCards.css";
 import { majorStore } from "../../store/majorStore.js";
-import { navigateStore } from "../../store/navigateStore.js";
 
-const HomeCards = ({info}) => {
+const HomeCards = ({info, typeLink}) => {
 
    const { setMajorInfo } = majorStore();
-   const { changePage } = navigateStore();
 
   return (
          <div className="card__container">
@@ -32,9 +31,10 @@ const HomeCards = ({info}) => {
                                  {post.description}
                               </div>
 
-                              <div className="card__button" onClick={() => {changePage("majors"); setMajorInfo(post)}}>
+                              <Link to={"/" + typeLink + "/" + post._id} 
+                                 className="card__button" onClick={() => {setMajorInfo(post)}}>
                                  Continue learning
-                              </div>
+                              </Link>
                            </div>
                         
                         </div>

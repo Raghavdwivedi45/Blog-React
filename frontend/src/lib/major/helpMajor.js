@@ -42,6 +42,16 @@ export const isCommented = async (majorId) => {
     }
 }
 
+export const MyMajorInfo = async (majorId) => {
+    try{
+        if(!majorId || majorId==="undefined") return;
+        const result = await axios.get(`http://localhost:8080/api/majors/${majorId}`, { withCredentials: true });
+        return result.data;
+    } catch(err) {
+        return err.response.data;
+    }
+}
+
 export const deleteMyComment = async (majorId) => {
         axios.delete(`http://localhost:8080/api/majors/comment/${majorId}`, { withCredentials: true })
         .then((res) => { console.log(res.data) })

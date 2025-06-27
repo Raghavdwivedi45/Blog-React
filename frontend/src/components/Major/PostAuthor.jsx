@@ -11,14 +11,14 @@ const PostAuthor = ({aut}) => {
 
   const author = {
     name : "Jane Doe",
-    img: "../assets/hero1.png"
+    img: "../../assets/hero1.png"
   }
   
   return (
     <div className="post-auth-container" >
       
       <div className="post-auth-appearance">
-        <img src="../assets/theme.png" alt="" className="post-auth-appearance-img" />
+        <img src="../../assets/theme.png" alt="" className="post-auth-appearance-img" />
       </div>
       
       <div className="post-auth-2">

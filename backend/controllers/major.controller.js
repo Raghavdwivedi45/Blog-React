@@ -12,6 +12,13 @@ export const getAllMajors = async (req, res) => {
     res.status(200).json(majors);
 }
 
+export const getMyMajor = async (req, res) => {
+    const {id} = req.params;
+    const major = await Post.findById(id).populate({ path: 'author', select: 'name' });
+    if (!major) res.status(400).json({ error: "No major with given id found" });
+    res.status(200).json(major);
+}
+
 export const createNewMajor = async (req, res) => {
     try {
         let { title, author, description, img } = req.body;
@@ -142,7 +149,7 @@ export const postComment = async (req, res) => {
     }
 }
 
-export const isLikeComment = async (req, res) => {
+export const getComment = async (req, res) => {
     try {
         const { majorId } = req.params; 
         if (!mongoose.Types.ObjectId.isValid(majorId)) return res.status(400).json({ error: "Post not found." });

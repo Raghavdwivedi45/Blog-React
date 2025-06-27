@@ -6,26 +6,41 @@ import { navigateStore } from "../../store/navigateStore.js";
 import Comment from "../Comments/Comment.jsx";
 import PostedComments from "../Comments/PostedComments.jsx";
 import { useEffect, useState } from "react";
-import { isCommented } from "../../lib/major/helpMajor.js";
+import { isCommented, MyMajorInfo } from "../../lib/major/helpMajor.js";
+import { useParams } from "react-router-dom";
+import Major from "./Major.jsx";
 
 const MajorChapters = () => {
 
-  const { majorInfo, setMajorInfo } = majorStore();
-  const {popPage, user, likes} = navigateStore();
+  const {majorId} = useParams();
+
+  const { majorInfo, setMajorInfo, submajorIdx } = majorStore();
+  const {user, likes} = navigateStore();
   const [myComment, setMyComment] = useState([]);
   const [otherComments, setOtherComments] = useState([]);
 
   useEffect(() => {
+
+    const fetchMajor = async () => {
+      const res = await MyMajorInfo(majorId);
+      if(res.error) return;
+      setMajorInfo(res)
+    }
+
     const fetchComments = async () => {
-      const res = await isCommented(majorInfo._id);
+      const res = await isCommented(majorId);
       const myCommentArr = res.filter((comment) => comment.writer._id == user);
       const otherCommentArr = res.filter((comment) => comment.writer._id !== user);
 
       setMyComment([...myCommentArr])
       setOtherComments([...otherCommentArr])
     }
+    if(!majorInfo) fetchMajor();
     fetchComments();
   }, [])
+  
+  if(!majorInfo) return "";
+  if(submajorIdx || submajorIdx==0) return <Major/>
 
   return (
     <div className="major-chap-container">
@@ -40,12 +55,10 @@ const MajorChapters = () => {
           <h1>{majorInfo.title}</h1>
           <h2>{majorInfo.author.name}</h2>
           <div className="major-chap-info-description">{majorInfo.description}...</div>
-          <LikeBar likeIds={likes} likeCnt={majorInfo.likes} users={user} majorId={majorInfo._id}/>
+          <LikeBar likeIds={likes} likeCnt={majorInfo.likes} users={user} majorId={majorId}/>
         </div>
       
       </div>
-
-      <div className="major-chap-go-back" onClick={() => { setMajorInfo(null); popPage(); } }><img src="../assets/back-arrow.png" alt="" /></div>
       
       <div className="major-chap-chapters">
         <SubmajorList fullList={majorInfo.submajor}/>
@@ -54,7 +67,7 @@ const MajorChapters = () => {
       {
         myComment.length==0 &&
         <div className="comment-section-container" id="comments">
-          <Comment mjrId={majorInfo._id}/>
+          <Comment mjrId={majorId}/>
         </div>
       }
 

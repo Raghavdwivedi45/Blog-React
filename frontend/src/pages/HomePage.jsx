@@ -55,7 +55,7 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title">Featured Majors</h2>
         <div className="cards-container">
-          <HomeCards info={majors}/>
+          <HomeCards info={majors} typeLink="majors"/>
         </div>
       </section>
 
@@ -63,7 +63,7 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title">Featured Minors</h2>
         <div className="cards-container">
-          <HomeCards info={majors}/>
+          <HomeCards info={majors} typeLink="minors"/>
         </div>
       </section>
 
