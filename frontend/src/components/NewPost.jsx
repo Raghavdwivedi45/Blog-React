@@ -39,7 +39,9 @@ const NewPost = () => {
     e.preventDefault();
     if(!user) return;
     if(page.at(-1)!=="create-majors" && page.at(-1)!=="create-minors") return ;
+    
     const result = await createNewPost({...formData, author: user}, page.at(-1));
+    console.dir(result)
     if(result.error) return;
     changePage("authors");
   };

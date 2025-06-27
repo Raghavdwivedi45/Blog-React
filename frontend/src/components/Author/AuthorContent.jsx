@@ -18,12 +18,11 @@ const AuthorContent = ({ id }) => {
         return () => {};
     }, [])
 
-    const handleDeletePost = async (idx) => {
-        const id = posts[idx]._id;
+    const handleDeletePost = async (id) => {
         if(!id) return;
-        const del = await deletePost(id, "majors");
+        const del = await deletePost(id);
         if(del.error) return;
-        setPosts((posts) => posts.splice(idx, 1));
+        setPosts((posts) => [...posts.filter(item => item._id !== id)]);
     }
 
     const {setMajorInfo} = majorStore();
@@ -34,6 +33,7 @@ const AuthorContent = ({ id }) => {
         <div className="auth-cont-container">
             {
                 posts.map((post, idx) => {
+                    if(post.type==="Minor") return "";
                     return (
                         <div className="post" key={post._id}>
                             <div className="post-info" onClick={() => { changePage("majors"); setMajorInfo(post); }}>
@@ -48,8 +48,34 @@ const AuthorContent = ({ id }) => {
 
                             {(user && user==authorInfo._id) && <div className="post-btns">
                                 <button className="btn1" onClick={() => { setMajorInfo(post); changePage(`submajors-${post._id}`); }}>Add New Topic</button>
-                                <button className="btn2" onClick={() => handleDeletePost(idx)}>Delete</button>
+                                <button className="btn2" onClick={() => handleDeletePost(post._id)}>Delete</button>
                             </div>}
+                        </div>
+                    )
+                })
+            }
+
+            {
+                posts.map((post, idx) => {
+                    if(post.type==="Major") return "";
+                    return (
+                        <div className="post" key={post._id}>
+                            <div className="post-info" onClick={() => { changePage("minors"); setMajorInfo(post); }}>
+                                <div className="post-info-img">
+                                    <img src={post.img} alt="" />
+                                </div>
+                                <div className="post-info-info">
+                                    <h2 className="post-info-title">{post.title + ", "}</h2>
+                                    <div className="post-info-description">{post.description}</div>
+                                </div>
+                            </div>
+
+                            {
+                            (user && user==authorInfo._id) && <div className="post-btns">
+                                <button className="btn1" onClick={() => { setMajorInfo(post); changePage(`submajors-${post._id}`); }}>Edit Post</button>
+                                <button className="btn2" onClick={() => handleDeletePost(post._id)}>Delete</button>
+                            </div>
+                            }
                         </div>
                     )
                 })

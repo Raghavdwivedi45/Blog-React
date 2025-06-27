@@ -48,21 +48,18 @@ export const checkLogin = async () => {
         return result;
     } 
     catch(err) {
-        console.log(err.response.data.error)
+        return err.response?.data || {error : "Login failed"} ;
     }
 }
 
 export const createNewPost = async (postObj, page) => {
-    try{
-        const type = page.substring(7);
-        const result = await axios.post(`http://localhost:8080/api/${type}`, postObj, {  withCredentials: true });
-        if(result.data.error) return { error: "Internal Error" }; 
-        return result;
-    } 
-    catch(err) {
-        return { error : err };
-    }
-}
+  try {
+    const res = await axios.post(`http://localhost:8080/api/${page.substring(7)}`, postObj, { withCredentials: true });
+    return res.data;
+  } catch (err) {
+    return { error: err.response?.data?.error || "Unknown error" };
+  }
+};
 
 // export const addNewSubmajor = async (postObj, page) => {
 //     try{

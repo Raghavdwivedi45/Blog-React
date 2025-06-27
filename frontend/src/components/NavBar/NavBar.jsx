@@ -1,20 +1,17 @@
 import "../../css/NavBar/Navbar.css";
 import SearchBar from "./SearchBar.jsx";
 import { useRef } from "react";
-import {selectPageStore}  from "../../store/selectSignupType.js";
 import { navigateStore } from "../../store/navigateStore.js";
-import { majorStore } from "../../store/majorStore.js";
-import { authorStore } from "../../store/authorStore.js";
 import { logout } from "../../lib/helper.js";
+import { NavLink } from "react-router-dom";
+import { selectPageStore } from "../../store/selectSignupType.js";
 
 
 const NavBar = () => {
   const underlineRef = useRef(null);
   const containerRef = useRef(null);
-  const { changePage, user, setUser } = navigateStore();
+  const { user, setUser } = navigateStore();
   const { changeSignupType } = selectPageStore();
-  const { setMajorInfo, setSubmajorIdx } = majorStore();
-  const {setAuthorInfo} = authorStore();
 
   const handleMouseEnter = (e, wd=75, extra=0) => {
     const itemRect = e.target.getBoundingClientRect();
@@ -28,16 +25,11 @@ const NavBar = () => {
   };  
 
   const handleSignup = () => {
-    if(user) {
-      const res = logout();
-      if(res.error) return;
-      setUser(null);
-    }
-    else {
-      changePage("signup"); changeSignupType("choose")
-    }
+    if(!user) return;
+    const res = logout();
+    if(res.error) return;
+    setUser(null); changeSignupType("choose");
   }
-
 
   return (
     <header>
@@ -46,37 +38,33 @@ const NavBar = () => {
         
         <div className="left">
           
-          <span 
-          className="logo" 
+          <NavLink to="/"
+          className={({isActive}) => isActive ? "bolder logo" : "logo" }
           onMouseEnter={(e)=>handleMouseEnter(e, 100, 20)}
-          onClick={() => changePage("home")}
           >
           ArticleVerse
-          </span>
+          </NavLink>
 
-          <span 
-          className="left-content" 
+          <NavLink to="/majors"
+          className={({isActive}) => isActive ? "bolder left-content" : "left-content" }
           onMouseEnter={(e)=>handleMouseEnter(e)}
-          onClick={() => { changePage("majors"); setMajorInfo(null); setSubmajorIdx(null); }}
           >
           Majors
-          </span>
+          </NavLink>
 
-          <span 
-          className="left-content" 
+          <NavLink to="/majors"
+          className={({isActive}) => isActive ? "bolder left-content" : "left-content" }
           onMouseEnter={(e)=>handleMouseEnter(e)}
-          onClick={() => changePage("minors")}
           >
           Minors
-          </span>
+          </NavLink>
 
-          <span 
-          className="left-content" 
+          <NavLink to="/authors"
+          className={({isActive}) => isActive ? "bolder left-content" : "left-content" }
           onMouseEnter={handleMouseEnter}
-          onClick={() => { changePage("authors"); setAuthorInfo(null) }}
           >
           Authors
-          </span>
+          </NavLink>
 
         </div>
 
@@ -86,20 +74,29 @@ const NavBar = () => {
 
         <div className="right">
           
-          <span 
-          className="right-content" 
+          <NavLink to="/contact"
+          className={({isActive}) => isActive ? "bolder right-content" : "right-content" }
           onMouseEnter={(e)=>handleMouseEnter(e)}
-          onClick={() => changePage("contact")}
           >
           Contact Us
-          </span>
+          </NavLink>
           
+          { 
+          user ?
           <span 
           className="right-content" 
           onMouseEnter={(e)=>handleMouseEnter(e, 78, 35)}
           onClick={handleSignup}>
-          {user ? "Logout" : "Signup"}
+          Logout
           </span>
+          :
+          <NavLink to="/signup"
+          className={({isActive}) => isActive ? "bolder right-content" : "right-content" }
+          onMouseEnter={(e)=>handleMouseEnter(e, 78, 35)}
+          >
+          Signup
+          </NavLink> 
+          }
         </div>
       </nav>
     </header>

@@ -39,7 +39,7 @@ const MajorChapters = () => {
         <div className="major-chap-info-desc">
           <h1>{majorInfo.title}</h1>
           <h2>{majorInfo.author.name}</h2>
-          <div className="major-chap-info-description">{majorInfo.description.substring(0,930)}...</div>
+          <div className="major-chap-info-description">{majorInfo.description}...</div>
           <LikeBar likeIds={likes} likeCnt={majorInfo.likes} users={user} majorId={majorInfo._id}/>
         </div>
       

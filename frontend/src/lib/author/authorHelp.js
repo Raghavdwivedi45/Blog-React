@@ -10,8 +10,8 @@ export const getAllPosts = async (id) => {
     return result;
 }
 
-export const deletePost = async (id, type) => {
-    const result = await axios.delete(`http://localhost:8080/api/${type}/${id}`, { withCredentials: true });
+export const deletePost = async (id) => {
+    const result = await axios.delete(`http://localhost:8080/api/majors/${id}`, { withCredentials: true });
     const err = result.response?.data?.error;
     if(err) return {error: err};
     return result.data;

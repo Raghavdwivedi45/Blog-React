@@ -66,6 +66,11 @@ nav {
   z-index: -2;
 }
 
+.bolder {
+  font-weight: bolder;
+  color: white;
+}
+
 
 @media (max-width: 768px) {
   .nav-links {
