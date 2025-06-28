@@ -21,6 +21,9 @@ export const getMyMajor = async (req, res) => {
 export const createNewMajor = async (req, res) => {
     try {
         let { title, author, description, img } = req.body;
+        console.log("..................................................description")
+        console.log(description)
+        console.log("..................................................description")
         if (description.length<1000) return res.status(501).json({error : "Description is shorter than 1000 characters"});
         const postType = req.originalUrl.substring(5)==="minors" ? "Minor" : "Major";
 
@@ -118,7 +121,7 @@ export const like = async (req, res) => {
 
 export const postComment = async (req, res) => {
     try {
-        const { id} = req.params; //majorId
+        const { id } = req.params; //majorId
         const { msg } = req.body;
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "Unauthorised for the action." });
         if(!msg || msg.length==0) return res.status(400).json({ error: "Invalid comment." });
@@ -127,11 +130,6 @@ export const postComment = async (req, res) => {
         if (!data) return res.status(404).json({ error: "Post not found." });
 
         const model = req.user.type === "author" ? Author : Reader;
-        const auth = await model.findById(req.user.userId);
-        if (!auth) return res.status(404).json({ error: "User not found." });
-
-        auth.comments.push(mongoose.Types.ObjectId.createFromHexString(id));
-
         const myComment = new Comment({
             writer : req.user.userId,
             writerType : model == Author ? "Author" : "Reader",
@@ -139,9 +137,7 @@ export const postComment = async (req, res) => {
             parentId : mongoose.Types.ObjectId.createFromHexString(id)
         })
 
-        await auth.save();
         await myComment.save();
-
         return res.status(200).json({ success: "Comment saved.." });
     } catch (err) {
         return res.status(500).json({ error: err.message || "Server Error" });

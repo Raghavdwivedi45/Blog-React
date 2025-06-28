@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 export const navigateStore = create((set) => ({
-    page: ["home"],
+    page: [],
     changePage: (val) => set((state) => ({
     page: [...state.page, val]  // append val to the existing array
     })),

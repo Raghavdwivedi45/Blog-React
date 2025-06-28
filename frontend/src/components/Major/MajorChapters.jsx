@@ -15,7 +15,7 @@ const MajorChapters = () => {
   const {majorId} = useParams();
 
   const { majorInfo, setMajorInfo, submajorIdx } = majorStore();
-  const {user, likes} = navigateStore();
+  const {user, likes, setLikes} = navigateStore();
   const [myComment, setMyComment] = useState([]);
   const [otherComments, setOtherComments] = useState([]);
 
@@ -55,7 +55,7 @@ const MajorChapters = () => {
           <h1>{majorInfo.title}</h1>
           <h2>{majorInfo.author.name}</h2>
           <div className="major-chap-info-description">{majorInfo.description}...</div>
-          <LikeBar likeIds={likes} likeCnt={majorInfo.likes} users={user} majorId={majorId}/>
+          <LikeBar setLikeIds={setLikes} likeIds={likes} likeCnt={majorInfo.likes} users={user} majorId={majorId}/>
         </div>
       
       </div>
@@ -67,7 +67,7 @@ const MajorChapters = () => {
       {
         myComment.length==0 &&
         <div className="comment-section-container" id="comments">
-          <Comment mjrId={majorId}/>
+          <Comment mjrId={majorId} postMyComment={setMyComment}/>
         </div>
       }
 

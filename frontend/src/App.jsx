@@ -5,7 +5,6 @@ import { navigateStore } from "./store/navigateStore.js";
 import NewPost from './components/NewPost.jsx'
 import { checkLogin } from './lib/helper.js'
 import { useEffect } from 'react'
-import NewSubmajor from './components/NewSubmajor.jsx'
 import { Outlet } from 'react-router-dom'
 
 
@@ -17,6 +16,7 @@ function App() {
   const fetchData = async () => {
     try {
       const res = await checkLogin();
+      console.log(res)
       if (!res.error) {
         setUser(res.data.userId);
         setLikes([...res.data.likes])
@@ -42,11 +42,3 @@ function App() {
 }
 
 export default App
-
-// {page.at(-1)==="home" && <HomePage/>}
-//       {page.at(-1)==="signup" && <SignupPage/>}
-//       {page.at(-1)==="majors" && <MajorPage/>}
-//       {page.at(-1)==="authors" && <AuthorPage/>}
-//       {page.at(-1)==="contact" && <ContactPage/>}
-//       {(page.at(-1)==="create-majors" || page.at(-1)==="create-minors") && <NewPost/>}
-//       {(page.at(-1).startsWith("submajors")) && <NewSubmajor/>}

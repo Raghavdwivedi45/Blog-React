@@ -6,12 +6,11 @@ import { navigateStore } from "../../store/navigateStore";
 import { useEffect } from "react";
 import { getMyAuthor } from "../../lib/author/authorHelp.js";
 import { useParams } from "react-router-dom";
+import NewPost from "../NewPost.jsx";
 
 const Author = () => {
-
-
   const {authorInfo, setAuthorInfo} = authorStore();
-  const {changePage, user} = navigateStore();
+  const {changePage, user, page} = navigateStore();
   const {authorId} = useParams();
 
 
@@ -25,6 +24,7 @@ const Author = () => {
     }, []);
 
   if(!authorInfo) return "";
+  if(page.at(-1)=="create-majors" || page.at(-1)=="create-minors") return <NewPost/>;
 
   return (
 
