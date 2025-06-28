@@ -3,18 +3,32 @@ import AuthorContent from "./AuthorContent.jsx";
 import AuthorInfo from "./AboutAuthor";
 import { authorStore } from "../../store/authorStore";
 import { navigateStore } from "../../store/navigateStore";
+import { useEffect } from "react";
+import { getMyAuthor } from "../../lib/author/authorHelp.js";
+import { useParams } from "react-router-dom";
 
 const Author = () => {
 
 
   const {authorInfo, setAuthorInfo} = authorStore();
   const {changePage, user} = navigateStore();
+  const {authorId} = useParams();
+
+
+    useEffect(() => {
+      const getAuthor = async () => {
+        const auth = await getMyAuthor(authorId);
+        if(auth.data?.error) return; 
+        setAuthorInfo(auth.data);
+      }
+      if(!authorInfo) getAuthor();
+    }, []);
+
+  if(!authorInfo) return "";
 
   return (
 
     <div className="author-info-container-actual">
-      
-      <div className="author-content-go-back" onClick={() => setAuthorInfo(null) }><img src="../assets/back-arrow.png" alt="" /></div>
       
       {
       (user && user==authorInfo._id) 

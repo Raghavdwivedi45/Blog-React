@@ -4,10 +4,12 @@ import { getAllPosts, deletePost } from "../../lib/author/authorHelp";
 import { majorStore } from "../../store/majorStore";
 import { navigateStore } from "../../store/navigateStore";
 import { authorStore } from "../../store/authorStore";
+import { useNavigate } from "react-router-dom";
 
 const AuthorContent = ({ id }) => {
     
     const [posts, setPosts] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getPosts = async () => {
@@ -36,12 +38,12 @@ const AuthorContent = ({ id }) => {
                     if(post.type==="Minor") return "";
                     return (
                         <div className="post" key={post._id}>
-                            <div className="post-info" onClick={() => { changePage("majors"); setMajorInfo(post); }}>
+                            <div className="post-info" onClick={() => { setMajorInfo(post); navigate(`/majors/${post._id}`); }}>
                                 <div className="post-info-img">
                                     <img src={post.img} alt="" />
                                 </div>
                                 <div className="post-info-info">
-                                    <h2 className="post-info-title">{post.title + ", "}</h2>
+                                    <h2 className="post-info-title">{post.title}</h2>
                                     <div className="post-info-description">{post.description}</div>
                                 </div>
                             </div>
@@ -60,12 +62,12 @@ const AuthorContent = ({ id }) => {
                     if(post.type==="Major") return "";
                     return (
                         <div className="post" key={post._id}>
-                            <div className="post-info" onClick={() => { changePage("minors"); setMajorInfo(post); }}>
+                            <div className="post-info" onClick={() => { setMajorInfo(post); navigate(`/minors/${post._id}`); }}>
                                 <div className="post-info-img">
                                     <img src={post.img} alt="" />
                                 </div>
                                 <div className="post-info-info">
-                                    <h2 className="post-info-title">{post.title + ", "}</h2>
+                                    <h2 className="post-info-title">{post.title}</h2>
                                     <div className="post-info-description">{post.description}</div>
                                 </div>
                             </div>

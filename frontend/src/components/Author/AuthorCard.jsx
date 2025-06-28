@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../../css/author/AuthorCard.css";
 import { authorStore } from "../../store/authorStore";
 
@@ -29,7 +30,11 @@ const AuthorCard = ({info}) => {
                     </span>
                 </div>
 
-                <div><button className="author-btn" onClick={() => setAuthorInfo(info) }>Know More</button></div>
+                <div>
+                    <Link to={"/authors/" + info._id}>
+                        <button className="author-btn" onClick={() => setAuthorInfo(info) }>Know More</button>
+                    </Link>
+                </div>
             </div>
 
         </div>

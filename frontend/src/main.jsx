@@ -8,7 +8,7 @@ import AuthorPage from './pages/AuthorPage.jsx';
 import MajorPage from './pages/MajorPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
 import MajorChapters from './components/Major/MajorChapters.jsx';
-import Major from './components/Major/Major.jsx';
+import Author from './components/Author/Author.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +20,8 @@ const router = createBrowserRouter(
         <Route path="majors/:majorId" element={<MajorChapters/>} />
         
         <Route path="authors" element={<AuthorPage/>} />
+        <Route path="authors/:authorId" element={<Author/>} />
+
         <Route path="contact" element={<ContactPage/>} />
     </Route>
   )

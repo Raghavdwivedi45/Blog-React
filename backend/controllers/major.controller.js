@@ -3,7 +3,6 @@ import Reader from "../models/reader.model.js";
 import Author from "../models/author.model.js";
 import Comment from "../models/comment.model.js";
 import cloudinary from "../utils/cloudinary.js";
-import { validateDesc } from "../utils/helper.js";
 import mongoose from "mongoose";
 
 export const getAllMajors = async (req, res) => {

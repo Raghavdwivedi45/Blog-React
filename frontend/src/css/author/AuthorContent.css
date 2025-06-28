@@ -41,7 +41,7 @@
 }
 
 .post-info-title {
-    margin: 0.25rem;
+    margin: 0.25rem 0;
     height: 2rem;
     overflow: hidden;
 }

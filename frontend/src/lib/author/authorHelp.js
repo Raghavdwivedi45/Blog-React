@@ -5,6 +5,12 @@ export const getAll = async () => {
     return result
 }
 
+export const getMyAuthor = async (id) => {
+    const result = await axios.get(`http://localhost:8080/api/auth/authors/${id}`);
+    console.log(result)
+    return result
+}
+
 export const getAllPosts = async (id) => {
     const result = await axios.get(`http://localhost:8080/api/auth/posts/${id}`);
     return result;

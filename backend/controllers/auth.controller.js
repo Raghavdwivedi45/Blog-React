@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import Author from "../models/author.model.js";
 import Reader from "../models/reader.model.js";
 import Post from "../models/post.model.js";
+import mongoose from "mongoose";
 
 export const handleSignup = async (req, res) => {
     const formData = req.body;
@@ -102,6 +103,14 @@ export const getAllAuthors = async (req, res) => {
     const authors = await Author.find({});
     if(!authors) res.status(200).json({error : "Internal Error in finding authors"});
     res.status(200).json(authors);
+}
+
+export const getOneAuthor = async (req, res) => {
+    const {id} = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "Invalid id." });
+    const author = await Author.findById(id);
+    if(!author) res.status(200).json({error : "No such author exists"});
+    res.status(200).json(author);
 }
 
 export const getAllPosts = async (req, res) => {

@@ -3,8 +3,11 @@ import { selectPageStore } from "../../store/selectSignupType.js"
 import { navigateStore } from "../../store/navigateStore.js"
 import { handleSignupLoginFormSubmit, validateFormData } from "../../lib/helper.js";
 import { useActionState, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UserSignup = () => {
+
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (previousData, formData) => {
     let myData = {
@@ -29,11 +32,11 @@ const UserSignup = () => {
       setTimeout(() => {setFormError(null)}, 3000); 
       return; 
     } 
-    setUser(res._id); setLikes(res.likes); changePage("home");
+    setUser(res._id); setLikes(res.likes); navigate("/");
   }
 
   const {signupType, changeSignupType} = selectPageStore();
-  const {user, setUser, setLikes, changePage } = navigateStore();
+  const { setUser, setLikes, changePage } = navigateStore();
   const [data, action, pending] = useActionState(handleFormSubmit, undefined);
   const [formError, setFormError] = useState(null);
 
