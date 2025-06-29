@@ -10,7 +10,7 @@ export const handleSignupLoginFormSubmit = async (signupType, formData) => {
         );
         if(result.error) return { error: result.response.data.error };
 
-        return { success : result.data.success, _id: result.data._id };
+        return { success : result.data.success, _id: result.data._id, likes: result.data.likes };
     } 
     catch(err) {
         return { error : err };

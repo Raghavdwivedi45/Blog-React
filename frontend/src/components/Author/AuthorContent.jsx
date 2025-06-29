@@ -49,7 +49,7 @@ const AuthorContent = ({ id }) => {
                             </div>
 
                             {(user && user==authorInfo._id) && <div className="post-btns">
-                                <button className="btn1" onClick={() => { setMajorInfo(post); changePage(`submajors-${post._id}`); }}>Add New Topic</button>
+                                <button className="btn1" onClick={() => { navigate(`/majors/${post._id}/sub`); }}>Add New Topic</button>
                                 <button className="btn2" onClick={() => handleDeletePost(post._id)}>Delete</button>
                             </div>}
                         </div>
@@ -74,7 +74,7 @@ const AuthorContent = ({ id }) => {
 
                             {
                             (user && user==authorInfo._id) && <div className="post-btns">
-                                <button className="btn1" onClick={() => { setMajorInfo(post); changePage(`submajors-${post._id}`); }}>Edit Post</button>
+                                <button className="btn1" onClick={() => { navigate(`/minors/${post._id}/sub`); }}>Edit Post</button>
                                 <button className="btn2" onClick={() => handleDeletePost(post._id)}>Delete</button>
                             </div>
                             }

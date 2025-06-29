@@ -21,9 +21,6 @@ export const getMyMajor = async (req, res) => {
 export const createNewMajor = async (req, res) => {
     try {
         let { title, author, description, img } = req.body;
-        console.log("..................................................description")
-        console.log(description)
-        console.log("..................................................description")
         if (description.length<1000) return res.status(501).json({error : "Description is shorter than 1000 characters"});
         const postType = req.originalUrl.substring(5)==="minors" ? "Minor" : "Major";
 
@@ -94,6 +91,10 @@ export const like = async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "Unauthorised for the action." });
+        
+        const model = req.user.type === "author" ? Author : Reader;
+        const auth = await model.findById(req.user.userId);
+        if (!auth) return res.status(404).json({ error: "User not found." });
 
         const data = await Post.findByIdAndUpdate(id,
             { $inc: { likes: req.body.value } },
@@ -101,16 +102,12 @@ export const like = async (req, res) => {
 
         if (!data) return res.status(404).json({ error: "Post not found." });
 
-        const model = req.user.type === "author" ? Author : Reader;
-        const auth = await model.findById(req.user.userId);
-        if (!auth) return res.status(404).json({ error: "User not found." });
-
-
         if (!auth.likes.some(item => item.toString() === id)) {
             auth.likes.push(mongoose.Types.ObjectId.createFromHexString(id));
         } else {
             auth.likes = auth.likes.filter(item => item.toString() !== id);
         }
+
 
         await auth.save();
         return res.status(200).json({ success: "Successfully liked." });

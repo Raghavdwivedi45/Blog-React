@@ -10,7 +10,7 @@ const Comment = ({mjrId, postMyComment}) => {
         const msg = comment.current.value;
         postComment(mjrId, msg)
         .then((res) => {
-            console.log(res); comment.current.value="";
+            comment.current.value="";
             const myComm = [{
                 "body" : msg,
                 "writer" : { "name" : "Myself" },

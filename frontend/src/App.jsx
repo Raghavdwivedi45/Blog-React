@@ -16,7 +16,6 @@ function App() {
   const fetchData = async () => {
     try {
       const res = await checkLogin();
-      console.log(res)
       if (!res.error) {
         setUser(res.data.userId);
         setLikes([...res.data.likes])

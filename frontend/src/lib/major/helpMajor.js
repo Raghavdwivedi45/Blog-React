@@ -53,8 +53,5 @@ export const MyMajorInfo = async (majorId) => {
 }
 
 export const deleteMyComment = async (majorId) => {
-        axios.delete(`http://localhost:8080/api/majors/comment/${majorId}`, { withCredentials: true })
-        .then((res) => { console.log(res.data) })
-        .catch((err) => { console.log(err.response.data.error) });
-        
+        await axios.delete(`http://localhost:8080/api/majors/comment/${majorId}`, { withCredentials: true })
 }

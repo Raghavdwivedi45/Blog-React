@@ -31,8 +31,8 @@ export const tokenJWT = (user) => {
 export const isLoggedIn1 = (req, res) => {
     if(!req.cookies["jwt"]) return res.status(501).json({error : "You must be logged in before this action"})
     const {token} = req.cookies["jwt"];
-    
     const decoded = jwt.verify(token, process.env.JWT_KEY);
+
     return res.status(201).json(decoded);
 }
 

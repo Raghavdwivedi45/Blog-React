@@ -4,9 +4,12 @@ import { navigateStore } from '../store/navigateStore';
 import FormTop from './EditSubmajorComp/FormTop';
 import DescriptionOptions from './EditSubmajorComp/DescriptionOptions';
 import { postSubmajor } from '../lib/major/helpMajor';
-import { majorStore } from '../store/majorStore';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const NewSubmajor = () => {
+    const {majorId} = useParams();
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         idx: 0,
         title: '',
@@ -28,9 +31,8 @@ const NewSubmajor = () => {
         }));
     };
 
-    const { user, popPage } = navigateStore();
+    const { user } = navigateStore();
     const [submajorParts, setSubmajorParts] = useState([""]);
-    const {majorInfo, setMajorInfo} = majorStore();
     const [sectionIds, setSectionIds] = useState([]);
     const descShow = useRef();
     
@@ -57,20 +59,18 @@ const NewSubmajor = () => {
             description: submajorParts,
             secIds : sectionIds
         }
+        const res = await postSubmajor(majorId, subObj);
+        if(res.error) { console.log("Error", res.error); return; }
 
-        const res = await postSubmajor(majorInfo._id, subObj);
-        if(res.error) console.log("Error", res.error);
-        else console.log(res);
-        setMajorInfo(null); popPage();
         setFormData({ idx: 0, title: '', description: ''})
+        navigate(`/majors/${majorId}`)
         
     };
 
+    if(!user) return "";
 
     return (
         <div className="submajor-pg-container">
-            <div className="author-content-go-back" onClick={popPage}><img src="../assets/back-arrow.png" alt="" /></div>
-
             <div className="submajor-container">
                 <h2 className="submajor-form-title">Create New Post</h2>
                 

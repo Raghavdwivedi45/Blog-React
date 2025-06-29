@@ -113,3 +113,11 @@
 .my-sub-cont-desc {
   white-space: pre-line;
 }
+
+iframe {
+  display: block;
+  max-width: 24rem;
+  max-height: 13.5rem;
+  border-radius: 1rem;
+  margin: 1rem auto;
+}

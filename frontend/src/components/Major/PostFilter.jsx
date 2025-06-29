@@ -4,9 +4,9 @@ const PostFilter = ({tags}) => {
   return (
     <div className="tag-container">
         {
-            tags.map((tag) => {
+            tags.map((tag, i) => {
                 return (
-                    <div className="tag">{tag}</div>
+                    <div key={i} className="tag">{tag}</div>
                 );
             })
         }

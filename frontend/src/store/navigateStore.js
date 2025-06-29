@@ -12,4 +12,13 @@ export const navigateStore = create((set) => ({
     setUser: (id) => set({ user: id }),
     likes: null,
     setLikes: (arr) => set({ likes: arr }),
+    pushLikes: (val) => set((state) => {
+      const exists = state.likes?.some(item => item.toString() === val.toString());
+
+      return {
+        likes: exists
+          ? state.likes.filter(item => item.toString() !== val.toString())
+          : [...(state.likes || []), val]
+      };
+  }),
 }))

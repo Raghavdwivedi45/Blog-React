@@ -9,6 +9,7 @@ import MajorPage from './pages/MajorPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
 import MajorChapters from './components/Major/MajorChapters.jsx';
 import Author from './components/Author/Author.jsx';
+import NewSubmajor from './components/NewSubmajor.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
         
         <Route path="majors/" element={<MajorPage/>} />
         <Route path="majors/:majorId" element={<MajorChapters/>} />
+        <Route path="majors/:majorId/sub" element={<NewSubmajor/>} />
         
         <Route path="authors" element={<AuthorPage/>} />
         <Route path="authors/:authorId" element={<Author/>} />

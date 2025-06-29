@@ -10,7 +10,7 @@ import { selectPageStore } from "../../store/selectSignupType.js";
 const NavBar = () => {
   const underlineRef = useRef(null);
   const containerRef = useRef(null);
-  const { user, setUser } = navigateStore();
+  const { user, setUser, setLikes } = navigateStore();
   const { changeSignupType } = selectPageStore();
 
   const handleMouseEnter = (e, wd=75, extra=0) => {
@@ -28,7 +28,7 @@ const NavBar = () => {
     if(!user) return;
     const res = logout();
     if(res.error) return;
-    setUser(null); changeSignupType("choose");
+    setUser(null); setLikes(null); changeSignupType("choose");
   }
 
   return (
