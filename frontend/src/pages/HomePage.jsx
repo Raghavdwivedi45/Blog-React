@@ -7,12 +7,15 @@ import { getAllMajors } from '../lib/major/helpMajor.js';
 
 const HomePage = () => {
     const [majors, setMajors] = useState([]);
+    const [minors, setMinors] = useState([]);
   
     useEffect(() => {
       const getMajors = async () => {
-        const result = await getAllMajors();
-        if (result.data?.error) return;
-        setMajors(result.data.slice(0, Math.min(2, result.data.length)));
+        const result = await getAllMajors("majors");
+        const result2 = await getAllMajors("minors");
+        if (result.error || result2.error) return;
+        setMajors(result.slice(0, Math.min(2, result.length)));
+        setMinors(result2.slice(0, Math.min(2, result2.length)));
       }
       getMajors();
       return () => { };
@@ -63,7 +66,7 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title">Featured Minors</h2>
         <div className="cards-container">
-          <HomeCards info={majors} typeLink="minors"/>
+          <HomeCards info={minors} typeLink="minors"/>
         </div>
       </section>
 

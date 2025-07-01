@@ -52,7 +52,7 @@ const NavBar = () => {
           Majors
           </NavLink>
 
-          <NavLink to="/majors"
+          <NavLink to="/minors"
           className={({isActive}) => isActive ? "bolder left-content" : "left-content" }
           onMouseEnter={(e)=>handleMouseEnter(e)}
           >

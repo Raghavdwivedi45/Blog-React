@@ -67,7 +67,7 @@ const MajorChapters = () => {
       {
         myComment.length==0 &&
         <div className="comment-section-container" id="comments">
-          <Comment mjrId={majorId} postMyComment={setMyComment}/>
+          <Comment user={user} mjrId={majorId} postMyComment={setMyComment}/>
         </div>
       }
 

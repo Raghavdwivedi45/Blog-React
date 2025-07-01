@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import "../../css/Home/HomeCards.css";
 import { majorStore } from "../../store/majorStore.js";
+import { minorStore } from "../../store/minorStore.js";
 
 const HomeCards = ({info, typeLink}) => {
 
    const { setMajorInfo } = majorStore();
+   const { setMinorInfo } = minorStore();
 
   return (
          <div className="card__container">
@@ -32,7 +34,7 @@ const HomeCards = ({info, typeLink}) => {
                               </div>
 
                               <Link to={"/" + typeLink + "/" + post._id} 
-                                 className="card__button" onClick={() => {setMajorInfo(post)}}>
+                                 className="card__button" onClick={() => { if(typeLink==="majors") {setMajorInfo(post)} else {setMinorInfo(post)} }}>
                                  Continue learning
                               </Link>
                            </div>

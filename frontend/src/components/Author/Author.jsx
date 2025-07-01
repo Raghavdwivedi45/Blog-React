@@ -40,7 +40,7 @@ const Author = () => {
       }
 
       <div className="author-info-container">
-        <div className="author-info-content"><AuthorContent id={authorInfo._id} /></div>
+        <div className="author-info-content"><AuthorContent authorInfo={authorInfo} user={user} id={authorInfo._id} /></div>
         <div className="author-info-info"><AuthorInfo /></div>
       </div>
 

@@ -2,12 +2,14 @@ import { useRef } from "react";
 import "../../css/Comment.css";
 import { postComment } from "../../lib/major/helpMajor";
 
-const Comment = ({mjrId, postMyComment}) => {
+const Comment = ({mjrId, postMyComment, user}) => {
 
     const comment = useRef();
 
     const handlePostComment = () => {
         const msg = comment.current.value;
+        if(msg.length==0) return alert("Write something to comment");
+        if(!user) return alert("Please login to comment");
         postComment(mjrId, msg)
         .then((res) => {
             comment.current.value="";

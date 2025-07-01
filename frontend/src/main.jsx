@@ -10,21 +10,28 @@ import SignupPage from './pages/SignupPage.jsx';
 import MajorChapters from './components/Major/MajorChapters.jsx';
 import Author from './components/Author/Author.jsx';
 import NewSubmajor from './components/NewSubmajor.jsx';
+import Minor from './components/Minor.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-        <Route path="" element={<HomePage/>} />
-        <Route path="signup" element={<SignupPage/>} />
+    <Route path="" element={<App />}>
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/signup" element={<SignupPage/>} />
         
-        <Route path="majors/" element={<MajorPage/>} />
-        <Route path="majors/:majorId" element={<MajorChapters/>} />
-        <Route path="majors/:majorId/sub" element={<NewSubmajor/>} />
+        <Route path="/authors" element={<AuthorPage/>} />
+        <Route path="/authors/:authorId" element={<Author/>} />
         
-        <Route path="authors" element={<AuthorPage/>} />
-        <Route path="authors/:authorId" element={<Author/>} />
+        <Route path="/contact" element={<ContactPage/>} />
+        
+        <Route path="/:postType/" element={<MajorPage/>} />
+        
+        <Route path="/majors/:majorId" element={<MajorChapters/>} />
+        <Route path="/minors/:minorId" element={<Minor/>} />
+        
+        <Route path="/majors/:majorId/sub" element={<NewSubmajor/>} />
+        <Route path="/minors/:majorId/sub" element={<NewSubmajor/>} />
+        
 
-        <Route path="contact" element={<ContactPage/>} />
     </Route>
   )
 )

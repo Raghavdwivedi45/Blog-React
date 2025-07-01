@@ -6,7 +6,8 @@ import cloudinary from "../utils/cloudinary.js";
 import mongoose from "mongoose";
 
 export const getAllMajors = async (req, res) => {
-    const majors = await Post.find({ type: "Major" }).populate({ path: 'author', select: 'name' });
+    const type = req.originalUrl.substring(5)==="majors" ? "Major" : "Minor"; 
+    const majors = await Post.find({ type }).populate({ path: 'author', select: 'name' });
     if (!majors) res.status(400).json({ error: "Internal Error in finding majors" });
     res.status(200).json(majors);
 }
@@ -64,10 +65,11 @@ export const deleteMajor = async (req, res) => {
 export const addSubmajor = async (req, res) => {
     try {
         const { id } = req.params;
+        const type = req.originalUrl.substring(5, 11)==="majors" ? "Major" : "Minor"; 
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "Invalid ID format." });
 
         const data = await Post.findById(id);
-        if (!data || data.type !== "Major") return res.status(404).json({ error: "Post not found." });
+        if (!data || data.type !== type) return res.status(404).json({ error: "Post not found." });
         if (req.user.userId !== data.author.toString()) return res.status(404).json({ error: "Unauthorized access" });
 
         const { idx, title, description, secIds } = req.body;
@@ -75,9 +77,13 @@ export const addSubmajor = async (req, res) => {
         const currSubmajors = data.submajor;
         const cleanedDescription = description.filter((desc) => desc.trim() !== '');
 
-        if (idx > 0 && idx < currSubmajors.length) currSubmajors.splice(idx - 1, 0, { title, description: cleanedDescription, secIds });
-        else currSubmajors.push({ title, description: cleanedDescription, secIds });
+        if(type==="Minor") {
+            await Post.findByIdAndUpdate(id, { submajor: { title, description: cleanedDescription, secIds } }, { new: true, runValidators: true });
+            return res.status(200).json({ success: "Successfully added the submajor." });
+        }
 
+        if (idx > 0 && idx < currSubmajors.length) currSubmajors.splice(idx - 1, 0, { title, description: cleanedDescription, secIds }, { new: true, runValidators: true });
+        else currSubmajors.push({ title, description: cleanedDescription, secIds }, { new: true, runValidators: true });
 
         await data.save();
         return res.status(200).json({ success: "Successfully added the submajor." });
