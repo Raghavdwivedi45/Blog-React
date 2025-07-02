@@ -1,5 +1,6 @@
 .body {
   margin: 0;
+  min-height: 100vh;
   max-width: 100vw;
   background: radial-gradient(circle at center, #3a0c0c 0%, #110202 25%, #130202 50%, #140909 75%, #000000 100%);
   overflow-x: hidden;

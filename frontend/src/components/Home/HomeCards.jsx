@@ -16,16 +16,16 @@ const HomeCards = ({ info, typeLink }) => {
    {
     info.map((post) =>
      { return (
-      <article className="card__article" key={post._id}>
+      <article className="card__article" key={post._id || "123"}>
        <div className="card-img">
-        {post.img && <img src={post.img} alt="" />}
+        {post.img && <img src={post.img} alt="Show More" />}
        </div>
        <div className="card__data">
         <div className="card-up-icon">
          <img src="/assets/dblUpArrow.svg" alt="" />
         </div>
         <div className="card-text">
-         <h2 className="card__title">{post.title || "Show More"}</h2>
+         <h2 className="card__title">{post.title || "Check out more such..."}</h2>
          <div className="card__description">
           {post.description || str}
          </div>

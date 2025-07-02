@@ -8,6 +8,14 @@ import { useGSAP } from '@gsap/react';
 
 
 const HomePage = () => {
+  const people = [
+  { id: 1, name: "Jane Doe", text: "Exploring the future with ArticleVerse." },
+  { id: 2, name: "John Smith", text: "A revolutionary idea that inspires minds." },
+  { id: 3, name: "Alice Johnson", text: "Innovation and creativity in one place." },
+  { id: 4, name: "Bob Williams", text: "Empowering readers through knowledge." },
+  { id: 5, name: "Clara Davis", text: "An outstanding platform for thinkers." },
+  { id: 6, name: "Daniel Brown", text: "Changing the content game forever." },
+];
     const [majors, setMajors] = useState([]);
     const [minors, setMinors] = useState([]);
   
@@ -33,13 +41,13 @@ const HomePage = () => {
       useGSAP(() => {
         const tl = gsap.timeline();
         tl
-        .to(el1.current, { opacity : 1, scale : 1, duration : 0.5 })
-        .to(el2.current, { opacity : 1, scale : 1, duration : 0.5 }) 
-        .to(el3.current, { opacity : 1, scale : 1, duration : 0.5 })
-        .to(el4.current, { opacity : 1, scale : 1, duration : 0.5 });
+        .from(el1.current, { x : -300, opacity : 0, duration : 1 })
+        .from(el2.current, { y : -300, rotate : 360, scale : 1, duration : 1 }) 
+        .from(el3.current, { opacity : 0, scale : 0, duration : 1 })
+        .from(el4.current, { x : -100, y : -300, opacity : 0, duration : 1, delay : 0.5 });
 
         const letters = gsap.utils.toArray('.letter'); 
-        gsap.from(letters, { opacity: 0, duration: 0.2, stagger: 0.05, });
+        gsap.from(letters, { opacity: 0, duration: 0.1, stagger: 0.05, });
       });
 
 
@@ -83,7 +91,7 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title" >Featured Majors</h2>
         <div className="cards-container">
-          <HomeCards info={[...majors, {"_id" : "123"}]} typeLink="majors"/>
+          <HomeCards info={[...majors, {"_id" : ""}]} typeLink="majors"/>
         </div>
       </section>
 
@@ -91,7 +99,7 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title" >Featured Minors</h2>
         <div className="cards-container">
-          <HomeCards info={[...minors, {"_id" : "123"}]} typeLink="minors"/>
+          <HomeCards info={[...minors, {"_id" : ""}]} typeLink="minors"/>
         </div>
       </section>
 
@@ -102,10 +110,10 @@ const HomePage = () => {
       <section className="section">
         <h2 className="section-title">Prestigious Words</h2>
         <div className="cards-container">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <div key={item} className="card">
-              <h3>Jane Doe {item}</h3>
-              <p>This is a mind-blowing initiative by ArticleVerse.</p>      
+          {people.map((item) => (
+            <div key={item.id} className="card">
+              <h3>{item.name}</h3>
+              <p>{item.text}</p>      
             </div>
           ))}
         </div>

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "../css/Major/Major.css";
 import BuyPremium from "./Major/BuyPremium.jsx";
 import PostAuthor from "./Major/PostAuthor.jsx";
-import PostFilter from "./Major/postFilter.jsx";
+import PostFilter from "./Major/PostFilter.jsx";
 import SubmajorIdx from "./Major/submajorIdx.jsx";
 import Comment from "./Comments/Comment.jsx";
 import PostedComments from "./Comments/PostedComments.jsx";

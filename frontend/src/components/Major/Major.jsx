@@ -3,7 +3,7 @@ import "../../css/Major/Major.css";
 import { majorStore } from "../../store/majorStore.js";
 import BuyPremium from "./BuyPremium.jsx";
 import PostAuthor from "./PostAuthor.jsx";
-import PostFilter from "./postFilter.jsx";
+import PostFilter from "./PostFilter.jsx";
 import SubmajorIdx from "./submajorIdx.jsx";
 
 const Major = () => {
