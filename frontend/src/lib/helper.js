@@ -1,10 +1,12 @@
 import axios from 'axios';
 
+let base = "https://articleversebackend3.vercel.app/";
+
 export const handleSignupLoginFormSubmit = async (signupType, formData) => {
     try{
         let endpoint = signupType=="login" ? "login" : "signup";
 
-        const result = await axios.post(`http://localhost:8080/api/auth/${endpoint}`, 
+        const result = await axios.post(`${base}/api/auth/${endpoint}`, 
             formData, 
             { withCredentials: true }
         );
@@ -32,7 +34,7 @@ export const validateFormData = (formData, signupType) => {
 
 export const logout = async () => {
     try{
-        const result = await axios.get(`http://localhost:8080/api/auth/logout`, { withCredentials: true });
+        const result = await axios.get(`${base}/api/auth/logout`, { withCredentials: true });
         if(result.data.success) return { success : "Logged Out Successfully" };
         return { error: "Internal Error" }; 
     } 
@@ -43,7 +45,7 @@ export const logout = async () => {
 
 export const checkLogin = async () => {
     try{
-        const result = await axios.get(`http://localhost:8080/api/auth/isLoggedIn`, { withCredentials: true });
+        const result = await axios.get(`${base}/api/auth/isLoggedIn`, { withCredentials: true });
         if(result.data.error) return { error: "Internal Error" }; 
         return result;
     } 
@@ -54,7 +56,7 @@ export const checkLogin = async () => {
 
 export const createNewPost = async (postObj, page) => {
   try {
-    const res = await axios.post(`http://localhost:8080/api/${page.substring(7)}`, postObj, { withCredentials: true });
+    const res = await axios.post(`${base}/api/${page.substring(7)}`, postObj, { withCredentials: true });
     return res.data;
   } catch (err) {
     return { error: err.response?.data?.error || "Unknown error" };
@@ -64,7 +66,7 @@ export const createNewPost = async (postObj, page) => {
 // export const addNewSubmajor = async (postObj, page) => {
 //     try{
 //         const type = page.substring(7);
-//         const result = await axios.post(`http://localhost:8080/api/${type}`, postObj, {  withCredentials: true });
+//         const result = await axios.post(`${base}/api/${type}`, postObj, {  withCredentials: true });
 //         if(result.data.error) return { error: "Internal Error" }; 
 //         return result;
 //     } 
