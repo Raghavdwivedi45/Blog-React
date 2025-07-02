@@ -75,8 +75,8 @@ export const handleLogin = async (req, res) => {
         res.cookie("jwt", result, {
             expires: new Date(Date.now() + 1*24*60*60*1000), // 1 day
             httpOnly: true,
-            // sameSite: 'None', //uncomment at time of production
-            // secure: true,
+            sameSite: 'None', //uncomment at time of production
+            secure: true,
         })
 
         res.status(200).json({ 
