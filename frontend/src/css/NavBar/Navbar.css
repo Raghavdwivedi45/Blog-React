@@ -1,24 +1,30 @@
 header {
-    position: sticky;
-    top: 15px; /* or any desired offset */
-    width: 90%;
-    margin: 1.5rem auto 0rem auto;
-    z-index: 100; /* optional: to ensure it's above other content */
+  position: fixed;
+  top: 15px;
+  left: 0;   
+  right: 0;  
+  width: 90%;
+  margin: 1.5rem auto 0rem auto; /* 'auto' for left/right margins will then center it */
+  z-index: 100;
+}
+
+.toBeAnimated {
+  display: inline-block;
 }
 
 nav {
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(97, 34, 34, 0.4);
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: "Roboto", sans-serif;   
-    margin: 0.5rem 0;
-    z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(97, 34, 34, 0.4);
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Roboto", sans-serif;   
+  margin: 0.5rem 0;
+  z-index: 100;
 }
 
 .left-content, .right-content {

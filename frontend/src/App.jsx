@@ -2,14 +2,14 @@ import './App.css'
 import Navbar from './components/NavBar/NavBar.jsx'
 import Footer from './components/Footer.jsx'
 import { navigateStore } from "./store/navigateStore.js";
-import NewPost from './components/NewPost.jsx'
 import { checkLogin } from './lib/helper.js'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Outlet } from 'react-router-dom'
 
 
 function App() {  
   const { page, setUser, setLikes } = navigateStore();
+  const parentCon = useRef(null);
 
 
   useEffect(() => {
@@ -32,8 +32,8 @@ function App() {
   return (
     <div className='body'>
       <Navbar/>
-        <main>
-          <Outlet/>
+        <main ref={parentCon}>
+          <Outlet parentCon={parentCon}/>
         </main>
       <Footer/>
     </div>

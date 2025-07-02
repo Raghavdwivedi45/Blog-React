@@ -17,6 +17,7 @@
 }
 
 .card__container {
+  /* background-color: blue; */
   padding-block: 3rem 4.5rem;
   margin: 0 auto;
   width: fit-content;
