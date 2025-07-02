@@ -4,7 +4,7 @@ import { majorStore } from "../../store/majorStore.js";
 import BuyPremium from "./BuyPremium.jsx";
 import PostAuthor from "./PostAuthor.jsx";
 import PostFilter from "./PostFilter.jsx";
-import SubmajorIdx from "./submajorIdx.jsx";
+import SubmajorIdx from "./SubmajorIdx.jsx";
 
 const Major = () => {
   const { majorInfo, submajorIdx, setSubmajorIdx } = majorStore();
