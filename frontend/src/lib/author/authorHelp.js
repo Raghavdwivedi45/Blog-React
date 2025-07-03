@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let base = "http://localhost:8080";
+let base = "https://articleversebackend3.vercel.app";
 
 export const getAll = async () => {
     const result = await axios.get(`${base}/api/auth/authors`);
