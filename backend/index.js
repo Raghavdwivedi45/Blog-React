@@ -15,10 +15,23 @@ const app = express();
 app.use(express.json({ limit: '1024kb' }));
 app.use(cookieParser(process.env.COOKIE_SECRET)); // Required for `signed: true`
 
+// app.use(cors({
+//     origin: process.env.CORS,
+//     credentials: true
+// }))
+
+const allowedOrigins = [process.env.CORS];
+
 app.use(cors({
-    origin: process.env.CORS,
-    credentials: true
-}))
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
 
 
 app.use("/api/auth", authRoutes);
@@ -26,18 +39,6 @@ app.use("/api/majors", majorRoutes);
 app.use("/api/minors", minorRoutes);
 
 app.get("/", homePage);
-
-
-// if(process.env.NODE_ENV==="production") {
-//     const __filename = fileURLToPath(import.meta.url);
-//     const __dirname = path.dirname(__filename);
-//     const viteBuildPath = path.join(__dirname, '../frontend/vite-project/dist');
-//     app.use(express.static(viteBuildPath));
-
-//     app.get('*', (req, res) => {
-//     res.sendFile(path.join(viteBuildPath, 'index.html'));
-//     });
-// }
 
 const PORT = process.env.PORT || 8080 
 
