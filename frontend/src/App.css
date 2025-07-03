@@ -14,7 +14,8 @@ main {
   flex: 1; 
   z-index: 1;
   width: 90%;
-  margin: 2rem auto;
+  margin: 6rem auto;
+  padding-top: 4rem;
 }
 
 ::-webkit-scrollbar {
