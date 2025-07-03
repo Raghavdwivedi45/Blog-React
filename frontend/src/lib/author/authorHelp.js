@@ -14,6 +14,7 @@ export const getMyAuthor = async (id) => {
 
 export const getAllPosts = async (id) => {
     const result = await axios.get(`${base}/api/auth/posts/${id}`);
+    console.log(result)
     return result;
 }
 
