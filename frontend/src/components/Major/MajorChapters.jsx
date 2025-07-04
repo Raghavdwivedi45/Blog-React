@@ -11,35 +11,29 @@ import { useParams } from "react-router-dom";
 import Major from "./Major.jsx";
 
 const MajorChapters = () => {
-
   const {majorId} = useParams();
-
-  const { majorInfo, setMajorInfo, submajorIdx } = majorStore();
+  const { submajorIdx } = majorStore();
   const {user, likes, pushLikes} = navigateStore();
   const [myComment, setMyComment] = useState([]);
   const [otherComments, setOtherComments] = useState([]);
+  const [majorInfo, setMajorInfo] = useState({"title" : "Loading...", "author" : {"name" : "Loading..."}, "img" : "../../assets/bookk.png", "description" : "Loading...", "likes" : 0, "submajor" : [{"title" : "Loading..."}]});
 
   useEffect(() => {
-
     const fetchMajor = async () => {
       const res = await MyMajorInfo(majorId);
       if(res.error) return;
       setMajorInfo(res)
     }
-
-    const fetchComments = async () => {
-      const res = await isCommented(majorId);
-      const myCommentArr = res.filter((comment) => comment.writer._id == user);
-      const otherCommentArr = res.filter((comment) => comment.writer._id !== user);
-
-      setMyComment([...myCommentArr])
-      setOtherComments([...otherCommentArr])
-    }
-    if(!majorInfo) fetchMajor();
-    fetchComments();
+    fetchMajor();
   }, [])
+
+  const fetchComments = async () => {
+    const res = await isCommented(majorId);
+    const myCommentArr = res.filter((comment) => comment.writer._id == user);
+    const otherCommentArr = res.filter((comment) => comment.writer._id !== user);
+    setMyComment([...myCommentArr]); setOtherComments([...otherCommentArr]);
+  }
   
-  if(!majorInfo) return "";
   if(submajorIdx || submajorIdx==0) return <Major/>
 
   return (

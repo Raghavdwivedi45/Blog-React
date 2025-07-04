@@ -1,10 +1,8 @@
 .homepage {
   color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding-top: 4rem;
 }
 
-/* Hero Section */
 .hero {
   text-align: center;
   padding: 0rem 2rem;
@@ -57,7 +55,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Cards */
 .cards-container {
   display: flex;
   flex-wrap: wrap;

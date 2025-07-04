@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json({ limit: '1024kb' }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
-const allowedOrigins = [process.env.CORS];
+const allowedOrigins = [process.env.CORS, "http://localhost:5173/"];
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
