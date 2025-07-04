@@ -44,8 +44,8 @@ export const handleSignup = async (req, res) => {
         res.cookie("jwt", result, {
             expires: new Date(Date.now() + 1*24*60*60*1000),
             httpOnly: true,
-            // sameSite: 'None', //uncomment at time of production
-            // secure: true,
+            sameSite: 'None', //uncomment at time of production
+            secure: true,
         })
 
         return res.status(201).json({ 
