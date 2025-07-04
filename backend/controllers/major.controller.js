@@ -82,8 +82,8 @@ export const addSubmajor = async (req, res) => {
             return res.status(200).json({ success: "Successfully added the submajor." });
         }
 
-        if (idx > 0 && idx < currSubmajors.length) currSubmajors.splice(idx - 1, 0, { title, description: cleanedDescription, secIds }, { new: true, runValidators: true });
-        else currSubmajors.push({ title, description: cleanedDescription, secIds }, { new: true, runValidators: true });
+        if (idx > 0 && idx < currSubmajors.length) currSubmajors.splice(idx - 1, 0, { title, description: cleanedDescription, secIds });
+        else currSubmajors.push({ title, description: cleanedDescription, secIds });
 
         await data.save();
         return res.status(200).json({ success: "Successfully added the submajor." });
