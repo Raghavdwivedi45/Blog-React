@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../css/author/AuthorContent.css";
 import { getAllPosts, deletePost } from "../../lib/author/authorHelp";
-import { majorStore } from "../../store/majorStore";
 import { useNavigate } from "react-router-dom";
 
 const AuthorContent = ({ authorInfo, id, user }) => {
@@ -25,7 +24,6 @@ const AuthorContent = ({ authorInfo, id, user }) => {
         setPosts((posts) => [...posts.filter(item => item._id !== id)]);
     }
 
-    const {setMajorInfo} = majorStore();
 
     return (
         <div className="auth-cont-container">
@@ -34,7 +32,7 @@ const AuthorContent = ({ authorInfo, id, user }) => {
                     if(post.type==="Minor") return "";
                     return (
                         <div className="post" key={post._id}>
-                            <div className="post-info" onClick={() => { setMajorInfo(post); navigate(`/majors/${post._id}`); }}>
+                            <div className="post-info" onClick={() => { navigate(`/majors/${post._id}`); }}>
                                 <div className="post-info-img">
                                     <img src={post.img} alt="" />
                                 </div>
@@ -58,7 +56,7 @@ const AuthorContent = ({ authorInfo, id, user }) => {
                     if(post.type==="Major") return "";
                     return (
                         <div className="post" key={post._id}>
-                            <div className="post-info" onClick={() => { setMajorInfo(post); navigate(`/minors/${post._id}/sub`); }}>
+                            <div className="post-info" onClick={() => { navigate(`/minors/${post._id}/`); }}>
                                 <div className="post-info-img">
                                     <img src={post.img} alt="" />
                                 </div>

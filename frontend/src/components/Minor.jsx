@@ -64,7 +64,7 @@ const Minor = () => {
 
                 <div className="major-author">
                     <PostAuthor />
-                    <SubmajorIdx idxArr={["Hello", "Hello", "Hello", "Hello",]} />
+                    <SubmajorIdx idxArr={minorInfo.submajor[0].secIds} />
                     <LikeBar setLikes={pushLikes} likeIds={likes} likeCnt={minorInfo.likes} users={user} majorId={minorId} />
 
                 </div>

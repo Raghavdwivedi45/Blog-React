@@ -7,8 +7,18 @@ let base = "http://localhost:8080";
 export const getAllMajors = async (postType) => {
     const result = await axios.get(`${base}/api/${postType}`); 
     if(result.data.error) return {"error" : "Internal error"};
-
     return result.data;
+}
+
+export const getSubmajor = async (id, idx) => {
+    try {
+        const num1 = Number(idx);
+        if(!num1 && num1!==0) return "Invalid idx";
+        const result = await axios.get(`${base}/api/majors/${id}/sub/${idx}`); 
+        return result.data;
+    } catch(err) {
+        return {"error" : err.response.data.error}
+    }
 }
 
 export const postSubmajor = async (id, submajor, type) => {

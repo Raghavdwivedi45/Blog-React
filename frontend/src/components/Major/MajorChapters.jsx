@@ -1,22 +1,21 @@
 import "../../css/Major/MajorChapters.css";
 import LikeBar from "./LikeBar.jsx";
 import SubmajorList from "./SubmajorList.jsx";
-import { majorStore } from "../../store/majorStore";
 import { navigateStore } from "../../store/navigateStore.js";
 import Comment from "../Comments/Comment.jsx";
 import PostedComments from "../Comments/PostedComments.jsx";
 import { useEffect, useState } from "react";
 import { isCommented, MyMajorInfo } from "../../lib/major/helpMajor.js";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Major from "./Major.jsx";
 
 const MajorChapters = () => {
   const {majorId} = useParams();
-  const { submajorIdx } = majorStore();
   const {user, likes, pushLikes} = navigateStore();
   const [myComment, setMyComment] = useState([]);
   const [otherComments, setOtherComments] = useState([]);
   const [majorInfo, setMajorInfo] = useState({"title" : "Loading...", "author" : {"name" : "Loading..."}, "img" : "../../assets/bookk.png", "description" : "Loading...", "likes" : 0, "submajor" : [{"title" : "Loading..."}]});
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchMajor = async () => {
@@ -34,7 +33,7 @@ const MajorChapters = () => {
     setMyComment([...myCommentArr]); setOtherComments([...otherCommentArr]);
   }
   
-  if(submajorIdx || submajorIdx==0) return <Major/>
+  if(searchParams.get('sub')) return <Major tags={majorInfo.tags} />
 
   return (
     <div className="major-chap-container">

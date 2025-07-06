@@ -1,9 +1,9 @@
+import { useNavigate, useParams } from "react-router-dom";
 import "../../css/Major/SubmajorList.css";
-import { majorStore } from "../../store/majorStore";
 
 const SubmajorList = ({fullList}) => {
-
-  const {setSubmajorIdx} = majorStore();
+  const navigate = useNavigate();
+  const {majorId} = useParams();
 
   return (
     <div className="submajor-list-container">
@@ -12,7 +12,7 @@ const SubmajorList = ({fullList}) => {
                 return (
                     <div 
                     className="each-submajor" key={idx}
-                    onClick={() => { setSubmajorIdx(idx) }}
+                    onClick={() => { navigate(`/majors/${majorId}?sub=${idx}`) }}
                     >Chapter {idx+1} : {submajor.title}
                     </div>
                 )
