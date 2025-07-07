@@ -36,13 +36,17 @@ const Minor = () => {
             setOtherComments([...otherCommentArr])
         }
         fetchMinor();
+        
+        fetchComments();
+    }, [])
+
+    useEffect(() => {
         if(minorInfo && desc) {
             let str = "";
             for(const s of minorInfo.submajor[0].description) str+= s;
             desc.current.innerHTML = str || "";
         }
-        fetchComments();
-    }, [minorInfo, desc])
+    }, [minorInfo])
 
     if (!minorInfo) return "";
 
