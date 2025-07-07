@@ -19,6 +19,31 @@ export const getMyMajor = async (req, res) => {
     res.status(200).json(major);
 }
 
+export const getMyMinor = async (req, res) => {
+    const {id} = req.params;
+    const minor = await Post.findById(id).populate({ path: 'author', select: 'name' });
+    if (!minor) res.status(400).json({ error: "No minor with given id found" });
+    res.status(200).json(minor);
+}
+
+export const getSubmajor = async (req, res) => {
+  const { id, idx } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "Invalid post ID" });
+
+  const numIdx = Number(idx);
+  if (isNaN(numIdx)) return res.status(400).json({ error: "Invalid index" });
+
+  try {
+    const result = await Post.aggregate([ { $match: { _id: new mongoose.Types.ObjectId(id) } }, { $project: { submajorLength: { $size: "$submajor" }, submajor: { $arrayElemAt: ["$submajor", numIdx] } } },
+                                        { $match: { $expr: { $gt: ["$submajorLength", numIdx] } } } // Filter out if index >= length
+    ]);
+    if (!result.length || !result[0].submajor) return res.status(404).json({ error: "Submajor not found at given index" });
+    return res.status(200).json(result[0].submajor);
+  } catch (err) {
+    return res.status(500).json({ error: err.message || "Internal Server Error" });
+  }
+};
+
 export const createNewMajor = async (req, res) => {
     try {
         let { title, author, description, img } = req.body;
