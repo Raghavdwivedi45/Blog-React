@@ -8,6 +8,8 @@ const MajorPage = () => {
   const [posts, setPosts] = useState([]);
   const {postType} = useParams();
 
+  if(postType!=="majors" && postType!=="minors" || !posts) return "";
+  
   useEffect(() => {
     const getPosts = async () => {
       const result = await getAllMajors(postType);
@@ -18,7 +20,6 @@ const MajorPage = () => {
     return () => { };
   }, [postType])
 
-  if(postType!=="majors" && postType!=="minors" || !posts) return "";
 
   return (
     <div className="major-cards">

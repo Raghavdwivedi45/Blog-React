@@ -9,8 +9,7 @@ import PostedComments from "./Comments/PostedComments.jsx";
 import LikeBar from "./Major/LikeBar.jsx";
 import { navigateStore } from "../store/navigateStore.js";
 import { useParams } from "react-router-dom";
-import { minorStore } from "../store/minorStore.js";
-import { isCommented, MyMajorInfo } from "../lib/major/helpMajor.js";
+import { isCommented, MyMinorInfo } from "../lib/major/helpMajor.js";
 
 
 const Minor = () => {
@@ -19,11 +18,11 @@ const Minor = () => {
     const { user, likes, pushLikes } = navigateStore();
     const [myComment, setMyComment] = useState([]);
     const [otherComments, setOtherComments] = useState([]);
-    const { minorInfo, setMinorInfo } = minorStore();
+    const [minorInfo, setMinorInfo] = useState();
 
     useEffect(() => {
-        const fetchMajor = async () => {
-            const res = await MyMajorInfo(minorId, "minors");
+        const fetchMinor = async () => {
+            const res = await MyMinorInfo(minorId);
             if (res.error) return;
             setMinorInfo(res)
         }
@@ -36,7 +35,7 @@ const Minor = () => {
             setMyComment([...myCommentArr])
             setOtherComments([...otherCommentArr])
         }
-        if (!minorInfo) fetchMajor();
+        fetchMinor();
         if(minorInfo && desc) {
             let str = "";
             for(const s of minorInfo.submajor[0].description) str+= s;
@@ -59,7 +58,7 @@ const Minor = () => {
                     <div className="major-content-title">{minorInfo?.submajor[0]?.title || "Title"}</div>
                     <div className="major-content-description" ref={desc}></div>
 
-                    <PostFilter tags={minorInfo.tags || ["Hello", "Hello", "Hello", "Hello",]} />
+                    <PostFilter tags={minorInfo.tags || []} />
                 </div>
 
                 <div className="major-author">

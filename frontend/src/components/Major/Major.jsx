@@ -28,7 +28,11 @@ const Major = ({tags}) => {
   }, [searchParams.get("sub")])
 
   useEffect(() => {
-    desc.current.innerHTML = submajor.description;
+    if(submajor.description && desc) {
+      let str = "";
+      for(const s of submajor.description) str+= s;
+      desc.current.innerHTML = str || "";
+    }
   }, [submajor])
 
   return (

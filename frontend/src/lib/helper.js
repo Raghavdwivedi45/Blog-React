@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// let base = "https://articleversebackend3.vercel.app";
-let base = "http://localhost:8080";
+const base = "https://articleversebackend3.vercel.app";
+// let base = "http://localhost:8080";
 
 
 export const handleSignupLoginFormSubmit = async (signupType, formData) => {

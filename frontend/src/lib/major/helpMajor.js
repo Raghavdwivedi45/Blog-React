@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// let base = "https://articleversebackend3.vercel.app";
-let base = "http://localhost:8080";
+const base = "https://articleversebackend3.vercel.app";
+// let base = "http://localhost:8080";
 
 
 export const getAllMajors = async (postType) => {
@@ -58,16 +58,28 @@ export const isCommented = async (majorId) => {
     }
 }
 
-export const MyMajorInfo = async (majorId, type="majors") => {
+export const MyMajorInfo = async (majorId) => {
     try{
         if(!majorId || majorId==="undefined") return;
-        const result = await axios.get(`${base}/api/${type}/${majorId}`, { withCredentials: true });
+        const result = await axios.get(`${base}/api/majors/${majorId}`, { withCredentials: true });
 
         return result.data;
     } catch(err) {
         return err.response.data;
     }
 }
+
+
+export const MyMinorInfo = async (id) => {
+    try{
+        if(!id) return;
+        const result = await axios.get(`${base}/api/minors/${id}`, { withCredentials: true });
+        return result.data;
+    } catch(err) {
+        return err.response.data;
+    }
+}
+
 
 export const deleteMyComment = async (majorId) => {
         await axios.delete(`${base}/api/majors/comment/${majorId}`, { withCredentials: true })

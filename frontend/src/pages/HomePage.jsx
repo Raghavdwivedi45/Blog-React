@@ -34,20 +34,14 @@ const HomePage = () => {
 
       const el1 = useRef(null);
       const el2 = useRef(null);
-      const el3 = useRef(null);
-      const el4 = useRef(null);
-      const el5 = useRef(null);
 
       useGSAP(() => {
         const tl = gsap.timeline();
+        const letters = gsap.utils.toArray('.letter'); 
         tl
         .from(el1.current, { x : -300, opacity : 0, duration : 1 })
-        .from(el2.current, { y : -300, rotate : 360, scale : 1, duration : 1 }) 
-        .from(el3.current, { opacity : 0, scale : 0, duration : 1 })
-        .from(el4.current, { x : -100, y : -300, opacity : 0, duration : 1, delay : 0.5 });
-
-        const letters = gsap.utils.toArray('.letter'); 
-        gsap.from(letters, { opacity: 0, duration: 0.1, stagger: 0.05, });
+        .from(el2.current, { y : -200, scale : 1, duration : 1 })
+        .from(letters, { opacity: 0, scale : 2, y: 25, stagger: 0.02, });
       });
 
 
@@ -59,7 +53,7 @@ const HomePage = () => {
         <h1 className="hero-title">
           Welcome to <span className="highlight">ArticleVerse</span>
         </h1>
-        <p className="hero-subtitle" ref={el5}>
+        <p className="hero-subtitle">
            {("Dive into a universe of insightful articles, major topics, minor thoughts, and brilliant authors.").split("").map((char, i) => (
             <span key={i} className="letter">
               {char === " " ? "\u00A0" : char}
@@ -77,8 +71,8 @@ const HomePage = () => {
         </div>
         
         <div className="hero-grid-2">
-          <div className="hero-grid-2-1" ref={el3}></div>
-          <div className="hero-grid-2-2" ref={el4}></div>
+          <div className="hero-grid-2-1"></div>
+          <div className="hero-grid-2-2"></div>
         </div>
 
         <div className="carousel">

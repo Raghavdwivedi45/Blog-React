@@ -183,5 +183,8 @@
   transform: translate(-18rem, 6rem);
   z-index: -1;
   background: rgba(138, 14, 14, 0.1);
+}
 
+.letter {
+  display: inline-block;
 }
