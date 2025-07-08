@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import "../../css/Major/LikeBar.css"
 import { likeInc } from "../../lib/major/helpMajor";
 
-const LikeBar = ({likeCnt, users, likeIds, setLikes, majorId}) => {
+const LikeBar = ({likeCnt = 0, users, likeIds, setLikes, majorId}) => {
 
   const like = useRef();
   const [totalLikes, setTotalLikes] = useState(likeCnt);
@@ -38,13 +38,13 @@ const LikeBar = ({likeCnt, users, likeIds, setLikes, majorId}) => {
     <div className="like-bar-container">
         
         <div className={clickedLike ? "like-bar-container-l show-msg" : "like-bar-container-l"} ref={like} onClick={() => handleLikes()}>
-            <img src="../assets/like.png" alt="" />
+            <img src="../../assets/like.png" alt="" />
             <div>&nbsp;{totalLikes}</div>     
         </div>
 
         <a href="#comments">
           <div className="like-bar-container-r">
-              <img src="../assets/comment.png" alt="" />
+              <img src="../../assets/comment.png" alt="" />
           </div>
         </a>
         

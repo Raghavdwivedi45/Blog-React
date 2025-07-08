@@ -1,0 +1,44 @@
+.pg-filter-container {
+    width: 95%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.pg-tags {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    padding: 0.5rem 2rem;
+}
+
+.pg-filter-cross {
+    height: fit-content; 
+    padding-top: 0.7rem;
+}
+
+.pg-filter-btn {
+    padding: 0.25rem 1.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: wheat;
+    border-radius: 0.5rem;
+    background-color: brown;
+    border: none;
+    transition: all 100ms linear;
+}
+
+.pg-filter-btn:hover {
+    scale: 1.1;
+}
+
+.pg-filter-cross img {
+    width: 1.5rem;
+}
+
+.pg-tag {
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem 0.5rem;
+    background : linear-gradient(135deg, brown, black);
+    border-radius: 0.5rem;
+}

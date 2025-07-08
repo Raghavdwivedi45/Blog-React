@@ -2,5 +2,6 @@
 
 .major-cards {
     margin: 0.5rem auto;
+    width: 95%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

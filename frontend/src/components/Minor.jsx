@@ -18,7 +18,7 @@ const Minor = () => {
     const { user, likes, pushLikes } = navigateStore();
     const [myComment, setMyComment] = useState([]);
     const [otherComments, setOtherComments] = useState([]);
-    const [minorInfo, setMinorInfo] = useState();
+    const [minorInfo, setMinorInfo] = useState({"submajor" : [{"title" : "Loading...", "description" : "Loading...", "secIds" : [], }]});
 
     useEffect(() => {
         const fetchMinor = async () => {
@@ -36,7 +36,6 @@ const Minor = () => {
             setOtherComments([...otherCommentArr])
         }
         fetchMinor();
-        
         fetchComments();
     }, [])
 
@@ -48,8 +47,6 @@ const Minor = () => {
         }
     }, [minorInfo])
 
-    if (!minorInfo) return "";
-
     return (
         <div className="bind-all-containers">
 
@@ -59,7 +56,7 @@ const Minor = () => {
                 </div>
 
                 <div className="major-content">
-                    <div className="major-content-title">{minorInfo?.submajor[0]?.title || "Title"}</div>
+                    <div className="major-content-title">{minorInfo.submajor[0]?.title || "Title"}</div>
                     <div className="major-content-description" ref={desc}></div>
 
                     <PostFilter tags={minorInfo.tags || []} />
@@ -67,7 +64,7 @@ const Minor = () => {
 
                 <div className="major-author">
                     <PostAuthor />
-                    <SubmajorIdx idxArr={minorInfo.submajor[0].secIds} />
+                    <SubmajorIdx idxArr={minorInfo.submajor[0]?.secIds || []} />
                     <LikeBar setLikes={pushLikes} likeIds={likes} likeCnt={minorInfo.likes} users={user} majorId={minorId} />
 
                 </div>

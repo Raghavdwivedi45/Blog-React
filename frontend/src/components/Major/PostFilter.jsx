@@ -1,7 +1,6 @@
 import "../../css/Major/PostFilter.css";
 
 const PostFilter = ({tags=[]}) => {
-  console.log(tags)
   return (
     <div className="tag-container">
         {
